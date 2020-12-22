@@ -32,6 +32,8 @@ Route::get('appointments/{regNo?}','OpappointmentController@appointSavePage');
 Route::get('doctors','DoctorinfoController@doctorAllShow');
 Route::get('doctors/{deptNo}','DoctorinfoController@departmentDoctors');
 Route::get('doctorAppointSchedule/{id}', 'OpappointmentController@doctorAppointSchedule');
+//comments
+Route::post('doctorDesignation','OpappointmentController@doctorDesignation');
 
 // schedule Roser
 Route::get('scheduleRoster','ResourcescheduleController@scheduleRoster');
