@@ -1,0 +1,10 @@
+#imgOpenRegistration{
+    width: 120px;
+    height: 110px; 
+    position: absolute;
+}
+ @media only screen and (max-width: 600px) {
+     #imgOpenRegistration{
+        position: relative;
+    }
+}
