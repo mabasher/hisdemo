@@ -7,7 +7,7 @@
 <div class="content">
     <div class="row">
         <div class="col-sm-4 col-3">
-            <h4 class="page-title">Patient Registration List</h4>
+            <h4 class="page-title">Doctor Information</h4>
         </div>
         <!-- <div class="col-sm-8 col-9 text-right m-b-20">
             <a href="add-employee.html" class="btn btn-primary float-right btn-rounded"><i class="fa fa-plus"></i> Add
@@ -15,26 +15,28 @@
         </div> -->
     </div>
     <div class="row filter-row">
-        <div class="col-sm-6 col-md-3">
+        <!-- <div class="col-sm-6 col-md-3">
             <div class="form-group form-focus">
-                <label class="focus-label">PID</label>
+                <label class="focus-label">Doctor No</label>
                 <input type="text" class="form-control floating">
             </div>
-        </div>
+        </div> -->
         <div class="col-sm-6 col-md-3">
             <div class="form-group form-focus">
-                <label class="focus-label">Patient Name</label>
+                <label class="focus-label">Doctor Name</label>
                 <input type="text" class="form-control floating">
             </div>
         </div>
         <div class="col-sm-6 col-md-3">
             <div class="form-group form-focus select-focus">
-                <label class="focus-label">Gender</label>
+                <label class="focus-label">Designation</label>
                 <select class="select floating">
-                    <option value="">Select Gender</option>
-                    <option value="M">Male</option>
-                    <option value="F">Female</option>
-                    <option value="O">Others</option>
+                    <option>Select Designation</option>
+                    <!-- <option>Nurse</option>
+                    <option>Pharmacist</option>
+                    <option>Laboratorist</option>
+                    <option>Accountant</option>
+                    <option>Receptionist</option> -->
                 </select>
             </div>
         </div>
@@ -48,25 +50,25 @@
                 <table class="table table-striped custom-table">
                     <thead>
                         <tr>
-                            <th style="min-width:200px;">Patient Name</th>
-                            <th>PID</th>
-                            <th>DOB</th>
-                            <th>Mobile</th>
+                            <th style="min-width:200px;">Doctor Name</th>
+                            <th>Doctor No</th>
+                            <th>Designation</th>
+                            <th>Contact No</th>
                             <th style="min-width: 110px;">Email</th>
                             <th class="text-right">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($registrations as $reg)
+                        @foreach($doctorMenu as $doc)
                         <tr>
                             <td>
-                                <img width="28" height="28" src="{{$reg->img_url}}" class="rounded-circle" alt="">
-                                <h2>{{$reg->ful_name}}</h2>
+                                <img width="28" height="28" src="{{$doc->doctor_image}}" class="rounded-circle" alt="">
+                                <h2>{{$doc->doctor_name}}</h2>
                             </td>
-                            <td><a href="{{url('appointments/'.$reg->reg_no)}}"> {{$reg->reg_no}}</a></td>
-                            <td>{{$reg->dob}}</td>
-                            <td>{{$reg->mobile}}</td>
-                            <td>{{$reg->email}}</td>
+                            <td>{{$doc->doctor_no}}</td>
+                            <td>{{$doc->designation}}</td>
+                            <td>{{$doc->contact_no}}</td>
+                            <td>{{$doc->email}}</td>
                             <td class="text-right">
                                 <div class="dropdown dropdown-action">
                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"

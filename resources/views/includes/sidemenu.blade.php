@@ -23,7 +23,7 @@
                     <a href="#"><i class="fa fa-tasks"></i> <span> Setup Form </span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="{{url('departments')}}"><i class="fa fa-hospital-o"></i> <span>Departments</span></a></li>
-                        <li><a href="departments.html"><i class="fa fa-user-md"></i> <span>Doctors</span></a></li>
+                        <li><a href="{{url('doctormenu')}}"><i class="fa fa-user-md"></i> <span>Doctors</span></a></li>
                     </ul>
                 </li>
                 <!-- <li class="udActive">

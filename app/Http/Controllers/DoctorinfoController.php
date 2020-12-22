@@ -16,6 +16,13 @@ class DoctorinfoController extends Controller
         $doctor = Doctorinfo::all();
         return view('admin.doctor', compact(['doctor']));
     }
+
+    public function doctorsView()
+    {
+        // return \App\Department::with('doctors')->get();
+        $doctorMenu = Doctorinfo::all();
+        return view('admin.doctor.doctor-view', compact(['doctorMenu']));
+    }
     public function doctorSchedule($id)
     {
         $doctor = Doctorinfo::with('schedules.day')->find($id);
@@ -32,4 +39,6 @@ class DoctorinfoController extends Controller
         
         //$department->doctors;
     }
+
+
 }

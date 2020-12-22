@@ -29,7 +29,10 @@ Route::post('SaveRegistration','RegistrationController@SaveRegistration');
 Route::post('appointmentInsert','OpappointmentController@appointmentInsert');
 Route::get('appointments/{regNo?}','OpappointmentController@appointSavePage');
 // Route::get('appointments/{regno}','OpappointmentController@appointEditPage');
+
+//doctors 
 Route::get('doctors','DoctorinfoController@doctorAllShow');
+Route::get('doctormenu','DoctorinfoController@doctorsView');
 Route::get('doctors/{deptNo}','DoctorinfoController@departmentDoctors');
 Route::get('doctorAppointSchedule/{id}', 'OpappointmentController@doctorAppointSchedule');
 //designation
