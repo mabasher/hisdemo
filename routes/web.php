@@ -32,7 +32,7 @@ Route::get('appointments/{regNo?}','OpappointmentController@appointSavePage');
 Route::get('doctors','DoctorinfoController@doctorAllShow');
 Route::get('doctors/{deptNo}','DoctorinfoController@departmentDoctors');
 Route::get('doctorAppointSchedule/{id}', 'OpappointmentController@doctorAppointSchedule');
-//comments
+//designation
 Route::post('doctorDesignation','OpappointmentController@doctorDesignation');
 
 // schedule Roser

@@ -76,9 +76,9 @@
                                                     <label for="">Doctor Designation</label>
                                                     <select class="custom-select" id="desig">
                                                         <option value="All">Select Doctor Designation</option>
-                                                        @foreach($specialty as $sp)
-                                                        <option value="{{$sp->dept_no}}">
-                                                            {{$sp->dept_name}}</option>
+                                                        @foreach($designation as $desig)
+                                                        <option value="{{$desig->job_id}}">
+                                                            {{$desig->job_desc}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>

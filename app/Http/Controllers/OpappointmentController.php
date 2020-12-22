@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use App\Salutation;
+use App\Jobcode;
 use App\Religion;
 use App\Bloodgroup;
 use App\Department;
@@ -34,9 +35,10 @@ class OpappointmentController extends Controller
         $bloodGroups = Bloodgroup::all();
         $divisions = Division::all();
         $districts = District::all();
+        $designation = Jobcode::where('jobtype_id',4)->get();
         $specialty = Department::where('area_type_no',115)->select('dept_no','dept_name')->get();
         $doctors = Doctorinfo::all();
-        return view('admin.opd.appointmentAdd',compact(['salutations','religions','bloodGroups','specialty','doctors','divisions','districts','regNo']));
+        return view('admin.opd.appointmentAdd',compact(['salutations','religions','bloodGroups','specialty','doctors','divisions','districts','regNo','designation']));
                 
     }
 
