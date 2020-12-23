@@ -1,22 +1,28 @@
+
+<style>
+    .menusub{
+        display:block;
+    }
+</style>
 <div class="sidebar" id="sidebar">
     <div class="sidebar-inner slimscroll">
         <div id="sidebar-menu" class="sidebar-menu">
-            <ul>
+            <ul  class="sitebar">
                 <li class="menu-title">Main</li>
-                <li class="active ">
-                    <a href="{{url('home')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+                <li class="">
+                    <a href="{{url('home')}}" class="act"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                 </li>
                 <li class=""> 
-                    <a href="{{url('doctors')}}"><i class="fa fa-user-md"></i> <span>Doctors</span></a>
+                    <a href="{{url('doctors')}}" class="act"><i class="fa fa-user-md"></i> <span>Doctors</span></a>
                 </li>
                 <li class="">
-                    <a href="{{url('registrations')}}"><i class="fa fa-wheelchair"></i> <span>Patient Registration</span></a>
+                    <a href="{{url('registrations')}}" class="act"><i class="fa fa-wheelchair"></i> <span>Patient Registration</span></a>
                 </li>
                <li class="">
-                    <a href="{{url('appointments')}}"><i class="fa fa-calendar"></i> <span>Appointments</span></a>
+                    <a href="{{url('appointments')}}" class="act"><i class="fa fa-calendar"></i> <span>Appointments</span></a>
                 </li>
                 <li class="">
-                    <a href="{{url('scheduleRoster')}}"><i class="fa fa-calendar-check-o"></i> <span>Doctor
+                    <a href="{{url('scheduleRoster')}}" class="act"><i class="fa fa-calendar-check-o"></i> <span>Doctor
                             Schedule</span></a>
                 </li>
                 <li class="submenu">
@@ -180,10 +186,6 @@
     </div>
 </div>
 @section('js')
-<script>
-    <script>
-    
-    </script>
 
-</script>
+
 @endsection

@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Resourceschedule;
+use App\Department;
+use App\Jobcode;
+use App\Doctorinfo;
 
 class ResourcescheduleController extends Controller
 {
-    public function getDoctorTimeSlot($id,$schDate,$multiVisit)
+    public function getDoctorTimeSlot($id,$schDate)
     {
         $slot = Resourceschedule::where('doctorinfo_id',$id)->where('sc_date',$schDate)->get();
         // $slot = Resourceschedule::where('doctorinfo_id',$id)->where('sc_date',$schDate)->where('multivisit_no',$multiVisit)->get();
@@ -24,6 +27,9 @@ class ResourcescheduleController extends Controller
 
     public function scheduleRoster()
     {
-        return view('admin.opd.scheduleRosterPage');
+        $specialty = Department::where('area_type_no',115)->select('dept_no','dept_name')->get();
+        $designation = Jobcode::where('jobtype_id',4)->get();
+        $doctors = Doctorinfo::all();
+        return view('admin.roster.scheduleRosterPage', compact(['specialty','designation','doctors']));
     }
 }

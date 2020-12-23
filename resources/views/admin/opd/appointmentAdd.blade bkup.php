@@ -1,21 +1,21 @@
     @extends('layouts.app')
     @section('css')
     <style>
-.bg-secondary span {
-    color: #fff;
-}
+        .bg-secondary span {
+            color: #fff;
+        }
+        .time-slot {
+            border: 1px solid #55ce63;
+            border-radius: 3px;
+            text-align: center;
+            cursor:pointer;
+        }
 
-.time-slot {
-    border: 1px solid #55ce63;
-    border-radius: 3px;
-    text-align: center;
-    cursor: pointer;
-}
+        .slotScroll {
+        height:160px;
+        overflow-y: auto;
+        }
 
-.slotScroll {
-    height: 160px;
-    overflow-y: auto;
-}
     </style>
     <!-- <link rel="stylesheet" href="{{asset('css/app.css')}}"> -->
     <link rel="stylesheet" href="{{asset('css/imgcss.css')}}">
@@ -58,7 +58,7 @@
                                             <div class="form-row">
                                                 <div class="col-md-2 mb-3">
                                                     <label for="">Schedule Date</label>
-                                                    <input type="text" class="form-control datepicker text-center" name="app_date"
+                                                    <input type="text" class="form-control datepicker" name="app_date"
                                                         id="schDate" placeholder="Schedule Date"
                                                         value="{{old('app_date')}}" required="">
                                                 </div>
@@ -87,8 +87,8 @@
                                                     <select class="custom-select" id="doctor" name="doctorinfo_id">
                                                         <option value="all">Select Care Giver</option>
                                                         @foreach($doctors as $doc)
-                                                        <option data-doctorNo="{{$doc->doctor_no}}"
-                                                            data-room="{{$doc->doc_chember}}" value="{{$doc->id}}">
+                                                        <option data-doctorNo="{{$doc->doctor_no}}" data-room="{{$doc->doc_chember}}"
+                                                             value="{{$doc->id}}">
                                                             {{$doc->designation.' '.$doc->doctor_name.' '.$doc->qualification}}
                                                         </option>
                                                         @endforeach
@@ -103,16 +103,13 @@
                                                 </div> -->
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-4" id="docVisitTime" style="display:none;">
-                                                    
+                                                <div class="col-md-4">
+                                                    <div class="border border-success slotScroll" id="docVisitTime" style="display:none;">
+
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-8">
-                                                <div class="text-center" id="loading" style="display:none;">
-                                                <img width="50" height="50" 
-                                                        src="{{asset('admin/img/loading.gif')}}" class="rounded-circle"
-                                                        alt="">
-                                                </div>
-                                                   
+                                                    <img  width="50" height="50" id="loading" class="mx-auto" src="{{asset('admin/img/loading.gif')}}" class="rounded-circle" alt="" style="display:none;">
                                                     <!-- <p id="loading" class="text-center" style="display:none;">Loading</p> -->
                                                     <div class="row" id="loadSlot">
                                                     </div>
@@ -128,15 +125,14 @@
                                                 <div class="col-md-3 mb-3">
                                                     <div class="input-group mb-3">
                                                         <input type="text" class="form-control" id="pid"
-                                                            placeholder="Search PID" value="{{$regNo}}"
-                                                            aria-label="Search Patient Id"
+                                                            placeholder="Search PID" value="{{$regNo}}" aria-label="Search Patient Id"
                                                             aria-describedby="basic-addon2">
                                                         <div class="input-group-append">
                                                             <a href="" id="clearId" class="btn btn-outline-secondary"
                                                                 type="button"><i class="fa fa-refresh"
                                                                     aria-hidden="true"></i></a>
 
-                                                            <a href="" id="srcId" class="btn btn-outline-secondary"
+                                                                    <a href="" id="srcId" class="btn btn-outline-secondary"
                                                                 type="button"><i class="fa fa-search-plus"
                                                                     aria-hidden="true"></i></a>
                                                         </div>
@@ -373,13 +369,13 @@
 
     <script>
 $(function() {
-    $('#loading').hide();
-    $('#pid').keyup(function() {
+    $('#pid').keyup(function(){
         $('#clearId').show();
     });
     var pid = $('#pid').val();
-    if (pid != '') {
+    if(pid != ''){
         getPatient(pid);
+
     }
 
     $('#spouseName').attr('disabled', 'disabled');
@@ -549,24 +545,23 @@ function getCity(diviCode, distId) {
 $('#srcId').on('click', function(e) {
     e.preventDefault();
     var pid = $('#pid').val();
-    if (pid == '') {
-        document.location.href = "{{url('registrationviews')}}";
-    } else {
+    if(pid == ''){
+        document.location.href="{{url('registrationviews')}}";
+    }else{
         getPatient(pid);
     }
     //alert(pid);
 })
 
-$('#clearId').click(function(e) {
+$('#clearId').click(function(e){
     e.preventDefault();
     clear('pid');
     $(this).hide();
 })
 
-function clear(id) {
-    $('#' + id).val('');
+function clear(id){
+    $('#'+id).val('');
 }
-
 function getPatient(regno) {
     $.ajax({
         url: "{{url('patient')}}/" + regno,
@@ -604,26 +599,43 @@ $('#doctor').on('change', function() {
     var doctorNo = $('#doctor :selected').attr('data-doctorNo');
     $('#doctorNo').val(doctorNo);
     $('#docRoom').val(doctorRoom);
-    if (docNo == 'all') {
-        $('#loadSlot').hide();
-        $('#docVisitTime').hide();
-        // $('#docVisitTime').html('No Schedule');
-    } else {
-        getDoctorSlotLoad(docNo, schDate);
+    if (docNo == null) {
+            $('#docVisitTime').show();
+            $('#docVisitTime').html('No Schedule');
+        } else {
+            getVistDays(docNo);
 
-    }
+        }
+    var multiVisit;
+    getDoctorMultiVisits(docNo, schDate);
+    setTimeout(() => {
+        multiVisit = $('#multiVisit').val();
+        getDoctorSlotLoad(docNo, schDate, multiVisit);
+
+    }, 1000);
+
+
+    // setTimeout(() => {
+    //     if (docNo == null) {
+    //         $('#docVisitTime').show();
+    //         $('#docVisitTime').html('No Schedule');
+    //     } else {
+    //         getVistDays(docNo);
+
+    //     }
+    // }, 300);
 
 })
 
 
-// $('#multiVisit').on('change', function() {
-//     var multiVisit = $(this).val();
-//     var schDate = $('#schDate').val();
-//     var doctorId = $('#doctor').val();
-//     getVistDays(docNo);
-//     //getDoctorMultiVisits(docNo, schDate);
-//     getDoctorSlotLoad(doctorId, schDate, multiVisit);
-// })
+$('#multiVisit').on('change', function() {
+    var multiVisit = $(this).val();
+    var schDate = $('#schDate').val();
+    var doctorId = $('#doctor').val();
+    getVistDays(docNo);
+    //getDoctorMultiVisits(docNo, schDate);
+    getDoctorSlotLoad(doctorId, schDate, multiVisit);
+})
 
 $(document).on('click', '#timeId', function(e) {
     e.preventDefault();
@@ -635,19 +647,18 @@ $(document).on('click', '#timeId', function(e) {
     $(this).closest('.time-slot').addClass("bg-success");
 });
 
-function getDoctorSlotLoad(doctorId, schDate) {
+function getDoctorSlotLoad(doctorId, schDate, multiVisit) {
     $.ajax({
-        url: "{{url('virtualslots')}}/" + doctorId + '/' + schDate,
+        url: "{{url('virtualslots')}}/" + doctorId + '/' + schDate + '/' + multiVisit,
         type: 'get',
-        beforeSend: function() {
+        beforeSend :function(){
             $('#loading').show();
         },
         success: function(data) {
             //$('#doctorTimeSlot').show();
-            getVistDays(doctorId);
             $('#loadSlot').html(data).show();
         },
-        complete: function() {
+        complete:function(){
             $('#loading').hide();
 
         }

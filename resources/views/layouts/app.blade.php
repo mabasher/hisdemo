@@ -153,7 +153,7 @@
                     <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
                     <a class="dropdown-item" href="settings.html">Settings</a>
                     <a class="dropdown-item" href="#">Logout</a>
-                        
+
                 </div>
             </div>
         </div>
@@ -171,29 +171,27 @@
     <script src="{{asset('admin/js/chart.js')}}"></script>
     <script src="{{asset('admin/js/app.js')}}"></script>
     <script>
-    //     $(function(){
-    //         $(document).ready(function(){
-    //         $('ul li a').click(function(){
-    //         $('li a').removeClass("active");
-    //         $(this).addClass("active");
-    //         });
-    //     });
-    // })
+    $(function() {
+        var current = location;
+        console.log(current);
+        $('.sitebar li a').each(function() {
+            var $this = $(this);
+            var url = $this.attr('href');
+            console.log('Testing'+url);
+            // if the current path is like this link, make it active
+            if (url.indexOf(current) !== -1) {
+                $this.parent().addClass('active');
+                $this.parent().parent().css('display','block');
+                $this.parent().parent().parent().children('a').addClass('subdrop');
+                // $this.addClass('menusub');
 
-    $(document).ready(function(){
-            $('ul li a').click(function(){
-            $('li a').removeClass("active");
-            $(this).addClass("active");
-            //alert('Testing');
-            });
-        });
-    
+            }
+        })
+    })
     </script>
     @yield('js')
 
 
 </body>
-
-
 
 </html>

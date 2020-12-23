@@ -1,4 +1,4 @@
-@foreach($slot as $s)
+@forelse($slot as $s)
     @php
         $booked = 0;
     @endphp
@@ -36,4 +36,7 @@
     <script>
         document.getElementById('slot_{{$s->id}}').innerHTML = "{{$booked}}/";
     </script>
-@endforeach
+@empty
+        <h3 class="text-success text-center">No Schedule</h3>
+@endforelse
+

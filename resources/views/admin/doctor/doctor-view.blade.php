@@ -9,10 +9,10 @@
         <div class="col-sm-4 col-3">
             <h4 class="page-title">Doctor Information</h4>
         </div>
-        <!-- <div class="col-sm-8 col-9 text-right m-b-20">
-            <a href="add-employee.html" class="btn btn-primary float-right btn-rounded"><i class="fa fa-plus"></i> Add
-                Employee</a>
-        </div> -->
+        <div class="col-sm-8 col-9 text-right m-b-20">
+            <a href="#" class="btn btn-primary float-right btn-rounded"><i class="fa fa-plus"></i> Add
+                Doctor</a>
+        </div>
     </div>
     <div class="row filter-row">
         <!-- <div class="col-sm-6 col-md-3">
@@ -29,6 +29,19 @@
         </div>
         <div class="col-sm-6 col-md-3">
             <div class="form-group form-focus select-focus">
+                <label class="focus-label">Specialty</label>
+                <select class="select floating">
+                    <option>Select Specialty</option>
+                    <!-- <option>Nurse</option>
+                    <option>Pharmacist</option>
+                    <option>Laboratorist</option>
+                    <option>Accountant</option>
+                    <option>Receptionist</option> -->
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <div class="form-group form-focus select-focus">
                 <label class="focus-label">Designation</label>
                 <select class="select floating">
                     <option>Select Designation</option>
@@ -41,8 +54,19 @@
             </div>
         </div>
         <div class="col-sm-6 col-md-3">
-            <a href="#" class="btn btn-success btn-block"> Search </a>
+            <div class="form-group form-focus select-focus">
+                <label class="focus-label">Gender</label>
+                <select class="select floating">
+                    <option value="">Select Gender</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="O">Others</option>
+                </select>
+            </div>
         </div>
+        <!-- <div class="col-sm-6 col-md-3">
+            <a href="#" class="btn btn-success btn-block"> Search </a>
+        </div> -->
     </div>
     <div class="row">
         <div class="col-md-12">

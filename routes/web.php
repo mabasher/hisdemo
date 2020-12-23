@@ -34,7 +34,7 @@ Route::get('appointments/{regNo?}','OpappointmentController@appointSavePage');
 Route::get('doctors','DoctorinfoController@doctorAllShow');
 Route::get('doctormenu','DoctorinfoController@doctorsView');
 Route::get('doctors/{deptNo}','DoctorinfoController@departmentDoctors');
-Route::get('doctorAppointSchedule/{id}', 'OpappointmentController@doctorAppointSchedule');
+Route::get('doctorWeeklySchedule/{id}', 'OpappointmentController@doctorWeeklySchedule');
 //designation
 Route::post('doctorDesignation','OpappointmentController@doctorDesignation');
 
@@ -45,6 +45,7 @@ Route::get('scheduleRoster','ResourcescheduleController@scheduleRoster');
 Route::get('doctorSchedule/{id}', 'DoctorinfoController@doctorSchedule');
 Route::get('perDivision/{code}','AjaxController@getDivisionPermanent');
 Route::get('specialtyWiseDoctor/{depNo?}','OpappointmentController@getSpecialWiseDoctor');
+Route::get('desigWiseDoctor/{jobId?}','OpappointmentController@getDesigWiseDoctor');
 Route::get('patient/{regno}','OpappointmentController@getPatient');
 
 //setup Form
@@ -63,7 +64,7 @@ Route::get('image-qr-code','GenerateQrCodeController@imageQrCode');
 
 //doctor Slot
 Route::get('multivisits/{doctorId}/{schDate}','ResourcescheduleController@getDoctorMultiVisit');
-Route::get('virtualslots/{doctorId}/{schDate}/{multiVisit}','ResourcescheduleController@getDoctorTimeSlot');
+Route::get('virtualslots/{doctorId}/{schDate}','ResourcescheduleController@getDoctorTimeSlot');
 
 
 

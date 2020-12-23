@@ -27,6 +27,16 @@ class OpappointmentController extends Controller
         return view('admin.partialPages.speciltyWiseDoctor',compact('spWidoctors'));
     }
 
+    public function getDesigWiseDoctor($jobId)
+    {
+        if($jobId == 'All' ){
+            $desigWidoctors = Doctorinfo::all();
+        }else{
+            $desigWidoctors = Doctorinfo::where('job_id',$jobId)->get();
+        }
+        return view('admin.partialPages.desigWiseDoctor',compact('desigWidoctors'));
+    }
+
     public function appointSavePage($regNo = '')
     {
         // return $regNo;
@@ -131,10 +141,10 @@ class OpappointmentController extends Controller
     }
 
     
-    public function doctorAppointSchedule($id)
+    public function doctorWeeklySchedule($id)
     {
         $doctor = Doctorinfo::find($id)->load('schedules.day'); 
-        return view('admin.opd.doctorAppointSchedule', compact('doctor'));
+        return view('admin.opd.doctorWeeklySchedule', compact('doctor'));
 
     }
     
