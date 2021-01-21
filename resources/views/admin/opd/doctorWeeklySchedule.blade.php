@@ -1,20 +1,16 @@
+    @foreach($day as $d)
+        @if($d->schudules->count()> 0)
+        <tr class="bg-success mt-2 {{$d->name == $dayName?'bg-info':'bg-success'}}">
+            <th colspan="2"><h4 class="text-white noofDay" data-dId="{{$d->id}}" >{{$d->name}}</h4>
+            </th>
+            <!-- <input type="hidden" id="noofDay"  data-dId="{{$d->id}}" class="noofDay" value="{{$d->id}}" > -->
+        </tr>
+        @foreach($d->schudules as $ds)
 
-@if($doctor->schedules->count()>0)
-<div class="border border-success slotScroll">
-
-                                                    
-    <h3 class="text-center text-success pt-2"> Doctor Weekly Schedules</h3>
-
-    <table class="table">
-        <tbody>
-            @foreach($doctor->schedules as $ds)
-            <tr>
-                <td>{{$ds->day->name}}</td>
-                <td> {{ Carbon\Carbon::parse($ds->sch_start_time)->format('h:i A').' - '.Carbon\Carbon::parse($ds->sch_end_time)->format('h:i A')}} </td>
-            </tr>
-            
-            @endforeach
-        </tbody>
-    </table>
-    </div>
-    @endif
+        <tr class="text-success">
+            <td><a href="#" class="text-success">{{$ds->doctorvisit->visit_name}}</a>: </td>
+            <td><a href="#" class="text-success">{{ Carbon\Carbon::parse($ds->start_time)->format('h:i A').' - '.Carbon\Carbon::parse($ds->end_time)->format('h:i A')}}</a></td>
+        </tr>
+        @endforeach
+        @endif
+    @endforeach

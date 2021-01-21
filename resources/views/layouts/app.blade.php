@@ -131,7 +131,7 @@
                             <img class="rounded-circle" src="{{asset('admin/img/user.jpg')}}" width="24" alt="Admin">
                             <span class="status online"></span>
                         </span>
-                        <span>Admin</span>
+                        <span>{{auth()->user()->name}}</span>
                     </a>
                     <div class="dropdown-menu">
                         <!-- <a class="dropdown-item" href="profile.html">My Profile</a>
@@ -170,6 +170,7 @@
     <script src="{{asset('admin/js/Chart.bundle.js')}}"></script>
     <script src="{{asset('admin/js/chart.js')}}"></script>
     <script src="{{asset('admin/js/app.js')}}"></script>
+    <script src="{{asset('admin/js/custom.js')}}"></script>
     <script>
     $(function() {
         var current = location;
@@ -177,16 +178,21 @@
         $('.sitebar li a').each(function() {
             var $this = $(this);
             var url = $this.attr('href');
-            console.log('Testing'+url);
+            console.log('Testing' + url);
             // if the current path is like this link, make it active
             if (url.indexOf(current) !== -1) {
                 $this.parent().addClass('active');
-                $this.parent().parent().css('display','block');
+                $this.parent().parent().css('display', 'block');
                 $this.parent().parent().parent().children('a').addClass('subdrop');
                 // $this.addClass('menusub');
 
             }
         })
+    })
+
+    $('.module').click(function(e) {
+        e.preventDefault();
+        console.log('Blank Url Module');
     })
     </script>
     @yield('js')

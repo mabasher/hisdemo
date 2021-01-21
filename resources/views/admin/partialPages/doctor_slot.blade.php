@@ -1,9 +1,10 @@
+<p id="dT" style="display:none;">{{$schDate}}</p>
 @forelse($slot as $s)
     @php
         $booked = 0;
     @endphp
     <div class="col-md slotScroll">
-    <h3 class="text-center text-success">{{$s->multivisit_name}} 
+    <h3 class="text-center text-success">{{$s->doctorvisit->visit_name}} 
         <div style="float:right;">
             <span id="slot_{{$s->id}}"></span>
             <span class="text-info" >{{$s->block_load}}</span>

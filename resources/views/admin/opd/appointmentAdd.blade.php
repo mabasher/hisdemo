@@ -12,6 +12,10 @@
     cursor: pointer;
 }
 
+.noofDay {
+    cursor: pointer;
+}
+
 .slotScroll {
     height: 160px;
     overflow-y: auto;
@@ -28,8 +32,6 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12 col-xl-12 m-auto">
-
-                <!-- Custom Boostrap Validation -->
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title text-info text-center">Patient Appointment</h4>
@@ -58,14 +60,14 @@
                                             <div class="form-row">
                                                 <div class="col-md-2 mb-3">
                                                     <label for="">Schedule Date</label>
-                                                    <input type="text" class="form-control datepicker text-center" name="app_date"
-                                                        id="schDate" placeholder="Schedule Date"
+                                                    <input type="text" class="form-control datepicker text-center"
+                                                        name="app_date" id="schDate" placeholder="Schedule Date"
                                                         value="{{old('app_date')}}" required="">
                                                 </div>
                                                 <div class="col-md-2 mb-3">
                                                     <label for="">Doctor Specilty</label>
                                                     <select class="custom-select" id="specialty">
-                                                        <option value="All">Select Specilty</option>
+                                                        <option value="">Select Specilty</option>
                                                         @foreach($specialty as $sp)
                                                         <option value="{{$sp->dept_no}}">
                                                             {{$sp->dept_name}}</option>
@@ -75,7 +77,7 @@
                                                 <div class="col-md-3 mb-3">
                                                     <label for="">Doctor Designation</label>
                                                     <select class="custom-select" id="desig">
-                                                        <option value="All">Select Doctor Designation</option>
+                                                        <option value="">Select Doctor Designation</option>
                                                         @foreach($designation as $desig)
                                                         <option value="{{$desig->job_id}}">
                                                             {{$desig->job_desc}}</option>
@@ -84,8 +86,8 @@
                                                 </div>
                                                 <div class="col-md-5 ">
                                                     <label for="">Care Giver</label>
-                                                    <select class="custom-select" id="doctor" name="doctorinfo_id">
-                                                        <option value="all">Select Care Giver</option>
+                                                    <select class="custom-select" id="doctor" name="doctorinfo_id" required>
+                                                        <option value="">Select Care Giver</option>
                                                         @foreach($doctors as $doc)
                                                         <option data-doctorNo="{{$doc->doctor_no}}"
                                                             data-room="{{$doc->doc_chember}}" value="{{$doc->id}}">
@@ -103,16 +105,19 @@
                                                 </div> -->
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-4" id="docVisitTime" style="display:none;">
-                                                    
+                                                <div class="col-md-3 slotScroll" id="weekId" style="display:none;">
+                                                    <table class="text-center" id="docVisitTime">
+                                                    </table>
+
+
                                                 </div>
-                                                <div class="col-md-8">
-                                                <div class="text-center" id="loading" style="display:none;">
-                                                <img width="50" height="50" 
-                                                        src="{{asset('admin/img/loading.gif')}}" class="rounded-circle"
-                                                        alt="">
-                                                </div>
-                                                   
+                                                <div class="col-md-9">
+                                                    <div class="text-center" id="loading" style="display:none;">
+                                                        <img width="50" height="50"
+                                                            src="{{asset('admin/img/loading.gif')}}"
+                                                            class="rounded-circle" alt="">
+                                                    </div>
+
                                                     <!-- <p id="loading" class="text-center" style="display:none;">Loading</p> -->
                                                     <div class="row" id="loadSlot">
                                                     </div>
@@ -128,7 +133,7 @@
                                                 <div class="col-md-3 mb-3">
                                                     <div class="input-group mb-3">
                                                         <input type="text" class="form-control" id="pid"
-                                                            placeholder="Search PID" value="{{$regNo}}"
+                                                            placeholder="Search PID" name="reg_no" value="{{$regNo}}"
                                                             aria-label="Search Patient Id"
                                                             aria-describedby="basic-addon2">
                                                         <div class="input-group-append">
@@ -217,64 +222,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <!-- <div class="form-row">
-                                                <div class="col-md-3 mb-3">
-                                                    <div class="form-group">
-                                                        <label>Emergency Contact No</label>
-                                                        <input type="text" id="emContactNo" name="em_contact_no" class="form-control"
-                                                            placeholder="Contact No">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3 mb-3">
-                                                    <div class="form-group">
-                                                        <label>Emergency Contact Name</label>
-                                                        <input type="text" id="emContactPerson" name="em_contact_person" class="form-control"
-                                                            placeholder="Contact Name">
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="col-md-3 mb-3">
-                                                    <label for=" ">NID</label>
-                                                    <input type="text" name="national_id" class="form-control"
-                                                        id="nid" placeholder="National ID" value="">
-                                                </div>
-                                                
-                                            </div>
-                                            <div class="form-row">
-                                            <div class="col-md-3 mb-3">
-                                                <label>Address:</label>
-                                                <textarea rows="1" cols="1" class="form-control"
-                                                    placeholder="Enter Address"
-                                                    id="preAddress" name="pre_address">
-                                                </textarea>
-                                            </div>
                                             
-                                            <div class="col-md-3 mb-3">
-                                                <label
-                                                    for="validationCustom03">Division/Province</label>
-                                                    <select class="custom-select division disableEnable"
-                                                        id="preDivision" name="pre_division">
-                                                        @foreach($divisions as $dv)
-                                                        <option value="{{$dv->DIVISION_CODE}}">
-                                                            {{$dv->DIVISION_NAME}}</option>
-                                                        @endforeach
-                                                    </select>
-                                            </div>
-                                            <div class="col-md-3 mb-3">
-                                                <label for="">City</label>
-                                                <select class="custom-select city disableEnable" id="city"
-                                                    name="pre_district">
-                                                    <option value="">Select City</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-3 mb-3">
-                                                <div class="form-group">
-                                                    <label>Zip/Postal code</label>
-                                                    <input type="text" name="pre_postoffice"
-                                                        class="form-control" id="postalCode"
-                                                        placeholder="Zip/Postal Code">
-                                                </div>
-                                            </div> -->
                                         </div>
                                     </div>
                                     <div class="card col-xl-11 m-auto">
@@ -286,8 +234,7 @@
                                                 <div class="col-md-3 mb-3">
                                                     <label>Chief Complaint:</label>
                                                     <textarea rows="1" cols="1" class="form-control"
-                                                        placeholder="Enter Address" name="chief_complaint">
-                                                    </textarea>
+                                                        placeholder="Enter Chief Complaint" name="chief_complaint"></textarea>
                                                 </div>
                                                 <div class="col-md-3 mb-3">
                                                     <label for="">Arrival Mode</label>
@@ -302,16 +249,16 @@
                                                     <label for="">Appoint Type</label>
                                                     <select class="custom-select" id="maritalStatus" name="app_type">
                                                         <option value="">Select Appoint Type</option>
-                                                        <option value="S">Primary Consultation </option>
+                                                        <option value="P">Primary Consultation </option>
                                                         <option value="F">Followup Consultation</option>
                                                         <option value="V">For Visit</option>
-                                                        <option value="V">Patient Counseling</option>
+                                                        <option value="C">Patient Counseling</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3 mb-3">
                                                     <label for="">Appoint No</label>
                                                     <input type="text" name="appoint_no" value="" class="form-control"
-                                                        id="validationCustom04" placeholder="Appoint No" disabled="">
+                                                        id="validationCustom04" placeholder="Appoint No" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-row">
@@ -382,17 +329,6 @@ $(function() {
         getPatient(pid);
     }
 
-    $('#spouseName').attr('disabled', 'disabled');
-
-    $("#imgOpenRegistration").click(function() {
-        $('#imgReg').click();
-    });
-
-    $("#imgReg").change(function() {
-        imageReaderURL(this);
-    });
-
-    // $("#schDate").datepicker({ dateFormat: "yy-mm-dd"}).datepicker("setDate", new Date());
     var date = new Date();
     var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
     $('#schDate').datepicker({
@@ -423,56 +359,8 @@ $(function() {
         inline: true
 
     }).on('changeDate', function(ev) {
-
-        var birthDay = $('#dob').val();
-        var DOB = new Date(birthDay);
-        var today = new Date();
-        var age = today.getTime() - DOB.getTime();
-        var elapsed = new Date(age);
-        var year = elapsed.getYear() - 70;
-        var month = elapsed.getMonth();
-        var day = elapsed.getDay();
-        if (year == '0') {
-            year = '';
-        } else {
-            year += " Y ";
-        }
-        if (month == '0') {
-            month = '';
-        } else {
-            month += " M ";
-        }
-        if (day == '0') {
-            day = '';
-        } else {
-            day += " D";
-        }
-        var ageTotal = year + month + day;
-
-        $('#age').val(ageTotal);
+        $('#age').val(ageCalculator($(this).val()));
     });
-});
-
-function imageReaderURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $('#imgOpenRegistration').attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-
-$('#maritalStatus').change(function() {
-    var mStatus = $('#maritalStatus').val();
-    if (mStatus == 'Married') {
-        $('#spouseName').removeAttr('disabled');
-
-    } else {
-        //$('#dob').removeAttr('disabled');
-        $('#spouseName').attr('disabled', 'disabled');
-    }
 });
 
 $('#specialty').on('change', function() {
@@ -480,11 +368,14 @@ $('#specialty').on('change', function() {
     getDoctorSpeciltyWise(spDoctor);
     setTimeout(() => {
         var docid = $('#doctor').val();
-        if (docid == null) {
-            $('#docVisitTime').show();
-            $('#docVisitTime').html('No Schedule');
+        var schDate = $('#schDate').val();
+        if (docid == '' || docid == null) {
+            $('#docVisitTime').hide();
+            $('#loadSlot').hide();
+            // $('#docVisitTime').html('No Schedule');
         } else {
-            getVistDays(docid);
+            getDoctorSlotLoad(docid, schDate);
+            getVistDays(docid,schDate);
 
         }
     }, 300);
@@ -508,11 +399,14 @@ $('#desig').on('change', function() {
     getDoctorDesigWise(DesigDoctor);
     setTimeout(() => {
         var docid = $('#doctor').val();
-        if (docid == null) {
-            $('#docVisitTime').show();
-            $('#docVisitTime').html('No Schedule');
+        var schDate = $('#schDate').val();
+        if (docid == '' || docid == null) {
+            $('#docVisitTime').hide();
+            $('#loadSlot').hide();
+            // $('#docVisitTime').html('No Schedule');
         } else {
-            getVistDays(docid);
+            getDoctorSlotLoad(docid, schDate)
+            getVistDays(docid,schDate);
 
         }
     }, 300);
@@ -526,22 +420,6 @@ function getDoctorDesigWise(jobId) {
         success: function(data) {
             console.log(data);
             $('#doctor').html(data);
-        }
-    })
-}
-
-$('#preDivision').on('change', function() {
-    var code = $(this).val();
-    getCity(code, 'city');
-})
-
-function getCity(diviCode, distId) {
-    $.ajax({
-        url: "{{url('perDivision')}}/" + diviCode,
-        type: 'get',
-        success: function(data) {
-            //console.log(data);
-            $('#' + distId).html(data);
         }
     })
 }
@@ -604,26 +482,17 @@ $('#doctor').on('change', function() {
     var doctorNo = $('#doctor :selected').attr('data-doctorNo');
     $('#doctorNo').val(doctorNo);
     $('#docRoom').val(doctorRoom);
-    if (docNo == 'all') {
+    if (docNo == '') {
         $('#loadSlot').hide();
         $('#docVisitTime').hide();
         // $('#docVisitTime').html('No Schedule');
     } else {
+        getVistDays(docNo,schDate);
         getDoctorSlotLoad(docNo, schDate);
 
     }
 
 })
-
-
-// $('#multiVisit').on('change', function() {
-//     var multiVisit = $(this).val();
-//     var schDate = $('#schDate').val();
-//     var doctorId = $('#doctor').val();
-//     getVistDays(docNo);
-//     //getDoctorMultiVisits(docNo, schDate);
-//     getDoctorSlotLoad(doctorId, schDate, multiVisit);
-// })
 
 $(document).on('click', '#timeId', function(e) {
     e.preventDefault();
@@ -644,8 +513,10 @@ function getDoctorSlotLoad(doctorId, schDate) {
         },
         success: function(data) {
             //$('#doctorTimeSlot').show();
-            getVistDays(doctorId);
+            // getVistDays(doctorId);
             $('#loadSlot').html(data).show();
+            $('#schDate').val($('#dT').text())
+
         },
         complete: function() {
             $('#loading').hide();
@@ -653,31 +524,65 @@ function getDoctorSlotLoad(doctorId, schDate) {
         }
     })
 }
+$(document).on('click', '.noofDay', function(e) {
+    // e.preventDefault();
+    $('.noofDay').parent().parent().removeClass('bg-info');
+    $('.noofDay').parent().parent().addClass('bg-success');
+    let dayName = $(this).text();
+    var sdate = getNextDateOfTheWeek(dayName);
+    var docNo = $('#doctor').val();
+    getDoctorSlotLoad(docNo, dayName);
+    $(this).parent().parent().removeClass('bg-success');
+    $(this).parent().parent().addClass('bg-info');
 
-function getDoctorMultiVisits(doctorId, schDate) {
+})
+
+function getNextDateOfTheWeek(dayName) {
+    let today = new Date()
+    const dayOfWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
+        .indexOf(dayName.slice(0, 3).toLowerCase());
+    if (dayOfWeek < 0) return;
+    today.setHours(0, 0, 0, 0);
+    today.setDate(today.getDate() +
+        (dayOfWeek + 7 - today.getDay()) % 7);
+    return today.toLocaleDateString('en-GB');
+}
+
+
+$('#schDate').on('change', function() {
+    var schDate = $(this).val();
+    var docNo = $('#doctor').val();
+    getDoctorSlotLoad(docNo, schDate);
+    getVistDays(docNo, schDate);
+    
+})
+
+function getVistDays(doctorId, schDate) {
     $.ajax({
-        url: "{{url('multivisits')}}/" + doctorId + '/' + schDate,
+        url: "{{url('doctorWeeklySchedule')}}/" + doctorId +'/'+ schDate,
         type: 'get',
         success: function(data) {
-            // $('#doctorTimeSlot').show();
-            $('#multiVisit').html(data);
+            console.log(data);
+            if (data == '') {
+                $('#weekId').hide();
+            } else {
+                $('#weekId').show();
+                $('#docVisitTime').html(data);
+            }
+
         }
     })
 }
 
-function getVistDays(doctorId) {
+function getpdfGenerate(regNo) {
     $.ajax({
-        url: "{{url('doctorWeeklySchedule')}}/" + doctorId,
+        url: "{{url('downloadPDF')}}/" + regNo,
         type: 'get',
         success: function(data) {
-            $('#docVisitTime').show();
-            $('#docVisitTime').html(data);
+            // console.log(data);
+            // $('#doctor').html(data);
         }
     })
 }
-// $('#timeId').on('click', function(){
-// var timeId = $(this).val();
-// $('#appointId').val(); = timeId;
-// })
     </script>
     @endsection

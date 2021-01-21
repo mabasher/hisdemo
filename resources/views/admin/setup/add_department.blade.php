@@ -61,7 +61,7 @@
 								</div>
                             </div> -->
                             <div class="m-t-20 text-center">
-                                <button  type="submit" class="btn btn-primary">Create Department</button>
+                                <button  type="submit" class="btn btn-primary">Submit</button>
                                 <a href="{{url('departments')}}" class="btn btn-success">Back</a>
                             </div>
                         </form>

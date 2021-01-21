@@ -31,8 +31,8 @@
                                 </div>
                                 @endif
 
-                                <form class="needs-validation" autocomplete="off" method="POST" action="{{url('SaveRegistration')}}"
-                                    enctype="multipart/form-data">
+                                <form class="needs-validation" autocomplete="off" method="POST"
+                                    action="{{url('SaveRegistration')}}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="card col-xl-11 m-auto">
                                         <h5 class="card-header text-success">Patient Information</h5>
@@ -42,24 +42,23 @@
                                             <div class="form-row">
                                                 <div class="col-md-1">
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input gender" type="radio" name="gender"
-                                                            id="gender_male" value="M" checked>
+                                                        <input class="form-check-input gender" type="radio"
+                                                            name="gender" id="gender_male" value="M" checked>
                                                         <label class="form-check-label" for="gender_male">Male</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1">
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input gender" type="radio" name="gender"
-                                                            id="gender_female" value="F">
+                                                        <input class="form-check-input gender" type="radio"
+                                                            name="gender" id="gender_female" value="F">
                                                         <label class="form-check-label"
                                                             for="gender_female">Female</label>
                                                     </div>
-
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input gender" type="radio" name="gender"
-                                                            id="gender_others" value="O">
+                                                        <input class="form-check-input gender" type="radio"
+                                                            name="gender" id="gender_others" value="O">
                                                         <label class="form-check-label"
                                                             for="gender_female">Others</label>
                                                     </div>
@@ -72,7 +71,7 @@
                                                 <div class="col-md-2 mb-3">
                                                     <input type="text" class="form-control" id="age" placeholder="Age"
                                                         disabled="">
-              
+
                                                 </div>
                                                 <div class="col-md-1">
                                                 </div>
@@ -85,10 +84,11 @@
                                             <div class="form-row">
                                                 <div class="col-md-2 mb-3">
                                                     <label for="validationCustom03">Title</label>
-                                                    <select class="custom-select" id="salutationId" name="salutation_Id">
+                                                    <select class="custom-select" id="salutationId"
+                                                        name="salutation_Id">
                                                         <!-- <option value="">Select Title</option> -->
                                                         @foreach($salutations as $title)
-                                                        <option value="{{$title->id}}">{{$title->salutation_name}}
+                                                        <option value="{{$title->salutation_name}}">{{$title->salutation_name}}
                                                         </option>
                                                         @endforeach
 
@@ -120,17 +120,16 @@
                                                 </div>
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationDefalt02">Phone No</label>
-                                                    <input type="text" name="home_phone" class="form-control"
-                                                        id="" placeholder="Phone No" value="">
+                                                    <input type="text" name="home_phone" class="form-control" id=""
+                                                        placeholder="Phone No" value="">
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-md-4 mb-3">
                                                     <label for="">Email</label>
                                                     <div class="input-group">
-                                                        <input type="text" name="email" class="form-control"
-                                                            id="" placeholder="Email"
-                                                            aria-describedby="inputGroupPrepend2">
+                                                        <input type=" " name="email" class="form-control" id=""
+                                                            placeholder="Email" aria-describedby="inputGroupPrepend2">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 mb-3">
@@ -308,14 +307,16 @@
 
                                                             <div class="form-group">
                                                                 <label>Address:</label>
-                                                                <textarea rows="2" cols="2" class="form-control disableEnable"
+                                                                <textarea rows="2" cols="2"
+                                                                    class="form-control disableEnable"
                                                                     placeholder="Enter Address" id="perAddress"
                                                                     name="per_address"></textarea>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-6 mb-3">
                                                                     <label for="validationCustom03">Country</label>
-                                                                    <select class="custom-select disableEnable" name="per_country">
+                                                                    <select class="custom-select disableEnable"
+                                                                        name="per_country">
                                                                         <option value="12">Bangladesh</option>
                                                                         <!-- <option value="1">One</option>
                                                                         <option value="2">Two</option>
@@ -338,8 +339,8 @@
                                                             <div class="row">
                                                                 <div class="col-md-6 mb-3">
                                                                     <label for="">City</label>
-                                                                    <select class="custom-select city disableEnable" id="perCity"
-                                                                        name="per_district">
+                                                                    <select class="custom-select city disableEnable"
+                                                                        id="perCity" name="per_district">
                                                                         <option value="">Select City</option>
                                                                     </select>
                                                                 </div>
@@ -347,7 +348,8 @@
                                                                     <div class="form-group">
                                                                         <label>Zip/Postal code</label>
                                                                         <input type="text" id="perPoCode"
-                                                                            name="per_postoffice" class="form-control disableEnable"
+                                                                            name="per_postoffice"
+                                                                            class="form-control disableEnable"
                                                                             placeholder="Zip/Postal Code">
                                                                     </div>
                                                                 </div>
@@ -427,7 +429,14 @@
     <!-- <script type="text/javascript" src="{{asset('js/bootstrap-datepicker.min.js')}}"></script> -->
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+
     <script>
+
+
+
+
+
 $('#perDivision').on('change', function() {
     var diviCode = $(this).val();
     //getPerCity(diviCode);
@@ -476,38 +485,13 @@ $(function() {
         changeYear: true,
         endDate: maxBirthdayDate,
         inline: true,
-        zIndexOffset:10000
+        zIndexOffset: 10000
 
     }).on('changeDate', function(ev) {
-
-        var birthDay = $('#dob').val();
-        var DOB = new Date(birthDay);
-        var today = new Date();
-        var age = today.getTime() - DOB.getTime();
-        var elapsed = new Date(age);
-        var year = elapsed.getYear() - 70;
-        var month = elapsed.getMonth();
-        var day = elapsed.getDay();
-        if (year == '0') {
-            year = '';
-        } else {
-            year += " Y ";
-        }
-        if (month == '0') {
-            month = '';
-        } else {
-            month += " M ";
-        }
-        if (day == '0') {
-            day = '';
-        } else {
-            day += " D";
-        }
-        var ageTotal = year + month + day;
-
-        $('#age').val(ageTotal);
+        $('#age').val(ageCalculator($(this).val()));
     });
 });
+
 
 function imageReaderURL(input) {
     if (input.files && input.files[0]) {
@@ -531,67 +515,58 @@ $('#maritalStatus').change(function() {
     }
 });
 
-// $('#perAddr').click(function() {
-//     if ($(this).is(':checked')) {
-//         $('#perAddress').attr('disabled', 'disabled');
-//     } else {
-//         $('#perAddr').val() ==0;
-//         alert($('#perAddr').val())
-//         // $('#perAddress').removeAttr('disabled');
-//     }
-// });
 
+$('#perAddr').on('change', function() {
+    if (this.checked) {
 
-    $('#perAddr').on('change', function() {
-        if (this.checked) {
-
-            var perAddress = $('#preAddress').val();
-            var perDivision = $('#preDivision').val();
-            var perCity = $('#preCity').val();
-            var perPoCode = $('#prePoCode').val();
-                $('#perAddress').val(perAddress);
-                $('#perDivision').val(perDivision);
-                getCity(perDivision, 'perCity');
-                setTimeout(() => {
-                    $('#perCity').val(perCity);
-                }, 300);
-                $('#perPoCode').val(perPoCode);
-                // $('#perPoCode').attr('disabled', 'disabled');
-            $('.disableEnable').attr('disabled', 'disabled');
-        }else{
-            $('.disableEnable').removeAttr('disabled'); 
-        }
-        //    this.value = this.checked ? 1 : 0;
-
-    }).change();
-
-
-    function getCity(diviCode, distId) {
-        $.ajax({
-            url: "{{url('perDivision')}}/" + diviCode,
-            type: 'get',
-            success: function(data) {
-                //console.log(data);
-                $('#' + distId).html(data);
-            }
-        })
+        var perAddress = $('#preAddress').val();
+        var perDivision = $('#preDivision').val();
+        var perCity = $('#preCity').val();
+        var perPoCode = $('#prePoCode').val();
+        $('#perAddress').val(perAddress);
+        $('#perDivision').val(perDivision);
+        getCity(perDivision, 'perCity');
+        setTimeout(() => {
+            $('#perCity').val(perCity);
+        }, 300);
+        $('#perPoCode').val(perPoCode);
+        // $('#perPoCode').attr('disabled', 'disabled');
+        $('.disableEnable').attr('disabled', 'disabled');
+    } else {
+        $('.disableEnable').removeAttr('disabled');
     }
+    //    this.value = this.checked ? 1 : 0;
+
+}).change();
 
 
-    $('.gender').change(function(){
-	        var gen_val = $('input[name="gender"]:checked').val();
-		        if (gen_val == 'M') {
-		        	$('#salutationId [value=1 ]').attr('selected', 'true');
-		        	$('#salutationId [value=2 ]').removeAttr('selected');
-	        		 //$('#salutationId').combobox('setValues',  '1');
-	        	} else if (gen_val == 'F') {
-	        		
-	        		$('#salutationId [value=2 ]').attr('selected', 'true');
-	        		$('#salutationId [value=1 ]').removeAttr('selected');
-	        		//$('#salutationId').combobox('setValues',  '2');
-	        	}else {
-	        		//$('#salutationId').combobox('Value',  'Child');
-	        	}
-	    });
-    </script>
+function getCity(diviCode, distId) {
+    $.ajax({
+        url: "{{url('perDivision')}}/" + diviCode,
+        type: 'get',
+        success: function(data) {
+            //console.log(data);
+            $('#' + distId).html(data);
+        }
+    })
+}
+
+
+$('.gender').change(function() {
+    var gen_val = $('input[name="gender"]:checked').val();
+    if (gen_val == 'M') {
+        $('#salutationId [value=Mr. ]').attr('selected', 'true');
+        $('#salutationId [value=Mrs. ]').removeAttr('selected');
+        //$('#salutationId').combobox('setValues',  '1');
+    } else if (gen_val == 'F') {
+
+        $('#salutationId [value=Mrs. ]').attr('selected', 'true');
+        $('#salutationId [value=Mr. ]').removeAttr('selected');
+        //$('#salutationId').combobox('setValues',  '2');
+    } else {
+        //$('#salutationId').combobox('Value',  'Child');
+    }
+});
+
+   </script>
     @endsection

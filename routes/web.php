@@ -13,58 +13,105 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('pdfTest', function () {
+$user = auth()->user();
+    return App\User::find($user->id)->roleuser->role->menus->load('submeus');
+    $pid = \App\Registration::find(4);
+    return view('admin.pdf.myPdf', compact('pid'));
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
-//Route::get('registration','RegistrationController@index');
-Route::get('registration','RegistrationController@index')->name('basherReg');
-
+//Route::get('registration','Patient\RegistrationController@index');
+Route::get('registration','Patient\RegistrationController@index')->name('basherReg');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('registrationviews','RegistrationController@registrationViews');
-Route::get('registrations','RegistrationController@regPageInfo')->name('basherReg');
-Route::post('SaveRegistration','RegistrationController@SaveRegistration');
-Route::post('appointmentInsert','OpappointmentController@appointmentInsert');
-Route::get('appointments/{regNo?}','OpappointmentController@appointSavePage');
-// Route::get('appointments/{regno}','OpappointmentController@appointEditPage');
+Route::get('/home', 'Admin\HomeController@index')->name('home');
+
+//Security
+Route::get('menus','Security\MenusController@sideMenus');
+Route::get('menusView','Security\MenusController@menusView');
+Route::post('saveMenu','Security\MenusController@saveMenu');
+Route::get('submenusPage','Security\MenusController@submenusPage');
+Route::post('saveSubMenu','Security\MenusController@saveSubMenu');
+Route::get('subsubmenusPage','Security\MenusController@subsubmenusPage');
+Route::post('saveSubsubMenu','Security\MenusController@saveSubsubMenu');
+
+//Role 
+Route::get('roleView','Security\RoleController@roleView');
+Route::get('rolePage','Security\RoleController@rolePage');
+Route::post('saveRole','Security\RoleController@saveRole');
+Route::get('roleUserPage','Security\RoleController@roleUserPage');
+Route::post('saveRoleUser','Security\RoleController@saveRoleUser');
+Route::get('rolemenus','Security\RoleController@rolemenus');
+Route::post('saveRoleMenus','Security\RoleController@saveRoleMenus');
+Route::get('getmenus/{id}','Security\RoleController@getmenus');
+
+
+
+//Registration
+Route::get('registrationviews','Patient\RegistrationController@registrationViews');
+Route::get('registrations','Patient\RegistrationController@regPageInfo')->name('basherReg');
+Route::post('SaveRegistration','Patient\RegistrationController@SaveRegistration');
+//Appointment
+Route::post('appointmentInsert','Patient\OpappointmentController@appointmentInsert');
+Route::get('appointments/{regNo?}','Patient\OpappointmentController@appointSavePage');
+Route::get('appointments2/{regNo?}','Patient\OpappointmentController@appointSavePage');
+Route::get('patient/{regno}','Patient\OpappointmentController@getPatient');
+// Route::get('appointments/{regno}','Patient\OpappointmentController@appointEditPage');
+
+//Nurse Station
+
+Route::get('nurseStation','Patient\NursestController@nursestation');
+Route::get('ns/{consultDt?}','Patient\NursestController@ns');
+Route::get('nsComp/{nsDt?}','Patient\NursestController@nsComp');
 
 //doctors 
-Route::get('doctors','DoctorinfoController@doctorAllShow');
-Route::get('doctormenu','DoctorinfoController@doctorsView');
-Route::get('doctors/{deptNo}','DoctorinfoController@departmentDoctors');
-Route::get('doctorWeeklySchedule/{id}', 'OpappointmentController@doctorWeeklySchedule');
-//designation
-Route::post('doctorDesignation','OpappointmentController@doctorDesignation');
-
-// schedule Roser
-Route::get('scheduleRoster','ResourcescheduleController@scheduleRoster');
-
-
-Route::get('doctorSchedule/{id}', 'DoctorinfoController@doctorSchedule');
-Route::get('perDivision/{code}','AjaxController@getDivisionPermanent');
-Route::get('specialtyWiseDoctor/{depNo?}','OpappointmentController@getSpecialWiseDoctor');
-Route::get('desigWiseDoctor/{jobId?}','OpappointmentController@getDesigWiseDoctor');
-Route::get('patient/{regno}','OpappointmentController@getPatient');
-
-//setup Form
-Route::get('departments','DepartmentController@departmentSetup');
-Route::get('departmentAdd','DepartmentController@departmentaddPage');
-Route::post('saveDepartment','DepartmentController@saveDepartment');
-Route::post('deptDelete/{id}','DepartmentController@departmentDelete');
-
-
-
-//display users list
-Route::get('simple-qr-code','GenerateQrCodeController@simpleQrCode');
-Route::get('color-qr-code','GenerateQrCodeController@colorQrCode');
-Route::get('image-qr-code','GenerateQrCodeController@imageQrCode');
-
+Route::get('doctors','Doctor\DoctorinfoController@doctorAllShow');
+Route::get('doctormenu','Doctor\DoctorinfoController@doctorsView');
+Route::get('doctorAdd','Doctor\DoctorinfoController@doctorPage');
+Route::post('SaveDoctor','Doctor\DoctorinfoController@SaveDoctor');
+Route::post('updateDoctor','Doctor\DoctorinfoController@setUdateDoctor');
+Route::get('doctorEdit/{id}','Doctor\DoctorinfoController@doctorEditPage');
+Route::get('doctors/{deptNo}','Doctor\DoctorinfoController@departmentDoctors');
+Route::get('doctorWeeklySchedule/{id}/{schDate}', 'Patient\OpappointmentController@doctorWeeklySchedule');
 
 //doctor Slot
-Route::get('multivisits/{doctorId}/{schDate}','ResourcescheduleController@getDoctorMultiVisit');
-Route::get('virtualslots/{doctorId}/{schDate}','ResourcescheduleController@getDoctorTimeSlot');
+Route::get('virtualslots/{doctorId}/{dayName}','Doctor\ResourcescheduleController@getDoctorTimeSlot');
+
+//prescription
+Route::get('patientCare/{appDt?}','Doctor\PrescriptionController@doctorPatientCare');
+Route::get('prescriptions/{regNo}','Doctor\PrescriptionController@doctorprescription');
+
+//designation
+Route::post('doctorDesignation','Patient\OpappointmentController@doctorDesignation');
+
+// schedule Roser
+Route::get('scheduleRoster','Doctor\ResourcescheduleController@scheduleRoster');
+Route::post('scheduleRoster','Doctor\ResourcescheduleController@scheduleRosterSave');
+Route::get('doctorSchedule/{id}', 'Doctor\DoctorinfoController@doctorSchedule');
+
+
+//setup Form
+Route::get('departments','Setup\DepartmentController@departmentSetup');
+Route::get('departmentAdd','Setup\DepartmentController@departmentaddPage');
+Route::post('saveDepartment','Setup\DepartmentController@saveDepartment');
+Route::post('deptDelete/{id}','Setup\DepartmentController@departmentDelete');
+Route::get('perDivision/{code}','Setup\AjaxController@getDivisionPermanent');
+Route::get('specialtyWiseDoctor/{depNo?}','Patient\OpappointmentController@getSpecialWiseDoctor');
+Route::get('desigWiseDoctor/{jobId?}','Patient\OpappointmentController@getDesigWiseDoctor');
+
+
+//display Qr code
+//R20201214000003
+//Route::get('generate-pdf','GenerateQrCodeController@generatePDF');
+Route::get('pidtest/{pid}','Setup\GenerateQrCodeController@generatePDF');
+Route::get('pid/{pid}','Setup\GenerateQrCodeController@registratinPdf');
+Route::get('simple-qr-code/{pid}','Setup\GenerateQrCodeController@simpleQrCode');
+Route::get('color-qr-code','Setup\GenerateQrCodeController@colorQrCode');
+Route::get('image-qr-code','Setup\GenerateQrCodeController@imageQrCode');
 
 
 
