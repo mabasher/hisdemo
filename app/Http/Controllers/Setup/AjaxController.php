@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Setup;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\District;
+use App\Model\Setup\District;
 
 class AjaxController extends Controller
 {

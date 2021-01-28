@@ -340,13 +340,7 @@ $(function() {
         var chamber = $(this).attr('data-chamber');
         $('#chamber').val(chamber);
         var doctorType = $(this).attr('data-docType');
-        $('#doctorType').val(doctorType);
-
-
-         
-
-        
-       
+        $('#doctorType').val(doctorType);   
     })
 
     

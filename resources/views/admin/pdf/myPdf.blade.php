@@ -51,7 +51,7 @@
                         </tr>
                         <tr>
                             <td>Patient</td>
-                            <td>: {{$pid->ful_name}}</td>
+                            <td>: {{$pid->salutation_id.' '.$pid->ful_name}}</td>
                         </tr>
                         <tr>
                             <td>DOB</td>
@@ -76,7 +76,7 @@
                 </table>
             </div>
 			<div class="text-center">
-				<img class="imgsize" src="{{url('/simple-qr-code/'.$pid->reg_no.' '.$pid->ful_name)}}" alt="No QR">
+				<img class="imgsize" src="{{url('/simple-qr-code/'.$pid->reg_no.' '.$pid->salutation_id.' '.$pid->ful_name)}}" alt="No QR">
 			</div>
         </div>
     </div>

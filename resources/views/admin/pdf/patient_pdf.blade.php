@@ -7,11 +7,8 @@
 <body>
 
 	<h1>Registration Card</h1>
-
 	<p>{{$regNo}}</p>
 	<p>{{$name}}</p>
-
-
 </body>
 
 </html>

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Setup;
 use App\Http\Controllers\Controller;
+use App\Model\Patient\Registration;
 use Illuminate\Http\Request;
 use Validator,Redirect,Response;
 use PDF;
-use Dompdf\Dompdf;
 
 class GenerateQrCodeController extends Controller
 {
@@ -24,11 +24,9 @@ class GenerateQrCodeController extends Controller
     }
     public function generatePDF($id)
     {
-      // $QrCode = \QrCode::size(300)->generate('A basic example of QR code!');
        $customPaper = array(0,0,250,270);
-       $pid = \App\Registration::find($id);
+       $pid = Registration::find($id);
        PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif','debugLayoutPaddingBox'=>true]);
-       //return PDF::loadFile(public_path().'/pid.html')->save('/admin/pid.pdf')->stream('download.pdf');
         $pdf = PDF::loadView('admin.pdf.myPdf', compact(['pid']))
         ->setPaper($customPaper, 'landscape');
         return $pdf->download('pid.pdf');

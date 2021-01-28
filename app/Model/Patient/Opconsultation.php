@@ -15,4 +15,9 @@ class Opconsultation extends Model
     {
         return $this->belongsTo('App\Model\Patient\Registration','reg_no','reg_no');
     }
+    
+    public function oppatmovement()
+    {
+        return $this->hasMany(Oppatmovement::class, 'consult_no', 'consult_no' )->orderBy('opmovetype_id', 'desc');
+    }
 }

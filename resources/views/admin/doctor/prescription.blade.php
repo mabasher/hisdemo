@@ -170,11 +170,6 @@
                                             <input type="text" placeholder="Prescribed Qty" class="form-control">
                                         </div>
                                     </div>
-
-                                    <!-- <div class="m-t-20 text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <a href="{{url('doctormenu')}}" class="btn btn-success">Back</a>
-                        </div> -->
                                 </form>
                             </div>
                         </div>

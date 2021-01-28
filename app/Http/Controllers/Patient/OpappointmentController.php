@@ -47,6 +47,7 @@ class OpappointmentController extends Controller
     {
         // return $d = Carbon::now()->next('Monday')->format('Y-m-d');
         // return $regNo;
+        $registrations = Registration::all();
         $salutations = Salutation::all();
         $religions = Religion::all();
         $bloodGroups = Bloodgroup::all();
@@ -55,7 +56,7 @@ class OpappointmentController extends Controller
         $designation = Jobcode::where('jobtype_id', 4)->get();
         $specialty = Department::where('area_type_no', 115)->select('dept_no', 'dept_name')->get();
         $doctors = Doctorinfo::all();
-        return view('admin.opd.appointmentAdd', compact(['salutations', 'religions', 'bloodGroups', 'specialty', 'doctors', 'divisions', 'districts', 'regNo', 'designation']));
+        return view('admin.opd.appointmentAdd', compact(['registrations','salutations', 'religions', 'bloodGroups', 'specialty', 'doctors', 'divisions', 'districts', 'regNo', 'designation']));
     }
 
 

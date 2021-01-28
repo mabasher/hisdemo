@@ -32,10 +32,10 @@
                         <tr>
                             <th>#</th>
                             <th>Main Menu</th>
-                            <th class="text-right">
+                            <!-- <th class="text-right">
                                 <a href="{{url('menusPage')}}" class="btn btn-primary btn-rounded"><i
                                         class="fa fa-plus"></i> Add </a>
-                            </th>
+                            </th> -->
                         </tr>
                     </thead>
                     <tbody>

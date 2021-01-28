@@ -65,7 +65,7 @@
                                                 </div>
                                                 <div class="col-md-3 mb-3">
                                                     <input type="text" class="form-control datepicker" name="dob"
-                                                        id="dob" placeholder="DOB" value="{{old('dob')}}" required="">
+                                                        id="dob" placeholder="Date of Birth" value="{{old('dob')}}" required="">
 
                                                 </div>
                                                 <div class="col-md-2 mb-3">
@@ -97,13 +97,34 @@
                                                 <div class="col-md-2">
                                                 </div>
                                                 <div class="col-md-5 mb-3">
-                                                    <label for="validationCustom04">Patient Name</label>
+                                                    <label for="validationCustom04">Patient Name<span class="text-danger">*</span></label>
                                                     <input type="text" name="ful_name" value="{{old('ful_name')}}"
                                                         class="form-control" id="validationCustom04"
-                                                        placeholder="Enter Patient Name" required="">
+                                                        placeholder="Enter Patient Name" required>
                                                     <!-- <div class="invalid-feedback">
 																Please provide a valid state.
 															</div> -->
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="validationDefault02">Mobile No<span class="text-danger">*</span></label>
+                                                    <input type="text" name="mobile" class="form-control"
+                                                        id="validationDefault02" placeholder="Mobile No" value=""
+                                                        required>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="validationDefalt02">Phone No</label>
+                                                    <input type="text" name="home_phone" class="form-control" id=""
+                                                        placeholder="Phone No" value="">
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="">Email</label>
+                                                    <div class="input-group">
+                                                        <input type=" " name="email" class="form-control" id=""
+                                                            placeholder="Email" aria-describedby="inputGroupPrepend2">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-row">
@@ -112,29 +133,10 @@
                                                     <input type="text" name="national_id" class="form-control"
                                                         id="validationDefault01" placeholder="National ID" value="">
                                                 </div>
+                                                
                                                 <div class="col-md-4 mb-3">
-                                                    <label for="validationDefault02">Mobile No</label>
-                                                    <input type="text" name="mobile" class="form-control"
-                                                        id="validationDefault02" placeholder="Mobile No" value=""
-                                                        required="">
-                                                </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="validationDefalt02">Phone No</label>
-                                                    <input type="text" name="home_phone" class="form-control" id=""
-                                                        placeholder="Phone No" value="">
-                                                </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="">Email</label>
-                                                    <div class="input-group">
-                                                        <input type=" " name="email" class="form-control" id=""
-                                                            placeholder="Email" aria-describedby="inputGroupPrepend2">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom03">Religion</label>
-                                                    <select class="custom-select" name="religion_no">
+                                                    <label for="validationCustom03">Religion<span class="text-danger">*</span></label>
+                                                    <select class="custom-select" name="religion_no" required>
                                                         <option value="">Select Religion</option>
                                                         @foreach($religions as $religion)
                                                         <option value="{{$religion->RELIGION_NO}}">
@@ -152,31 +154,31 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="form-row">
+                                            <div class="form-row ">
                                                 <div class="col-md-3 mb-3">
-                                                    <div class="form-group">
-                                                        <label>Emergency Contact No</label>
+                                                    <div class="form-group ">
+                                                        <label class="text-danger">Emergency Contact No*</label>
                                                         <input type="text" name="em_contact_no" class="form-control"
-                                                            placeholder="Contact No" required="">
+                                                            placeholder="Contact No" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 mb-3">
                                                     <div class="form-group">
-                                                        <label>Emergency Contact Name</label>
+                                                        <label class="text-danger">Emergency Contact Name</label>
                                                         <input type="text" name="em_contact_person" class="form-control"
                                                             placeholder="Contact Name">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 mb-3">
                                                     <div class="form-group">
-                                                        <label>Emergency Contact Relation</label>
+                                                        <label class="text-danger">Emergency Contact Relation</label>
                                                         <input type="text" name="em_relation" class="form-control"
                                                             placeholder="Contact Relation">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 mb-3">
                                                     <div class="form-group">
-                                                        <label>Emergency Contact Address</label>
+                                                        <label class="text-danger">Emergency Contact Address</label>
                                                         <input type="text" name="em_address" class="form-control"
                                                             placeholder="Contact Address">
                                                     </div>
@@ -277,9 +279,9 @@
                                                                     <select class="custom-select city" id="preCity"
                                                                         name="pre_district">
                                                                         <option value="">Select City</option>
-                                                                        <!-- @foreach($districts as $city)
+                                                                        @foreach($districts as $city)
                                                                             <option value="{{$city->DISTRICT_CODE}}">{{$city->DISTRICT_NAME}}</option>
-                                                                        @endforeach -->
+                                                                        @endforeach
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-md-6 mb-3">
@@ -298,7 +300,7 @@
                                                                 <div
                                                                     class="form-check form-check-inline float-right text-success">
                                                                     <input type="checkbox" class="form-check-input"
-                                                                        id="perAddr" name="perAddr" value="1">
+                                                                        id="perAddr"  value="1">
                                                                     <label class="form-check-label"
                                                                         for="exampleCheck1">Same as Present
                                                                         Address</label>
@@ -433,10 +435,6 @@
 
     <script>
 
-
-
-
-
 $('#perDivision').on('change', function() {
     var diviCode = $(this).val();
     //getPerCity(diviCode);
@@ -555,18 +553,16 @@ function getCity(diviCode, distId) {
 $('.gender').change(function() {
     var gen_val = $('input[name="gender"]:checked').val();
     if (gen_val == 'M') {
-        $('#salutationId [value=Mr. ]').attr('selected', 'true');
-        $('#salutationId [value=Mrs. ]').removeAttr('selected');
-        //$('#salutationId').combobox('setValues',  '1');
+        $('#salutationId [value="Mr." ]').attr('selected', 'true');
+        $('#salutationId [value="Mrs." ]').removeAttr('selected');
     } else if (gen_val == 'F') {
-
-        $('#salutationId [value=Mrs. ]').attr('selected', 'true');
-        $('#salutationId [value=Mr. ]').removeAttr('selected');
-        //$('#salutationId').combobox('setValues',  '2');
+        $('#salutationId [value="Mrs." ]').attr('selected', 'true');
+        $('#salutationId [value="Mr." ]').removeAttr('selected');
     } else {
-        //$('#salutationId').combobox('Value',  'Child');
+        
     }
 });
+
 
    </script>
     @endsection

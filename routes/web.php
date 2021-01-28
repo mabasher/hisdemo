@@ -67,6 +67,20 @@ Route::get('patient/{regno}','Patient\OpappointmentController@getPatient');
 Route::get('nurseStation','Patient\NursestController@nursestation');
 Route::get('ns/{consultDt?}','Patient\NursestController@ns');
 Route::get('nsComp/{nsDt?}','Patient\NursestController@nsComp');
+Route::post('nsMovement','Patient\NursestController@nsMovement');
+Route::post('vitalSignInsert','Patient\NursestController@vitalSignInsert');
+Route::get('vsComplate/{vsDt?}','Patient\NursestController@vsComplate');
+
+//Service Station 
+Route::get('serviceStation','Patient\ServiceController@serviceStation');
+Route::post('ssInMovement','Patient\ServiceController@ssInMovement');
+Route::post('queControlMovement','Patient\ServiceController@queControlMovement');
+Route::post('missingPatMovement','Patient\ServiceController@missingPatMovement');
+Route::post('recallMovement','Patient\ServiceController@recallMovement');
+Route::post('doctorIn','Patient\ServiceController@doctorIn');
+Route::post('doctorOut','Patient\ServiceController@doctorOut');
+Route::post('roomCheck','Patient\ServiceController@roomCheck');
+
 
 //doctors 
 Route::get('doctors','Doctor\DoctorinfoController@doctorAllShow');

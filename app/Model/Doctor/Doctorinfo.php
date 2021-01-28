@@ -26,4 +26,14 @@ class Doctorinfo extends Model
     {
         return $this->hasMany('App\Model\Patient\Opappointment');
     }
+
+    public function opconsultations()
+    {
+        return $this->hasMany('App\Model\Patient\Opconsultation');
+    }
+
+    public function roomcheck()
+    {
+        return $this->hasMany('App\Model\Doctor\Roomcheck');
+    }
 }

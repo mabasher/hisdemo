@@ -9,30 +9,24 @@
 
 @section('content')
 <div class="content">
-    <div class="col-md-4 m-auto">
-        <select class="custom-select" name="nurse_station">
-            <option value="1014"><h3>OPD NURSE STATION</h3></option>
-        </select>
-    </div>
-    <br>
     <div class="row">
         <div class="col-md-10 m-auto">
             <div class="card-box">
                 <!-- <h6 class="card-title">Bottom line justified</h6> -->
                 <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
-                    <li class="nav-item"><a class="nav-link active" id="nurseStationIn-link" href="#nurseStationIn" data-toggle="tab">Nurse Station In</a></li>
-                    <li class="nav-item"><a class="nav-link" id="vitalSign-link" href="#vitalSign" data-toggle="tab">Vital Sign</a></li>
-                    <li class="nav-item"><a class="nav-link" id="vsComplete-link" href="#vsComplete" data-toggle="tab">Vital Sign Complated</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#bottom-justified-tab1" data-toggle="tab">Nurse Station In</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#bottom-justified-tab2" data-toggle="tab">Vital Sign</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#bottom-justified-tab3" data-toggle="tab">Vital Sign Complated</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane show active" id="nurseStationIn">
+                    <div class="tab-pane show active" id="bottom-justified-tab1">
                         <div class="col-md-6 m-auto">
                             <input type="text" class="form-control text-success text-center toDate" name="consult_dt" id="toDate" placeholder="Visit Date" value="" style="border:none">
                         </div>
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>PID</th>
+                                    <th>Pid</th>
                                     <th>Patient Name</th>
                                     <th>Appooint No</th>
                                     <th>Consult No</th>
@@ -50,10 +44,10 @@
                                     <td>{{$ns->consult_no}}</td>
                                     <td>{{$ns->consultation->designation.' '.$ns->consultation->doctor_name}}</td>
                                     <td>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" id="ns" name="check" class="check" data-consultno="{{$ns->consult_no}}" data-id="{{$ns->id}}" data-moveid="2" data-movemname="Nurse Station IN">
-                                            </label>
+                                        <div class="material-switch float-right">
+                                            <input id="ns" data-consultno="{{$ns->consult_no}}" data-id="{{$ns->id}}" 
+                                            data-moveid="2" data-movemname="Nurse Station IN" name="check" type="checkbox">
+                                            <label for="ns" class="badge-success"></label>
                                         </div>
                                     </td>
                                 </tr>
@@ -62,14 +56,14 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane" id="vitalSign">
+                    <div class="tab-pane" id="bottom-justified-tab2">
                         <div class="col-md-6 m-auto">
                             <input type="text" class="form-control text-success text-center nsDate" name="nscomplete_dt" id="nsDate" placeholder="Visit Date" value="" style="border:none">
                         </div>
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>PID</th>
+                                    <th>Pid</th>
                                     <th>Patient Name</th>
                                     <th>Appooint No</th>
                                     <th>Consult No</th>
@@ -86,16 +80,12 @@
                                     <td>{{$ns->consult_no}}</td>
                                     <td>{{$ns->consultation->designation.' '.$ns->consultation->doctor_name}}</td>
                                     <td>
-                                        <div class="checkbox">
+                                        <div class="radio">
                                             <label>
-                                                <input type="checkbox" id="ns" class="vscheck" name="check" data-consultno="{{$ns->consult_no}}" data-id="{{$ns->id}}" data-moveid="3" data-movemname="Vital Sign Completed" data-regno="{{$ns->reg_no}}" value="{{$ns->id}}">
+                                                <input type="radio" name="radio" data-consultno="{{$ns->consult_no}}" data-id="{{$ns->id}}" 
+                                                data-moveid="3" data-movemname="Vital Sign Completed" data-regno="{{$ns->reg_no}}" value="{{$ns->id}}" >
                                             </label>
                                         </div>
-                                        <!-- <div class="radio">
-                                            <label>
-                                                <input type="radio" name="radio" data-consultno="{{$ns->consult_no}}" data-id="{{$ns->id}}" data-moveid="3" data-movemname="Vital Sign Completed" data-regno="{{$ns->reg_no}}" value="{{$ns->id}}">
-                                            </label>
-                                        </div> -->
                                     </td>
                                 </tr>
                                 @endif
@@ -112,9 +102,9 @@
                                 <form autocomplete="off" id="nsFormId" method="POST" action="{{url('vitalSignInsert')}}">
                                     @csrf
                                     <div class="form-row">
-                                        <input type="hidden" class="form-control" id="consultId" name="opconsultation_id">
-                                        <input type="hidden" class="form-control" id="consultNo" name="consult_no">
-                                        <input type="hidden" class="form-control" id="regNo" name="reg_no">
+                                        <!-- <input type="text" class="form-control" id="consultId" name="opconsultation_id">
+                                        <input type="text" class="form-control" id="consultNo" name="consult_no">
+                                        <input type="text" class="form-control" id="regNo" name="reg_no"> -->
                                         <div class="col-md-2 mb-3">
                                             <div class="form-group">
                                                 <label>Chief Complaint</label>
@@ -123,7 +113,7 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                                        
                                         <div class="col-md-2 mb-3">
                                             <label>Temp °F</label>
                                             <div class="form-row">
@@ -351,21 +341,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane" id="vsComplete">
-                        <div class="col-md-6 m-auto">
-                            <input type="text" class="form-control text-success text-center vsComDate" name="nscomplete_dt" id="vsComDate" placeholder="Visit Date" value="" style="border:none">
+                    <div class="tab-pane" id="bottom-justified-tab3">
+                    <div class="col-md-6 m-auto">
+                            <input type="text" class="form-control text-success text-center nsDate" name="nscomplete_dt" id="nsDate" placeholder="Visit Date" value="" style="border:none">
                         </div>
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>PID</th>
+                                    <th>Pid</th>
                                     <th>Patient Name</th>
                                     <th>Appooint No</th>
                                     <th>Consult No</th>
                                     <th>Doctor</th>
                                 </tr>
                             </thead>
-                            <tbody id="vsComPatList">
+                            <tbody id="nsComPatList">
                                 @foreach($nsin as $ns)
                                 @if($ns->oppatmovement->count() > 0 && $ns->oppatmovement[0]->opmovetype_id == 3)
                                 <tr>
@@ -374,6 +364,14 @@
                                     <td>{{$ns->appoint_no}}</td>
                                     <td>{{$ns->consult_no}}</td>
                                     <td>{{$ns->consultation->designation.' '.$ns->consultation->doctor_name}}</td>
+                                    <td>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="radio" data-consultno="{{$ns->consult_no}}" data-id="{{$ns->id}}" 
+                                                data-moveid="3" data-movemname="Vital Sign Completed" data-regno="{{$ns->reg_no}}" value="{{$ns->id}}" >
+                                            </label>
+                                        </div>
+                                    </td>
                                 </tr>
                                 @endif
                                 @endforeach
@@ -392,14 +390,6 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
 <script>
     $(function() {
-        var hash = window.location.hash;
-        if(hash.length > 0){
-            $('.nav-link').removeClass('active');
-            $('.tab-pane').removeClass('active');
-            $(hash+'-link').addClass('active');
-            $(hash).addClass('active');
-        }
-    
         var date = new Date();
         var fstday = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 4);
         var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
@@ -438,28 +428,6 @@
 
         });
 
-
-        $('#toDate').on("change", function() {
-            getNSdate($(this).val());
-        });
-
-        $('#vsComDate').datepicker({
-            format: "dd-M-yyyy DD",
-            autoclose: true,
-            todayHighlight: true,
-            changeMonth: true,
-            changeYear: true,
-            startDate: fstday,
-            endDate: date,
-            inline: true,
-        });
-        $('#vsComDate').datepicker('setDate', today);
-
-        $('#vsComDate').on("change", function() {
-            getVsCompletedate($(this).val());
-
-        });
-
     });
 
     function getNSdate(consultDt) {
@@ -482,19 +450,7 @@
             }
         })
     }
-
-
-    function getVsCompletedate(vsComDt) {
-        $.ajax({
-            url: "{{url('vsComplate')}}/" + vsComDt,
-            type: "Get",
-            success: function(data) {
-                console.log(data);
-                $('#vsComPatList').html(data);
-            }
-        })
-    }
-
+    
 
 
     $('#tempF').on("change", function() {
@@ -551,46 +507,35 @@
             alert('BP lower must be less than BP higer.')
             $(this).val('');
         } else {
-            // diastolic = $(this).val();
+            diastolic = $(this).val();
         }
 
     });
 
-    // $('#vitalSign-link').on('click', function(){
-    //     window.location.href ='/nurseStation/#vitalSign';
-    // })
-    $(document).on('click', ".check", function() {
-            if (confirm('Do you want to Move this Patient for Vital Sign?')) {
-                $(this).prop('checked', true);
-                 consultNo = $(this).data('consultno');
-                 consultId = $(this).data('id');
-                 movementId = $(this).data('moveid');
-                 movemname = $(this).data('movemname');
-                 deptNo    = $('#oss').val();
-                 nsMovement(consultNo, consultId, movementId, movemname);
-            } else {
-                $(this).prop('checked', false);
-            }
+    // $('#check').on('change', function() {
+    //     alert('Checkbox Yes');
+    // });
+    
+    $(".material-switch").find("input[type=checkbox]").on("change",function() {
+        var consultNo = $(this).data('consultno');
+        var consultId = $(this).data('id');
+        var movementId = $(this).data('moveid');
+        var movemname = $(this).data('movemname');
+        nsMovement(consultNo,consultId,movementId,movemname);
     });
 
-    $(document).on('click', ".vscheck", function() {
-            if (confirm('Do you want to Complate Vital Sign?')) {
-                $(this).prop('checked', true);
-                $('#consultId').val($(this).attr('data-id'));
-                $('#consultNo').val($(this).attr('data-consultno'));
-                $('#regNo').val($(this).attr('data-regno'));
-                //  deptNo    = $('#oss').val();
-                //  nsMovement(consultNo, consultId, movementId, movemname);
-            } else {
-                $(this).prop('checked', false);
-                $('#consultId').val('');
-                $('#consultNo').val('');
-                $('#regNo').val('');
-            }
-    });
+    $(function () {
+        $('.radio input[type=radio]').change(function(){
+        // alert ( $(this).val() )
+        // return
+            $('#consultId').val($(this).attr('data-id'));
+            $('#consultNo').val($(this).attr('data-consultno'));
+            $('#regNo').val($(this).attr('data-regno'));
+        
+        })
+    })
 
-    // window.location.href ='/nurseStation/#vitalSign';
-    function nsMovement(consultNo, consultId, movementId, movementName) {
+    function nsMovement(consultNo,consultId,movementId,movementName) {
         $.ajax({
             url: "{{url('nsMovement')}}",
             type: "POST",
@@ -602,9 +547,10 @@
                 'movement_name': movementName
             },
             success: function(data) {
-                window.location.href ='/nurseStation/#nurseStationIn';
+                console.log(data);
             }
         })
     }
+    
 </script>
 @endsection
