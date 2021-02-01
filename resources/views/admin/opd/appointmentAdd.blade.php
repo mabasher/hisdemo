@@ -29,10 +29,7 @@
             min-height: 20px !important;
         }
     </style>
-    <!-- <link rel="stylesheet" href="{{asset('css/app.css')}}"> -->
     <link rel="stylesheet" href="{{asset('css/imgcss.css')}}">
-    <!-- <link rel="stylesheet" type="text/css" href="{{asset('admin/css/bootstrap-datetimepicker.min.css')}}"> -->
-    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css" />
     <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.7/css/fixedHeader.dataTables.min.css"/> -->
@@ -177,7 +174,7 @@
                                                     <select class="custom-select" id="salutationId" name="salutation_Id">
                                                         <option value="">Select Title</option>
                                                         @foreach($salutations as $title)
-                                                        <option value="{{$title->id}}">{{$title->salutation_name}}
+                                                        <option value="{{$title->salutation_name}}">{{$title->salutation_name}}
                                                         </option>
                                                         @endforeach
 
@@ -311,12 +308,12 @@
                                         </tr>
                                     </thead>
                                     @foreach($registrations as $reg)
-                                    @php
-                                    $dob = $reg->dob;
-                                    $d =\Carbon\Carbon::parse($reg->dob)->diff(\Carbon\Carbon::now())->format('%d');
-                                    $m =\Carbon\Carbon::parse($reg->dob)->diff(\Carbon\Carbon::now())->format('%m');
-                                    $y =\Carbon\Carbon::parse($reg->dob)->diff(\Carbon\Carbon::now())->format('%y');
-                                    @endphp
+                                        @php
+                                            $dob = $reg->dob;
+                                            $d =\Carbon\Carbon::parse($reg->dob)->diff(\Carbon\Carbon::now())->format('%d');
+                                            $m =\Carbon\Carbon::parse($reg->dob)->diff(\Carbon\Carbon::now())->format('%m');
+                                            $y =\Carbon\Carbon::parse($reg->dob)->diff(\Carbon\Carbon::now())->format('%y');
+                                        @endphp
                                     <tr>
                                         <td>
                                             <img width="28" height="28" src="{{asset($reg->img_url)}}" class="rounded-circle" alt="">

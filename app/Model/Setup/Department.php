@@ -2,6 +2,7 @@
 
 namespace App\Model\Setup;
 
+use App\Model\Doctor\Doctorinfo;
 use Illuminate\Database\Eloquent\Model;
 
 class Department extends Model

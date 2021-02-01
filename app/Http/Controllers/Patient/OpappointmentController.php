@@ -20,6 +20,7 @@ use App\Model\Patient\Oppatmovement;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use PDF;
 
 class OpappointmentController extends Controller
 {
@@ -47,7 +48,7 @@ class OpappointmentController extends Controller
     {
         // return $d = Carbon::now()->next('Monday')->format('Y-m-d');
         // return $regNo;
-        $registrations = Registration::all();
+        $registrations = Registration::orderBy('id', 'DESC')->get();
         $salutations = Salutation::all();
         $religions = Religion::all();
         $bloodGroups = Bloodgroup::all();
@@ -100,8 +101,14 @@ class OpappointmentController extends Controller
         $r->request->add(['created_at' => Carbon::now()]);
         $r->request->add(['start_time' => date("H:i:s", strtotime(request('start_time')))]);
         $r->request->add(['confirm_flag' => 'Y']);
-        Opappointment::insert($r->except('_token'));
+        $app = Opappointment::insert($r->except('_token'));
 
+        // $customPaper = array(0, 0, 250, 270);
+        // $appoint = Opappointment::find($app);
+        // PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif', 'debugLayoutPaddingBox' => true]);
+        // $pdf = PDF::loadView('admin.pdf.appointPdf', compact(['appoint']))
+        //     ->setPaper($customPaper, 'landscape');
+        // return $pdf->download('appointCard.pdf');
       
       $consult = DB::table('opconsultations')->insertGetId([
             'consult_no' => $cid,
@@ -126,6 +133,16 @@ class OpappointmentController extends Controller
 
         return redirect('appointments');
     }
+
+    // public function generatePDF($id)
+    // {
+    //     $customPaper = array(0, 0, 250, 270);
+    //     $appid = Opappointment::find($id);
+    //     PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif', 'debugLayoutPaddingBox' => true]);
+    //     $pdf = PDF::loadView('admin.pdf.appointPdf', compact(['appid']))
+    //         ->setPaper($customPaper, 'landscape');
+    //     return $pdf->download('appid.pdf');
+    // }
 
     public function getAppointId()
     {

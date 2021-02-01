@@ -20,7 +20,7 @@
                     <tr>
                         <td>{{$loop->iteration }}</td>
                         <td>{{$s->day->name }}</td>
-                        <td> {{$s->sch_start_time .' - '. $s->sch_end_time}} </td>
+                        <td> {{$s->start_time .' - '. $s->end_time}} </td>
                     </tr>
                 @endforeach
                 </tbody>

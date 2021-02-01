@@ -27,7 +27,7 @@ class GenerateQrCodeController extends Controller
        $customPaper = array(0,0,250,270);
        $pid = Registration::find($id);
        PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif','debugLayoutPaddingBox'=>true]);
-        $pdf = PDF::loadView('admin.pdf.myPdf', compact(['pid']))
+        $pdf = PDF::loadView('admin.pdf.regPdf', compact(['pid']))
         ->setPaper($customPaper, 'landscape');
         return $pdf->download('pid.pdf');
     }

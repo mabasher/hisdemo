@@ -18,11 +18,11 @@
                     <div class="col-md-4">
                         <h4>Name : {{$patientPrescrip->salutation_id.' '.$patientPrescrip->ful_name}}</h4>
                     </div>
-                    <div class="col-md-3" >
+                    <div class="col-md-3">
                         <h4>Age : <span id="age"></span></h4>
                     </div>
-                    <div class="col-md-2" >
-                        <h4>Gender : {{$patientPrescrip->gender == 'M'?'Male':Female}}</h4>
+                    <div class="col-md-2">
+                        <h4>Gender : {{$patientPrescrip->gender == 'M'?'Male':'Female'}}</h4>
                     </div>
                 </div>
                 <div class="row text-success">
@@ -45,18 +45,18 @@
                             Patient Counseling
                             @break
                             @default
-                            
+
                             @endswitch
                         </h4>
                     </div>
                     <div class="col-md-4">
-                        <h4>Doctor : {{$patientPrescrip->appdoctor->doctor_name}}</h4>
+                        <h4>Doctor : {{$patientPrescrip->appdoctor->designation.' '.$patientPrescrip->appdoctor->doctor_name}}</h4>
                     </div>
                     <div class="col-md-1">
                         <a href="{{url('patientCare')}}" class="btn btn-success">Back</a>
                     </div>
                 </div>
-                
+
             </div>
         </aside>
         <div class="col-md-10 m-auto">
@@ -77,18 +77,32 @@
                                         <div class="col-md-4 mb-3">
                                             <div class="form-group">
                                                 <label>Therapeutic Group</label>
-                                                <input type="text" class="form-control" name="contact_no" placeholder="Therapeutic Group">
+                                                <select class="custom-select" name="frequency" id="theraputic">
+                                                    <option value="">Select Therapeutic Group</option>
+                                                    @foreach($thrapGrp as $trgrp)
+                                                    <option value="{{$trgrp->thrapgrp_id}}">{{$trgrp->thrapgrp_name}}</option>
+                                                    @endforeach
+                                                </select>
+                                                <!-- <input type="text" class="form-control" name="contact_no" placeholder="Therapeutic Group"> -->
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <div class="form-group">
                                                 <label>Generic Name</label>
-                                                <input type="text" class="form-control" name="contact_no" placeholder="Generic Name">
+                                                <select class="custom-select" name="frequency" id="generic">
+                                                    <option value="">Select Generic Name</option>
+                                                    @foreach($generic as $g)
+                                                    <option value="{{$g->generic_no}}">{{$g->generic_name.' '.$g->test_name}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label>Brand Name</label>
-                                            <input type="text" class="form-control" name="contact_no" placeholder="Brand Name">
+                                            <select class="custom-select" name="frequency" id="brand">
+                                                <!-- <option value="">Select Brand Name</option> -->
+
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -179,25 +193,20 @@
                             <div class="form-row text-info mb-3">
                                 <div class="col-md-5">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio"
-                                            name="service_type" id="pathology" value="P" checked>
+                                        <input class="form-check-input" type="radio" name="service_type" id="pathology" value="P" checked>
                                         <h4 class="form-check-label" for="gender_male">Pathology & Diagnostics</h4>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio"
-                                            name="service_type" id="service" value="S">
-                                        <h4 class="form-check-label"
-                                            for="gender_female">Services</h4>
+                                        <input class="form-check-input" type="radio" name="service_type" id="service" value="S">
+                                        <h4 class="form-check-label" for="gender_female">Services</h4>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio"
-                                            name="service_type" id="radiology" value="R">
-                                        <h4 class="form-check-label"
-                                            for="gender_female">Radiology & Imaging</h4>
+                                        <input class="form-check-input" type="radio" name="service_type" id="radiology" value="R">
+                                        <h4 class="form-check-label" for="gender_female">Radiology & Imaging</h4>
                                     </div>
                                 </div>
                             </div>
@@ -231,17 +240,11 @@
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <label>Lab Instruction</label>
-                                    <textarea rows="2" cols="2"
-                                        class="form-control disableEnable"
-                                        placeholder="Lab Instruction" id="labInstrc"
-                                        name="per_address"></textarea>
+                                    <textarea rows="2" cols="2" class="form-control disableEnable" placeholder="Lab Instruction" id="labInstrc" name="per_address"></textarea>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label>Additional Instruction</label>
-                                    <textarea rows="2" cols="2"
-                                        class="form-control disableEnable"
-                                        placeholder="Additional Instruction" id="additInstrc"
-                                        name="per_address"></textarea>
+                                    <textarea rows="2" cols="2" class="form-control disableEnable" placeholder="Additional Instruction" id="additInstrc" name="per_address"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -257,7 +260,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
 <script>
     $(function() {
-       var dob ='{{$patientPrescrip->dob}}';
+        var dob = '{{$patientPrescrip->dob}}';
         var age = ageCalculator(dob);
         $('#age').html(age);
     });
@@ -287,6 +290,40 @@
 
                 console.log(data);
 
+            }
+        })
+    }
+
+    $('#generic').on('change', function() {
+        var generic = $(this).val();
+        gerBrand(generic);
+
+    })
+
+    function gerBrand(genericNo) {
+        $.ajax({
+            url: "{{url('genericBrand')}}/" + genericNo,
+            type: 'get',
+            success: function(data) {
+                console.log(data);
+                $('#brand').html(data);
+            }
+        })
+    }
+
+    $('#theraputic').on('change', function() {
+        var theraputic = $(this).val();
+        gerGeneric(theraputic);
+
+    })
+
+    function gerGeneric(theraputic) {
+        $.ajax({
+            url: "{{url('generic')}}/" + theraputic,
+            type: 'get',
+            success: function(data) {
+                console.log(data);
+                $('#generic').html(data);
             }
         })
     }

@@ -40,48 +40,30 @@
 
 
                                             <div class="form-row">
-                                                <div class="col-md-1">
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input gender" type="radio"
-                                                            name="gender" id="gender_male" value="M" checked>
-                                                        <label class="form-check-label" for="gender_male">Male</label>
-                                                    </div>
+                                                
+                                                <div class="col-md-3">
+                                                    <label for="">Gender</label>
+                                                    <label>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input gender" type="radio"
+                                                                name="gender" id="gender_male" value="M" checked>
+                                                            <label class="form-check-label" for="gender_male">Male</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input gender" type="radio"
+                                                                name="gender" id="gender_female" value="F">
+                                                            <label class="form-check-label"
+                                                                for="gender_female">Female</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input gender" type="radio"
+                                                                name="gender" id="gender_others" value="O">
+                                                            <label class="form-check-label"
+                                                                for="gender_female">Others</label>
+                                                        </div>
+                                                    </label>
                                                 </div>
-                                                <div class="col-md-1">
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input gender" type="radio"
-                                                            name="gender" id="gender_female" value="F">
-                                                        <label class="form-check-label"
-                                                            for="gender_female">Female</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input gender" type="radio"
-                                                            name="gender" id="gender_others" value="O">
-                                                        <label class="form-check-label"
-                                                            for="gender_female">Others</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3 mb-3">
-                                                    <input type="text" class="form-control datepicker" name="dob"
-                                                        id="dob" placeholder="Date of Birth" value="{{old('dob')}}" required="">
-
-                                                </div>
-                                                <div class="col-md-2 mb-3">
-                                                    <input type="text" class="form-control" id="age" placeholder="Age"
-                                                        disabled="">
-
-                                                </div>
-                                                <div class="col-md-1">
-                                                </div>
-                                                <div class="col-2">
-                                                    <img id="imgOpenRegistration" src="{{asset('images/fake.jpg')}}">
-                                                    <input type="file" id="imgReg" name="img_url" style="display: none;"
-                                                        src="" accept="image/x-png,image/gif,image/jpeg">
-                                                </div>
-                                            </div>
-                                            <div class="form-row">
+                                                                                                
                                                 <div class="col-md-2 mb-3">
                                                     <label for="validationCustom03">Title</label>
                                                     <select class="custom-select" id="salutationId"
@@ -94,40 +76,78 @@
 
                                                     </select>
                                                 </div>
-                                                <div class="col-md-2">
-                                                </div>
                                                 <div class="col-md-5 mb-3">
                                                     <label for="validationCustom04">Patient Name<span class="text-danger">*</span></label>
                                                     <input type="text" name="ful_name" value="{{old('ful_name')}}"
                                                         class="form-control" id="validationCustom04"
                                                         placeholder="Enter Patient Name" required>
-                                                    <!-- <div class="invalid-feedback">
-																Please provide a valid state.
-															</div> -->
+                                                </div>
+
+                                                <div class="col-2 pl-3">
+                                                    <img id="imgOpenRegistration" src="{{asset('images/fake.jpg')}}">
+                                                    <input type="file" id="imgReg" name="img_url" style="display: none;"
+                                                        src="" accept="image/x-png,image/gif,image/jpeg">
                                                 </div>
                                             </div>
                                             <div class="form-row">
-                                                
-                                                <div class="col-md-4 mb-3">
+                                                <div class="col-md-2 mb-3">
+                                                    <label>Date of Birth</label>
+                                                    <input type="text" class="form-control datepicker" name="dob"
+                                                        id="dob" placeholder="Date of Birth" value="{{old('dob')}}" required="">
+
+                                                </div>
+                                                <div class="col-md-2 mb-3">
+                                                    <label>Age</label>
+                                                    <input type="text" class="form-control" id="age" placeholder="Age"
+                                                        disabled="">
+                                                </div>
+                                                <div class="col-md-3 mb-3">
                                                     <label for="validationDefault02">Mobile No<span class="text-danger">*</span></label>
                                                     <input type="text" name="mobile" class="form-control"
                                                         id="validationDefault02" placeholder="Mobile No" value=""
                                                         required>
                                                 </div>
-                                                <div class="col-md-4 mb-3">
+                                                <div class="col-md-3 mb-3">
                                                     <label for="validationDefalt02">Phone No</label>
                                                     <input type="text" name="home_phone" class="form-control" id=""
                                                         placeholder="Phone No" value="">
                                                 </div>
-                                                <div class="col-md-4 mb-3">
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-3 mb-3">
                                                     <label for="">Email</label>
                                                     <div class="input-group">
                                                         <input type=" " name="email" class="form-control" id=""
                                                             placeholder="Email" aria-describedby="inputGroupPrepend2">
                                                     </div>
                                                 </div>
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="validationDefault01">NID</label>
+                                                    <input type="text" name="national_id" class="form-control"
+                                                        id="validationDefault01" placeholder="National ID" value="">
+                                                </div>
+                                                
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="validationCustom03">Religion<span class="text-danger">*</span></label>
+                                                    <select class="custom-select" name="religion_no" required>
+                                                        <option value="">Select Religion</option>
+                                                        @foreach($religions as $religion)
+                                                        <option value="{{$religion->RELIGION_NO}}">
+                                                            {{$religion->RELIGION_NAME}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-3 mb-3">
+                                                    <label for="validationCustom03">Blood Group</label>
+                                                    <select class="custom-select" name="blood_group">
+                                                        <option value="">Select Blood Group</option>
+                                                        @foreach($bloodGroups as $blg)
+                                                        <option value="{{$blg->BG_CODE}}">{{$blg->BG_CODE}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div class="form-row">
+                                            <!-- <div class="form-row">
                                                 <div class="col-md-4 mb-3">
                                                     <label for="validationDefault01">NID</label>
                                                     <input type="text" name="national_id" class="form-control"
@@ -153,7 +173,7 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="form-row ">
                                                 <div class="col-md-3 mb-3">
                                                     <div class="form-group ">

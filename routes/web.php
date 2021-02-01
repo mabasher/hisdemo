@@ -1,5 +1,6 @@
 <?php
 
+use App\Model\Patient\Registration;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('pdfTest', function () {
 $user = auth()->user();
     return App\User::find($user->id)->roleuser->role->menus->load('submeus');
-    $pid = \App\Registration::find(4);
+    $pid = Registration::find(4);
     return view('admin.pdf.myPdf', compact('pid'));
 });
 
@@ -98,6 +99,8 @@ Route::get('virtualslots/{doctorId}/{dayName}','Doctor\ResourcescheduleControlle
 //prescription
 Route::get('patientCare/{appDt?}','Doctor\PrescriptionController@doctorPatientCare');
 Route::get('prescriptions/{regNo}','Doctor\PrescriptionController@doctorprescription');
+Route::get('generic/{therapeutic}','Doctor\PrescriptionController@generictherapeutic');
+Route::get('genericBrand/{genericNo}','Doctor\PrescriptionController@genericWiseBrand');
 
 //designation
 Route::post('doctorDesignation','Patient\OpappointmentController@doctorDesignation');

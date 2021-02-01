@@ -87,34 +87,23 @@ class RegistrationController extends Controller
         $customPaper = array(0, 0, 250, 270);
         $pid = Registration::find($reg);
         PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif', 'debugLayoutPaddingBox' => true]);
-        $pdf = PDF::loadView('admin.pdf.myPdf', compact(['pid']))
+        $pdf = PDF::loadView('admin.pdf.regPdf', compact(['pid']))
             ->setPaper($customPaper, 'landscape');
-        return $pdf->download('pid.pdf');
+        return $pdf->download('pidCard.pdf');
 
         return redirect('registrations');
     }
 
-    public function generatePDF($id)
-    {
-        $customPaper = array(0, 0, 250, 270);
-        $pid = Registration::find($id);
-        PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif', 'debugLayoutPaddingBox' => true]);
-        $pdf = PDF::loadView('admin.pdf.myPdf', compact(['pid']))
-            ->setPaper($customPaper, 'landscape');
-        return $pdf->download('pid.pdf');
-    }
-    // public function getRegNo()
+    // public function generatePDF($id)
     // {
-    //     $now = Carbon::now();
-    //     $m = $now->month;
-    //     $d = $now->day;
-    //     $y = $now->year;
-    //     $h = $now->hour;
-    //     $i = $now->minute;
-    //     $s = $now->second;
-    //     return 'R'.$m.$d.$y.$h.$i.$s;
-
+    //     $customPaper = array(0, 0, 250, 270);
+    //     $pid = Registration::find($id);
+    //     PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif', 'debugLayoutPaddingBox' => true]);
+    //     $pdf = PDF::loadView('admin.pdf.regPdf', compact(['pid']))
+    //         ->setPaper($customPaper, 'landscape');
+    //     return $pdf->download('pid.pdf');
     // }
+
     public function getRegId()
     {
         //R 2020 12 14 0000001
