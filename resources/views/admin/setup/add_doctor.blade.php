@@ -152,7 +152,6 @@
                                 @endforeach
 
                             </select>
-                            <!-- <input class="form-control" type="text" name="doc_chember" placeholder="Chamber/Room"> -->
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">

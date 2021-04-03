@@ -40,7 +40,9 @@
                             <p class="bold text-left">Saturday - Friday, 8am to 10pm </p>
                         </div>
                         <div class="col-sm-6 col-md-6">
-                            <p class="bold text-right">Call us now +880 9617-171125</p>
+                            <p class="bold text-right">Call us now +880 9617-171125
+                                <a href="{{url('table')}}">::</a>
+                            </p>
                         </div>
                     </div>
                 </div>

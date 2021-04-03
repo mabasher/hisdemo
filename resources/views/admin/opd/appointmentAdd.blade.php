@@ -34,6 +34,9 @@
     <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.7/css/fixedHeader.dataTables.min.css"/> -->
     <link rel="stylesheet" type="text/css" href="{{asset('admin/css/dataTables.bootstrap4.min.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{asset('css/select2ud.css')}}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 
     @endsection
     @section('content')
@@ -214,9 +217,15 @@
 
 
                                             <div class="form-row">
-                                                <div class="col-md-3 mb-3">
+                                                <div class="col-md-6 mb-3">
                                                     <label>Chief Complaint<span class="text-danger">*</span></label>
-                                                    <textarea rows="1" cols="1" class="form-control" placeholder="Enter Chief Complaint" name="chief_complaint" required></textarea>
+                                                    <select class="form-control select2 select2-hidden-accessible" name="chief_complaint[]" multiple="" data-placeholder="Select Chief Complaint" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                                        @foreach($chiefComplaint as $cc)
+                                                        <option>{{$cc->atr_name}}</option>
+                                                        @endforeach
+                                                    </select>
+
+                                                    <!-- <textarea rows="1" cols="1" class="form-control" placeholder="Enter Chief Complaint" name="chief_complaint" required></textarea> -->
                                                 </div>
                                                 <div class="col-md-3 mb-3">
                                                     <label for="">Arrival Mode</label>
@@ -236,10 +245,10 @@
                                                         <option value="C">Patient Counseling</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-3 mb-3">
+                                                <!-- <div class="col-md-3 mb-3">
                                                     <label for="">Appoint No</label>
                                                     <input type="text" name="appoint_no" value="" class="form-control" id="validationCustom04" placeholder="Appoint No" readonly>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-md-3 mb-3">
@@ -308,12 +317,12 @@
                                         </tr>
                                     </thead>
                                     @foreach($registrations as $reg)
-                                        @php
-                                            $dob = $reg->dob;
-                                            $d =\Carbon\Carbon::parse($reg->dob)->diff(\Carbon\Carbon::now())->format('%d');
-                                            $m =\Carbon\Carbon::parse($reg->dob)->diff(\Carbon\Carbon::now())->format('%m');
-                                            $y =\Carbon\Carbon::parse($reg->dob)->diff(\Carbon\Carbon::now())->format('%y');
-                                        @endphp
+                                    @php
+                                    $dob = $reg->dob;
+                                    $d =\Carbon\Carbon::parse($reg->dob)->diff(\Carbon\Carbon::now())->format('%d');
+                                    $m =\Carbon\Carbon::parse($reg->dob)->diff(\Carbon\Carbon::now())->format('%m');
+                                    $y =\Carbon\Carbon::parse($reg->dob)->diff(\Carbon\Carbon::now())->format('%y');
+                                    @endphp
                                     <tr>
                                         <td>
                                             <img width="28" height="28" src="{{asset($reg->img_url)}}" class="rounded-circle" alt="">
@@ -355,15 +364,16 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.1.7/js/dataTables.fixedHeader.min.js"></script> -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script type="text/javascript">
         $('.dataTable').DataTable();
     </script>
     <script>
         $(function() {
-            // var dob ='';
-            // var age = ageCalculator(dob);
-            // $('#age').html(age);
- 
+            $('.select2').select2({
+                closeOnSelect: false
+            });
+
             $('#loading').hide();
             $('#pid').keyup(function() {
                 $('#clearId').show();
@@ -541,7 +551,7 @@
         function clear(id) {
             $('#' + id).val('');
         }
-
+        
         function getPatient(regno) {
             $.ajax({
                 url: "{{url('patient')}}/" + regno,

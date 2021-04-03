@@ -1,0 +1,24 @@
+.tr {
+    text-align: right;
+    /* background-color: red;
+    color:green; */
+}
+
+.col-md-4 {
+    width: 38%;
+    float: left;
+    border-right: 0.01em solid #ccc;
+}
+
+.col-md-8 {
+    width: 60%;
+    float: right;
+}
+
+.bl {
+    border-left: 5px solid black;
+}
+
+.pb {
+    padding-bottom: 5px;
+}

@@ -1,11 +1,20 @@
 @extends('layouts.app')
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css" />
+<style>
+    body {
+    background: #74ebd5;
+    background: -webkit-linear-gradient(to right, #74ebd5, #ACB6E5);
+    background: linear-gradient(to right, #74ebd5, #ACB6E5);
+    min-height: 100vh;
+
+}
+</style>
 @endsection
 @section('content')
 <div class="content">
-    <div class="row">
-        <div class="col-md-6">
+    <div class="row m-auto">
+        <div class="col-md-5 ml-2">
             <div class="blog-view">
                 <div class="widget category-widget">
                     <div class="row">
@@ -65,7 +74,7 @@
 <script>
     $(function() {
         var date = new Date();
-        var fstday = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 4);
+        var fstday = new Date(date.getFullYear(), date.getMonth(), date.getDate()-1);
         var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 
 

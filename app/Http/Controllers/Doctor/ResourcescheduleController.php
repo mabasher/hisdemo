@@ -46,12 +46,6 @@ class ResourcescheduleController extends Controller
     }
 
 
-    // public function getDoctorMultiVisit($id,$dayId,$schDate='')
-    // {
-    //     $visitTime = Appdayschedule::where('doctorinfo_id',$id)->where('day_id',$dayId)->get();
-    //     return view('admin.partialPages.multivisit', compact('visitTime'));
-    // }
-
     public function scheduleRoster()
     {
         // return Day::with('daywiseSchedule')->get();
@@ -66,16 +60,7 @@ class ResourcescheduleController extends Controller
     public function scheduleRosterSave(Request $r)
     {
         //return $r->all();
-
-        //  $r->validate([
-        //  'day_id' => 'required',
-        // 'doctorinfo_id' => 'required',
-        // 'avg_duration' => 'required',
-        // 'start_time' => 'required',
-        // 'end_time' => 'required',
-        // 'avg_duration' => 'max:2'
-        // ]);
-    
+   
         $week =  Day::all();
         
         foreach($week as $w){
@@ -90,7 +75,7 @@ class ResourcescheduleController extends Controller
                     $totalDuration = $endTime->diffInMinutes($startTime);
                     $blockLoad = $totalDuration/$r->$duration;  
 
-                    \DB::table('appdayschedules')->insert([
+                    DB::table('appdayschedules')->insert([
                         'doctorinfo_id'     => $r->doctorinfo_id,
                         'day_id'            => $w->id,
                         'avg_duration'      => $r->$duration,

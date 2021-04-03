@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Setup;
 use App\Http\Controllers\Controller;
+use App\Model\Setup\Areatype;
 use Illuminate\Http\Request;
 use App\Model\Setup\Department;
 use DB;
@@ -18,7 +19,8 @@ class DepartmentController extends Controller
     {   
         $organogram  = DB::select('select hr_organid,hr_organname from organogramsetups');
         $departments = Department::all();
-        return  view('admin.setup.add_department',compact(['departments','organogram']));
+        $areatype = Areatype::all();
+        return  view('admin.setup.add_department',compact(['departments','organogram','areatype']));
     }
 
     public function saveDepartment(Request $r)    
@@ -31,7 +33,7 @@ class DepartmentController extends Controller
 
         Department::insert($r->except('_token'));
         
-        return redirect('departments');
+        return redirect('departmentAdd');
     }
    
     public function getDeptNo()

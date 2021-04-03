@@ -86,6 +86,17 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label>Menu Type</label>
+                            <select class="custom-select" id="menuType" name="menu_type" required>
+                                <option value="">Select Menu Type</option>
+                                <option value="M">Module</option>
+                                <option value="S">Sub Module</option>
+                                <option value="F">Form</option>
+                                <option value="R">Report</option>
+                                <option value="N">None</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label>Menu Action</label>
                             <input class="form-control" type="text" name="action" placeholder="Menu Action">
                         </div>

@@ -1,6 +1,11 @@
 <?php
 
+use App\Model\Patient\Opconsultation;
 use App\Model\Patient\Registration;
+use App\Model\Pharmacy\Pmpresmedicine;
+use App\Model\Prescription\Ehpatientexam;
+use App\Model\Prescription\Ehprescpoe;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,15 +20,31 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('pdfTest', function () {
-$user = auth()->user();
-    return App\User::find($user->id)->roleuser->role->menus->load('submeus');
     $pid = Registration::find(4);
     return view('admin.pdf.myPdf', compact('pid'));
 });
 
+Route::get('presPdf/{renNo}', function ($regNo) {
+        $date =  Carbon::parse(Carbon::now())->toDateString(); 
+        $presPrint = Opconsultation::where('reg_no', $regNo)->where('consult_dt', $date)->first();
+        $presPrint->consultation->designation;
+        $chiefComplaint = Ehpatientexam::where('reg_no', $regNo)->first();
+        $cc = explode(',',$chiefComplaint->findings);
+         $patMedicine =Pmpresmedicine::where('reg_no', $regNo)->get();
+        //  return $patMedicine[0]->presMedicine[0];
+        // $mdose = Pmdaydptchange::where('rx_no', $patMedicine->rx_no)->get();
+        $patTest =Ehprescpoe::where('reg_no', $regNo)->get();
+        return view('admin.reports.prescriptionPdf', compact(['presPrint','cc','patMedicine','patTest']));
+    });
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('table','TestController@table');
+
 //Route::get('registration','Patient\RegistrationController@index');
 Route::get('registration','Patient\RegistrationController@index')->name('basherReg');
 
@@ -32,8 +53,10 @@ Auth::routes();
 Route::get('/home', 'Admin\HomeController@index')->name('home');
 
 //Security
+Route::middleware(['previlage'])->group(function(){
+    Route::get('menusView','Security\MenusController@menusView');
+});
 Route::get('menus','Security\MenusController@sideMenus');
-Route::get('menusView','Security\MenusController@menusView');
 Route::post('saveMenu','Security\MenusController@saveMenu');
 Route::get('submenusPage','Security\MenusController@submenusPage');
 Route::post('saveSubMenu','Security\MenusController@saveSubMenu');
@@ -49,7 +72,6 @@ Route::post('saveRoleUser','Security\RoleController@saveRoleUser');
 Route::get('rolemenus','Security\RoleController@rolemenus');
 Route::post('saveRoleMenus','Security\RoleController@saveRoleMenus');
 Route::get('getmenus/{id}','Security\RoleController@getmenus');
-
 
 
 //Registration
@@ -85,6 +107,7 @@ Route::post('roomCheck','Patient\ServiceController@roomCheck');
 
 //doctors 
 Route::get('doctors','Doctor\DoctorinfoController@doctorAllShow');
+// ->middleware('previlage');
 Route::get('doctormenu','Doctor\DoctorinfoController@doctorsView');
 Route::get('doctorAdd','Doctor\DoctorinfoController@doctorPage');
 Route::post('SaveDoctor','Doctor\DoctorinfoController@SaveDoctor');
@@ -96,11 +119,28 @@ Route::get('doctorWeeklySchedule/{id}/{schDate}', 'Patient\OpappointmentControll
 //doctor Slot
 Route::get('virtualslots/{doctorId}/{dayName}','Doctor\ResourcescheduleController@getDoctorTimeSlot');
 
-//prescription
+//prescription Medicine
 Route::get('patientCare/{appDt?}','Doctor\PrescriptionController@doctorPatientCare');
 Route::get('prescriptions/{regNo}','Doctor\PrescriptionController@doctorprescription');
 Route::get('generic/{therapeutic}','Doctor\PrescriptionController@generictherapeutic');
 Route::get('genericBrand/{genericNo}','Doctor\PrescriptionController@genericWiseBrand');
+Route::get('dispFrom/{testNo}','Doctor\PrescriptionController@dispatchForm');
+Route::get('frequncy/{id}','Doctor\PrescriptionController@frequencies');
+Route::post('savePresMedicine','Doctor\PrescriptionController@prescripMedicineInsert');
+
+//Avatar ehattribexamval
+Route::get('avatar/{avatarType}','Avatar\AvaterController@avatar');
+Route::get('avatarAtrributes/{bodyPartNo}/{parentAtrNo}/{gender}','Avatar\AvaterController@avatarAtrributes');
+Route::post('examAttributesAdd','Avatar\AvaterController@examAttributesAdd');
+Route::post('patientHPIsave','Avatar\AvaterController@patientHPIsave');
+
+//prescription Investigation
+// Route::get('investigations/{serviceType}','Doctor\PrescriptionController@investigations')->middleware('previlage');
+Route::get('investigations/{serviceType}','Doctor\PrescriptionController@investigations');
+Route::post('investigationSave','Doctor\PrescriptionController@investigationSave');
+Route::get('prescriptionReports/{regNo}','Doctor\PrescriptionController@prescriptionReports');
+Route::get('prescriptionPdf/{regNo}','Doctor\PrescriptionController@prescriptionPdf');
+
 
 //designation
 Route::post('doctorDesignation','Patient\OpappointmentController@doctorDesignation');
@@ -129,6 +169,24 @@ Route::get('pid/{pid}','Setup\GenerateQrCodeController@registratinPdf');
 Route::get('simple-qr-code/{pid}','Setup\GenerateQrCodeController@simpleQrCode');
 Route::get('color-qr-code','Setup\GenerateQrCodeController@colorQrCode');
 Route::get('image-qr-code','Setup\GenerateQrCodeController@imageQrCode');
+
+// Billing
+
+//setup
+Route::get('serviceSetup','Billing\BillingSetupCOntroller@serviceSetup');
+// order Entry
+Route::get('orderentryView','Billing\OrderentryController@orderentryView');
+Route::get('patientBilling/{regno}','Billing\OrderentryController@getPatientInfo');
+Route::get('patientTest/{regno}','Billing\OrderentryController@patientTest');
+Route::get('testDept/{testNo}','Billing\OrderentryController@testDept');
+Route::get('investigationsearch/{search}','Billing\OrderentryController@investigations');
+Route::get('testsearchGetVal/{testNo}','Billing\OrderentryController@testsearchGetVal');
+Route::post('investigationInvoiceSave','Billing\OrderentryController@investigationInvoiceSave');
+
+
+
+
+
 
 
 

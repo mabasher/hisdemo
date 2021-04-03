@@ -1,299 +1,330 @@
 @extends('layouts.app')
 @section('css')
-<link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css" />
 <style>
-body {
-    background-color: #f9f9fa
-}
 
-.flex {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto
-}
-
-@media (max-width:991.98px) {
-    .padding {
-        padding: 1.5rem
-    }
-}
-
-@media (max-width:767.98px) {
-    .padding {
-        padding: 1rem
-    }
-}
-
-.padding {
-    padding: 5rem
-}
-
-.card {
-    box-shadow: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    -ms-box-shadow: none
-}
-
-.pl-3,
-.px-3 {
-    padding-left: 1rem !important
-}
-
-.card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid #d2d2dc;
-    border-radius: 0
-}
-
-.card .card-title {
-    color: #000000;
-    margin-bottom: 0.625rem;
-    font-size: 0.875rem;
-    font-weight: 500
-}
-
-.card .card-description {
-    margin-bottom: .875rem;
-    font-weight: 400;
-    color: #76838f
-}
-
-p {
-    font-size: 0.875rem;
-    margin-bottom: .5rem;
-    line-height: 1.5rem
-}
-
-.table-responsive {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar
-}
-
-.table,
-.jsgrid .jsgrid-table {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 1rem;
-    background-color: transparent
-}
-
-.table thead th,
-.jsgrid .jsgrid-table thead th {
-    border-top: 0;
-    border-bottom-width: 1px;
-    font-weight: 500;
-    font-size: .875rem;
-    text-transform: uppercase
-}
-
-.table td,
-.jsgrid .jsgrid-table td {
-    font-size: 0.875rem;
-    padding: .475rem 0.4375rem
-}
-
-.mt-10 {
-    padding: 0.875rem 0.3375rem !important
-}
-
-button {
-    outline: 0 !important
-}
-
-.form-control:focus {
-    box-shadow: 0 0 0 0rem rgba(0, 123, 255, .25) !important
-}
-
-.badge {
-    border-radius: 0;
-    font-size: 12px;
-    line-height: 1;
-    padding: .375rem .5625rem;
-    font-weight: normal;
-    border: none
-}
 </style>
+
+
 @endsection
+
 @section('content')
 <div class="content">
     <div class="row">
         <aside class="col-md-10 m-auto">
             <div class="widget category-widget">
-                <h5>Patient Information</h5>
-                <!-- <form class="search-form">
-                    <div class="input-group">
-                        <input type="text" placeholder="Search..." class="form-control">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                        </div>
+                <div class="row text-success">
+                    <div class="col-md-3">
+                        <h4>PID : {{$patientPrescrip->reg_no}}</h4>
                     </div>
-                </form> -->
+                    <div class="col-md-4">
+                        <h4>Name : {{$patientPrescrip->patAppinfo->salutation_id.' '.$patientPrescrip->patAppinfo->ful_name}}</h4>
+                    </div>
+                    <div class="col-md-2">
+                        <h4>Age :<span id="age"></span></h4>
+                    </div>
+                    <div class="col-md-2">
+                        <h4>Gender : {{$patientPrescrip->patAppinfo->gender == 'M'?'Male':'Female'}}</h4>
+                    </div>
+                </div>
+                <div class="row text-success">
+                    <div class="col-md-3">
+                        <h4>CN : {{$patientPrescrip->consult_no}}</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Appoint Type : @switch($patientPrescrip->patAppinfo->app_type)
+                            @case('P')
+                            Primary Consultation
+                            @break
+
+                            @case('F')
+                            Followup Consultation
+                            @break
+                            @case('V')
+                            For Visit
+                            @break
+                            @case('C')
+                            Patient Counseling
+                            @break
+                            @default
+
+                            @endswitch
+                        </h4>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Doctor : {{$patientPrescrip->consultation->designation.' '.$patientPrescrip->consultation->doctor_name}}</h4>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="{{url('patientCare')}}" class="btn btn-success">Back</a>
+                    </div>
+                </div>
+
             </div>
         </aside>
-        <div class="col-md-12 m-auto">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    <form autocomplete="off" method="POST" action="{{url('SaveDoctor')}}">
-                        @csrf
-                        <div class="form-row">
-                            <div class="col-md-4 mb-3">
-                                <div class="form-group">
-                                    <label>Contact No</label>
-                                    <input class="form-control" type="text" name="contact_no" placeholder="Mobile/Phone No">
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="form-group">
-                                    <label>Office Phone</label>
-                                    <input class="form-control" type="text" name="office_phone" placeholder="Office Phone">
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label>Email</label>
-                                <input class="form-control" type="email" name="email" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-4 mb-3">
-                                <div class="form-group">
-                                    <label>Chamber/Room</label>
-                                    <select class="custom-select" id="room" name="doc_chember">
-                                        <option value="">Select Doctor Chamber</option>
-                                    
-
-                                    </select>
-                                    <!-- <input class="form-control" type="text" name="doc_chember" placeholder="Chamber/Room"> -->
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="form-group">
-                                    <label>Floor</label>
-                                    <input class="form-control" type="text" placeholder="Floor" readonly>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label>Building</label>
-                                <input class="form-control" type="text" placeholder="Building" >
-                            </div> 
-                        </div>
-
-                        <div class="m-t-20 text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <a href="{{url('doctormenu')}}" class="btn btn-success">Back</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
+        <div class="col-md-10 m-auto">
             <div class="card-box">
                 <!-- <h6 class="card-title">Bottom line justified</h6> -->
                 <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
-                    <li class="nav-item"><a class="nav-link active" href="#bottom-justified-tab1"
-                            data-toggle="tab">Medication</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#bottom-justified-tab2"
-                            data-toggle="tab">Investigation</a></li>
-                    <!-- <li class="nav-item"><a class="nav-link" href="#bottom-justified-tab3" data-toggle="tab">Messages</a></li> -->
+                    <li class="nav-item"><a class="nav-link active" href="#bottom-justified-tab1" data-toggle="tab">Medication</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#bottom-justified-tab2" data-toggle="tab">Investigation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#bottom-justified-tab3" data-toggle="tab">Chief Complaint</a></li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane show active" id="bottom-justified-tab1">
                         <div class="card">
                             <div class="card-body">
-                                <div class="text-center"><button onclick="addfaqs();" class="badge badge-success"><i
-                                            class="fa fa-plus"></i> ADD NEW</button></div>
-                                <!-- <h4 class="card-title text-center">Add and remove row in table using jquery</h4> -->
-                                <hr>
-                                <div class="table-responsive">
-                                    <table id="faqs" class="table table-hover">
-                                        <!--<thead>
-                                            <tr>
-                                                <th>Therapeutic Group</th>
-                                                <th>Generic</th>
-                                                <th>Brand</th>
-                                                <th>Dis.Form</th>
-                                                 <th>Stock</th>
-                                                <th>Dose/Take</th>
-                                                <th>Frequency</th>
-                                                <th>Duration</th>
-                                                <th>Dpt. Detail</th> 
-                                            </tr>
-                                        </thead>-->
-                                        <tbody>
-                                            <tr>
-                                                <td colspan="2">
-                                                    <input type="text" class="form-control" placeholder="Therapeutic Group">
-                                                    <!-- <input type="text" placeholder="Brand" class="form-control" style="width:120px; float:right;"> -->
-                                            
-                                                    <input type="text" placeholder="Generic" class="form-control">
-                                                    <input type="text" placeholder="Brand Name" class="form-control">
-                                                    <!-- <input type="text" placeholder="Product name" class="form-control"> -->
-                                                </td>
-                                                <td>
-                                                    <input type="text" placeholder="Dis. Form" class="form-control">
-                                                    <input type="text" placeholder="Stock" class="form-control">
-                                                </td>
-                                                <td>
-                                                    <input type="text" placeholder="Dose/Take" class="form-control">
-                                                    <select class="custom-select" name="frequency" >
-                                                        <option value="">Frequency</option>
-                                                    </select>
-                                                </td>
-                                                <td>
-                                                    <input type="text" placeholder="Duration" class="form-control">
-                                                    <select class="custom-select" name="frequency" >
-                                                        <option value="">Hour's</option>
-                                                        <option value="">Days</option>
-                                                    </select>
-                                                </td>
-                                                <td>
-                                                    <input type="text" placeholder="DPT.Detail" class="form-control">
-                                                    <input type="text" placeholder="Pres.Qty" class="form-control">
-                                                </td>
-                                                <td>
-                                                    <select class="custom-select" name="frequency" >
-                                                        <option value="">Route</option>
-                                                    </select>
-                                                    <select class="custom-select" name="frequency" >
-                                                        <option value="">Instruction</option>
-                                                        <option value="">hs</option>
-                                                        <option value="">ad</option>
-                                                    </select>
-                                                </td>
-                                                <td>
-                                                    <input type="text" placeholder="Start At" class="form-control">
-                                                    <select class="custom-select" name="frequency" >
-                                                        <option value="">Priority</option>
-                                                        <option value="">Routine</option>
-                                                        <option value="">Urgent</option>
-                                                        <option value="">Stat</option>
-                                                    </select>
-                                                </td>
-                                                <td class="mt-10"><button class="badge badge-danger"><i
-                                                            class="fa fa-trash"></i></button></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                
+                                <form autocomplete="off" method="POST" action="{{url('savePresMedicine')}}">
+                                    @csrf
+
+                                    <input type="hidden" name="reg_no" value="{{$patientPrescrip->reg_no}}" class="form-control">
+                                    <input type="hidden" name="identifyed_no" value="{{$patientPrescrip->consult_no}}" class="form-control">
+                                    <input type="hidden" name="end_date" placeholder="End At" id="endDt" class="form-control">
+                                    <div class="form-row">
+                                        <div class="col-md-4 mb-3">
+                                            <div class="form-group">
+                                                <label>Therapeutic Group</label>
+                                                <select class="custom-select" name="" id="theraputic">
+                                                    <option value="">Select Therapeutic Group</option>
+                                                    @foreach($thrapGrp as $trgrp)
+                                                    <option value="{{$trgrp->thrapgrp_id}}">{{$trgrp->thrapgrp_name}}</option>
+                                                    @endforeach
+                                                </select>
+                                                <!-- <input type="text" class="form-control" name="contact_no" placeholder="Therapeutic Group"> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="form-group">
+                                                <label>Generic Name</label>
+                                                <select class="custom-select" name="generic_no" id="generic">
+                                                    <option value="">Select Generic Name</option>
+                                                    @foreach($generic as $g)
+                                                    <option value="{{$g->generic_no}}">{{$g->generic_name.' '.$g->test_name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label>Brand Name</label>
+                                            <select class="custom-select" name="item_no" id="brand">
+                                                <!-- <option value="">Select Brand Name</option> -->
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-2 mb-3">
+                                            <div class="form-group">
+                                                <label>Dis. Form</label>
+                                                <input type="text" id="disform" placeholder="Dispense Form" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 mb-3">
+                                            <div class="form-group">
+                                                <label>Stock</label>
+                                                <input type="text" id="stockQty" placeholder="Stock" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 mb-3">
+                                            <div class="form-group">
+                                                <label>Dose/Take</label>
+                                                <input type="text" id="dosetake" name="dose_per_take" placeholder="Dose/Take" class="form-control text-center">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 mb-3">
+                                            <div class="form-group">
+                                                <label>.</label>
+                                                <input type="text" id="uom" class="form-control text-center" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 mb-3">
+                                            <label>Frequency</label>
+                                            <select class="custom-select" name="frequency_id" id="frequency">
+                                                <option value="">Frequency</option>
+                                                @foreach($frequency as $fq)
+                                                <option value="{{$fq->id}}">{{$fq->abbreviation}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2 mb-3">
+                                            <label>Duration</label>
+                                            <input type="text" id="duration" name="duration" placeholder="" class="form-control">
+                                        </div>
+                                        <div class="col-md-2 mb-3">
+                                            <label>Type</label>
+                                            <select class="custom-select" id="durationType" name="duration_type">
+                                                <option value="H">Hour's</option>
+                                                <option value="D">Days</option>
+                                                <option value="W">Week(s)</option>
+                                                <option value="M">Month(s)</option>
+                                                <option value="Y">Year(s)</option>
+                                                <option value="C">Continuing</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-2 mb-3">
+                                            <div class="form-group">
+                                                <label>DPT. Details</label>
+                                                <input type="text" name="dpt_details" id="dptdetail" placeholder="DPT. Details" class="form-control">
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="col-md-2 mb-3">
+                                            <div class="form-group">
+                                                <label>Route</label>
+                                                <select class="custom-select" name="route_id">
+                                                    @foreach($route as $rt)
+                                                    <option value="{{$rt->id}}">{{$rt->abbreviation}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 mb-3">
+                                            <label>Instruction</label>
+                                            <select class="custom-select" name="instruction_id">
+                                                <option value="">Instruction</option>
+                                                @foreach($instruc as $ins)
+                                                <option value="{{$ins->id}}">{{$ins->abbreviation}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2 mb-3">
+                                            <label>Start At</label>
+                                            <input type="text" name="start_date" placeholder="Start At" id="toDate" class="form-control">
+                                        </div>
+                                        <div class="col-md-2 mb-3">
+                                            <label>Priority</label>
+                                            <select class="custom-select" name="med_status">
+                                                <option value=""></option>
+                                                <option value="R">Routine</option>
+                                                <option value="U">Urgent</option>
+                                                <option value="S">Stat</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2 mb-3">
+                                            <label>Prescribed Qty</label>
+                                            <input type="text" name="rx_total_dpt" placeholder="Prescribed Qty" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 m-auto">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input gender" type="radio" id="gender_male" name="purchase_type" value="L">
+                                            <label class="form-check-label" for="gender_male">Self Purchase</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input gender" type="radio" id="gender_female" name="purchase_type" value="P">
+                                            <label class="form-check-label" for="gender_female">Local Purchase</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input gender" type="hidden" id="gender_others" name="purchase_type" value="O" checked>
+                                        </div>
+                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane" id="bottom-justified-tab2">
-                        Tab content 2
+                        <div class="col-md-8 m-auto">
+                            <div class="form-row text-info mb-3">
+                                <div class="col-md-5">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="service_type" id="pathology" value="P" checked>
+                                        <h4 class="form-check-label" for="gender_male">Pathology & Diagnostics</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="service_type" id="service" value="S">
+                                        <h4 class="form-check-label" for="gender_female">Services</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="service_type" id="radiology" value="R">
+                                        <h4 class="form-check-label" for="gender_female">Radiology & Imaging</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10 m-auto">
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <label>Investigation</label>
+                                        <select class="custom-select" name="investigation">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="form-group">
+                                        <label>Service Type</label>
+                                        <input type="text" class="form-control" name="contact_no" placeholder="Service Type">
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label>Status</label>
+                                    <select class="custom-select" name="frequency">
+                                        <option value=""></option>
+                                        <option value="">Routine</option>
+                                        <option value="">Urgent</option>
+                                        <option value="">Stat</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label>Lab Instruction</label>
+                                    <textarea rows="2" cols="2" class="form-control disableEnable" placeholder="Lab Instruction" id="labInstrc" name="per_address"></textarea>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label>Additional Instruction</label>
+                                    <textarea rows="2" cols="2" class="form-control disableEnable" placeholder="Additional Instruction" id="additInstrc" name="per_address"></textarea>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="tab-pane" id="bottom-justified-tab3">
-                        Tab content 3
+                        <div class="col-md-12 col-sm-12" id="srcHistoryIllness" style="display: block;">
+                            <div class="text-center">
+                                <div class="form-group" style="margin: 5px 0px 0px 50px;">
+                                    <div data-toggle="buttons">
+                                        <label class="btn btn-default btn-circle btn-lg active " title="Male"><input type="radio" name="q1" value="M" class="genderbutton" data-position="maleFront" checked><i class="fa fa-male "></i></label>
+                                        <label class="btn btn-default btn-circle btn-lg" title="Female"> <input type="radio" name="q1" value="F" class="genderbutton" data-position="femaleFront"><i class="fa fa-female"></i></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div id="maleRadio" style="overflow: auto;">
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td id="loadAvatar" style="width: 250px;vertical-align: top;">
+                                            @include('avatar.male-front');
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                            <!-- <div id="femaleRadio" style="overflow: auto;">
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td style="width: 250px;">
+                                            
+                                            
+                                        </td>
+                                        <td id="hpiLocationInfoDiv" style="vertical-align: top;">
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </div> -->
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -302,43 +333,261 @@ button {
 
 @endsection
 @section('js')
-<script type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+<script src="{{asset('admin/js/jquery-1.10.2.js')}}" type="text/javascript"></script>
+<script src="{{asset('admin/js/jquery.maphilight.js')}}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
 <script>
-// $(function() {
-//     var date = new Date();
-//     var fstday = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 4);
-//     var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    $(function() {
+        $('#femaleRadio').hide();
+        onLoadJQ();
+        var dob = '{{$patientPrescrip->patAppinfo->dob}}';
+        var age = ageCalculator(dob);
+        $('#age').html(age);
+
+        var date = new Date();
+        var fstday = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 4);
+        var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 
 
-//     $('#toDate').datepicker({
-//         format: "dd-M-yyyy DD",
-//         autoclose: true,
-//         todayHighlight: true,
-//         changeMonth: true,
-//         changeYear: true,
-//         startDate: fstday,
-//         endDate: date,
-//         inline: true
+        $('#toDate').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true,
+            todayHighlight: true,
+            changeMonth: true,
+            changeYear: true,
+            startDate: fstday,
+            endDate: date,
+            inline: true,
+        });
+        $('#toDate').datepicker('setDate', today);
 
-//     });
-//     $('#toDate').datepicker('setDate', today);
 
-// });
+    });
 
-var faqs_row = 0;
-function addfaqs() {
-html = '<tr id="faqs-row' + faqs_row + '">';
-    html += '<td><input type="text" class="form-control" placeholder="User name"></td>';
-    html += '<td><input type="text" placeholder="Product name" class="form-control"></td>';
-    html += '<td><input type="text" placeholder="Product name" class="form-control"></td>';
-    html += '<td class="mt-10"><button class="badge badge-danger" onclick="$(\'#faqs-row' + faqs_row + '\').remove();"><i class="fa fa-trash"></i></button></td>';
+    function getPatient(regno) {
+        $.ajax({
+            url: "{{url('prescriptions')}}/" + regno,
+            type: 'get',
+            success: function(data) {
+                $('#salutationId').val(data.salutation_id);
+                $('#fulName').val(data.ful_name);
+                // $('#dob').val(data.dob);
+                // $("input[name=gender][value='" + data.gender + "']").prop("checked", true);
+                // $('#mobile').val(data.mobile);
+                // $('#email').val(data.email);
+                // $('#emContactNo').val(data.em_contact_no);
+                // $('#emContactPerson').val(data.em_contact_person);
+                // $('#nid').val(data.national_id);
+                // $('#religion').val(data.religion_no);
+                // $('#preAddress').val(data.pre_address);
+                // $('#preDivision').val(data.pre_division);
+                // getCity(data.pre_division, 'city');
+                // setTimeout(() => {
+                //     $('#city').val(data.pre_district);
+                // }, 300);
+                // $('#postalCode').val(data.pre_postoffice);
 
-    html += '</tr>';
+                console.log(data);
 
-$('#faqs tbody').append(html);
+            }
+        })
+    }
 
-faqs_row++;
-}
+    $('#generic').on('change', function() {
+        var itemNo = '';
+        var generic = $(this).val();
+        gerBrand(generic);
+        setTimeout(function() {
+            itemNo = $('#brand :selected').val();
+            getDispatchForm(itemNo);
+        }, 500);
+
+
+    })
+
+    function gerBrand(genericNo) {
+        $.ajax({
+            url: "{{url('genericBrand')}}/" + genericNo,
+            type: 'get',
+            success: function(data) {
+                console.log(data);
+                $('#brand').html(data);
+            }
+        })
+    }
+
+    $('#theraputic').on('change', function() {
+        var theraputic = $(this).val();
+        gerGeneric(theraputic);
+
+    })
+
+    function gerGeneric(theraputic) {
+        $.ajax({
+            url: "{{url('generic')}}/" + theraputic,
+            type: 'get',
+            success: function(data) {
+                console.log(data);
+                $('#generic').html(data);
+            }
+        })
+    }
+
+    $('#brand').on('change', function() {
+        var disfrom = $(this).val();
+        getDispatchForm(disfrom);
+
+    })
+
+    function getDispatchForm(dispFrom) {
+        $.ajax({
+            url: "{{url('dispFrom')}}/" + dispFrom,
+            type: 'get',
+            success: function(data) {
+                $('#disform').val(data.productname);
+                $('#stockQty').val(data.stock);
+                $('#dosetake').val(data.quantity);
+                $('#uom').val(data.dose);
+                // alert(data.stock);
+            }
+        })
+    }
+
+    $('#frequency').on('change', function() {
+        var frequency = $(this).val();
+        getfrequencyDose(frequency);
+
+    })
+
+    function getfrequencyDose(id) {
+        $.ajax({
+            url: "{{url('frequncy')}}/" + id,
+            type: 'get',
+            success: function(data) {
+                $('#dptdetail').val(data.dptdtl);
+            }
+        })
+    }
+
+    $('#durationType').on('change', function() {
+        var duraType = $(this).val();
+        var duration = $('#duration').val();
+        var stDt = $('#toDate').val();
+        // var enddt= new Date(stDt.getDate()+duration);
+        if (duraType == 'D') {
+            //alert(stDt);
+        } else {}
+    })
+
+
+    //Avatar Start
+    var $jq = jQuery.noConflict();
+    $jq(function() {
+        onLoadJQ();
+    });
+
+    function onLoadJQ() {
+        $jq('.map').maphilight({
+            strokeOpacity: "0",
+            fade: true
+        });
+        $jq('.map').css("background-size", "204px 383px");
+        /* $jq('area[data-key="head"]').data('maphilight', { 
+                      alwaysOn: true 
+                	}).trigger('alwaysOn.maphilight'); */
+
+        $jq(document).on('click', ".tabs area", function() {
+            $jq(this).data('maphilight', {
+                alwaysOn: true
+            }).trigger('alwaysOn.maphilight');
+
+            if (!$(this).hasClass('selected')) {
+                var onclick = $(this).attr('data-onclick');
+                var value = onclick.trim().split(',');
+                // showHPIPortionDetails(value[0].trim(), value[1].trim(), value[2].trim(), this);
+                $jq('.selected').data('maphilight', {
+                    alwaysOn: false
+                }).trigger('alwaysOn.maphilight');
+                $jq('.tabs area').removeClass('selected');
+                $jq(this).addClass('selected');
+            }
+        });
+
+    }
+
+
+    function showFrontPart(frontSide, backSide) {
+        onLoadJQ();
+        $("#" + frontSide).css("display", "block");
+        $("#" + backSide).css("display", "none");
+
+    }
+
+    function showBackPart(frontSide, backSide) {
+        onLoadJQ();
+        $("#" + frontSide).css("display", "none");
+        $("#" + backSide).css("display", "block");
+
+    }
+
+
+
+
+    // 08022021 tomorrow Start
+    function showHPIPortionDetails(body_part_no, parent_atr_no, gender, part_name) {
+        var datakey = $(part_name).attr("data-key");
+        var ajaxURL = "patHPILocationOnlAc.do?bodyPartNo=" + body_part_no + "&parentAttributeNo=" + parent_atr_no + "&gender=" + gender;
+        $.ajax({
+            url: ajaxURL,
+            success: function(result) {
+                $("#hpiLocationInfoDiv").html(result);
+                $("#hpiLocationInfoDiv2").html(result);
+            },
+            complete: function() {
+                $('#bodyPortionNameDiv').html('Location of ' + datakey);
+            }
+        });
+    }
+
+
+    // ajax of avater
+    $(document).on('click', '.avaterShow', function() {
+        var position = $(this).data('position');
+        $.ajax({
+            url: "{{url('avatar')}}/" + position,
+            type: 'Get',
+            success: function(data) {
+                onLoadJQ();
+                $('#loadAvatar').html(data);
+            }
+        })
+    })
+
+    $('.genderbutton').on('change', function() {
+        var genderVal = $(this).val();
+        var position = $(this).data('position');
+        if (genderVal == 'M') {
+            onLoadJQ();
+            $.ajax({
+                url: "{{url('avatar')}}/" + position,
+                type: 'Get',
+                success: function(data) {
+                    onLoadJQ();
+                    $('#loadAvatar').html(data);
+                }
+            })
+        } else {
+            onLoadJQ();
+            $.ajax({
+                url: "{{url('avatar')}}/" + position,
+                type: 'Get',
+                success: function(data) {
+                    onLoadJQ();
+                    $('#loadAvatar').html(data);
+                }
+            })
+        }
+
+    })
 </script>
 @endsection

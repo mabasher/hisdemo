@@ -17,6 +17,7 @@ use App\Model\Setup\District;
 use App\Model\Patient\Registration;
 use App\Model\Patient\Opconsultation;
 use App\Model\Patient\Oppatmovement;
+use App\Model\Prescription\Ehattribexamval;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
@@ -57,7 +58,8 @@ class OpappointmentController extends Controller
         $designation = Jobcode::where('jobtype_id', 4)->get();
         $specialty = Department::where('area_type_no', 115)->select('dept_no', 'dept_name')->get();
         $doctors = Doctorinfo::all();
-        return view('admin.opd.appointmentAdd', compact(['registrations','salutations', 'religions', 'bloodGroups', 'specialty', 'doctors', 'divisions', 'districts', 'regNo', 'designation']));
+        $chiefComplaint = Ehattribexamval::where('parent_atr_no', 'E02')->get();
+        return view('admin.opd.appointmentAdd', compact(['registrations','salutations', 'religions', 'bloodGroups', 'specialty', 'doctors', 'divisions', 'districts', 'regNo', 'designation','chiefComplaint']));
     }
 
 
@@ -78,7 +80,12 @@ class OpappointmentController extends Controller
     public function appointmentInsert(Request $r)
     {
         //return $r->all();
-        //    return Carbon::now();
+        $chiefComplaint = "";
+        foreach($r->chief_complaint as $k=>$q){
+            count($r->chief_complaint) == $k+1? $comma='' : $comma=',';
+            $chiefComplaint .= $q . $comma;
+        }
+
         $appid = $this->getAppointId();
         $cid = $this->getConsultation();
         $regno = '';
@@ -100,6 +107,7 @@ class OpappointmentController extends Controller
         $r->request->add(['appoint_no' => $appid]);
         $r->request->add(['created_at' => Carbon::now()]);
         $r->request->add(['start_time' => date("H:i:s", strtotime(request('start_time')))]);
+        $r->request->add(['chief_complaint' => $chiefComplaint]);
         $r->request->add(['confirm_flag' => 'Y']);
         $app = Opappointment::insert($r->except('_token'));
 
@@ -122,6 +130,7 @@ class OpappointmentController extends Controller
             'type_code' => $r->app_type,
             'created_by' =>auth()->user()->id
         ]);
+        
         DB::table('oppatmovements')->insert([
             'movement_name' => 'Appointment',
             'consult_no' => $cid,
@@ -131,18 +140,15 @@ class OpappointmentController extends Controller
             'created_by' =>auth()->user()->id
         ]);
 
+        DB::table('ehpatientexams')->insert([
+            'reg_no' => $regno,
+            'consult_no' => $cid,
+            'findings' => $chiefComplaint,
+            'created_by' =>auth()->user()->id
+        ]);
+
         return redirect('appointments');
     }
-
-    // public function generatePDF($id)
-    // {
-    //     $customPaper = array(0, 0, 250, 270);
-    //     $appid = Opappointment::find($id);
-    //     PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif', 'debugLayoutPaddingBox' => true]);
-    //     $pdf = PDF::loadView('admin.pdf.appointPdf', compact(['appid']))
-    //         ->setPaper($customPaper, 'landscape');
-    //     return $pdf->download('appid.pdf');
-    // }
 
     public function getAppointId()
     {

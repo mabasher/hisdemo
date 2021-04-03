@@ -40,7 +40,19 @@
                             <div class="form-group">
 								<label>Sub Department</label>
 								<input class="form-control" type="text" name="dept_name">
-							</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Area Type</label>
+                                <select class="custom-select" id="areaType" name="area_type_no">
+                                    <option value="">Select Department</option>
+                                    @foreach($areatype as $area)
+                                        <option value="{{$area->area_type_no}}">{{$area->area_type_name}}
+                                        </option>
+                                    @endforeach
+                                    
+                                </select>
+                            </div>
+                            
                             <div class="form-group">
                                 <label>Description</label>
                                 <textarea cols="30" rows="2" class="form-control"></textarea>

@@ -16,8 +16,19 @@ class Opconsultation extends Model
         return $this->belongsTo('App\Model\Patient\Registration','reg_no','reg_no');
     }
     
+    public function patAppinfo()
+    {
+        return $this->belongsTo('App\Model\Patient\Opappointment','reg_no','reg_no');
+    }
+
     public function oppatmovement()
     {
         return $this->hasMany(Oppatmovement::class, 'consult_no', 'consult_no' )->orderBy('opmovetype_id', 'desc');
     }
+
+    public function prescribtest()
+    {
+        return $this->hasMany('App\Model\Prescription\Ehprescpoe', 'reg_no', 'reg_no' );
+    }
+
 }

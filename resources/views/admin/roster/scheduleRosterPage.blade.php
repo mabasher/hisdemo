@@ -1,9 +1,9 @@
     @extends('layouts.app')
     @section('css')
     <style>
-.scroldiv {
-    /* overflow:scroll; */
-}
+/* .scroldiv {
+    overflow:scroll;
+} */
     </style>
     <!-- <link rel="stylesheet" href="{{asset('css/app.css')}}"> -->
     <link rel="stylesheet" href="{{asset('css/imgcss.css')}}">

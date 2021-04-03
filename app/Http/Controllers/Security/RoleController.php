@@ -69,37 +69,8 @@ class RoleController extends Controller
 
     public function saveRoleMenus(Request $r)    
     {
-        //Menu
-        //return $r->all();
         
         $menuId = implode(',', $r->menu_id);
-
-        // // Submenu
-        // if($r->submenu_id){
-        //     $submenu = array();
-        //     foreach ($r->submenu_id as $sm) {
-        //         $submenu[] = $sm;
-        //     }
-        //     $submenuId = implode(',', $submenu);
-        // }else{
-        //     $submenuId = "";
-        // }
-        
-
-        //  // Ssubmenu
-        //  if($r->ssubmenu_id){
-        //     $ssubmenu = array();
-        //     foreach ($r->ssubmenu_id as $ssm) {
-        //         $ssubmenu[] = $ssm;
-        //     }
-        //      $ssubmenuId = implode(',', $ssubmenu);
-        //  }else{
-        //     $ssubmenuId = "";
-        // }
-         
-    //   $r->request->add(['created_at' => \Carbon\Carbon::now()]);
-    //   $r->request->add(['menu_id' => $menuId]);
-
                   
        $validated = $r->validate([
         'menu_id' => 'required',

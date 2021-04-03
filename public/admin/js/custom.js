@@ -1,5 +1,4 @@
 function ageCalculator(birth) {  
- 
     var dob = new Date(birth);  
     var dobYear = dob.getYear();  
     var dobMonth = dob.getMonth();  
@@ -57,5 +56,4 @@ function ageCalculator(birth) {
     else ageString = "Welcome to Earth!";   
     
     return ageString;
-   
    }
