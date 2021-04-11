@@ -26,9 +26,8 @@
         </div> -->
     </div>
     <div class="row">
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-5 submenuScroll">
+
+        <div class="col-md-6 submenuScroll">
             <h4 class="page-title">Role Information</h4>
             <div class="table-responsive">
                 <div class="panel panel-primary filterable">
@@ -37,7 +36,7 @@
                             <tr class="filters">
                                 <th>#</th>
                                 <th><input type="text" class="form-control" placeholder="Role Name"></th>
-                                <th class="text-right"><a href="{{url('rolePage')}}" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i>Add</a></th>
+                                <th class="text-right"><a href="{{url('rolePage')}}" class="btn btn-primary"><i class="fa fa-plus"></i>Add</a></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,8 +63,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5 menuScroll">
-            <h4 class="page-title">Users Role Information</h4>
+        <div class="col-md-6 menuScroll">
+            <h4 class="page-title">Role Assign Information</h4>
             <div class="table-responsive">
                 <div class="panel panel-primary filterable">
                     <table class="table table-striped custom-table mb-0 datatable">
@@ -74,7 +73,7 @@
                                 <th>#</th>
                                 <th><input type="text" class="form-control" placeholder="User Name"></th>
                                 <th><input type="text" class="form-control" placeholder="Role Name"></th>
-                                <th class="text-right"><a href="{{url('roleUserPage')}}" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i>Add</a></th>
+                                <th class="text-right"><a href="{{url('roleUserPage')}}" class="btn btn-primary"><i class="fa fa-plus"></i>Add</a></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -101,8 +100,6 @@
                     </table>
                 </div>
             </div>
-        </div>
-        <div class="col-md-1">
         </div>
         
     </div>

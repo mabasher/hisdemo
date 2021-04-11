@@ -1,973 +1,848 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+  <head>
     <title>DTL</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
-    <!-- css -->
-    <!-- <link href="{{asset('template/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('template/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('template/plugins/cubeportfolio/css/cubeportfolio.min.css')}}">
-    <link href="{{asset('template/css/nivo-lightbox.css')}}" rel="stylesheet" />
-    <link href="{{asset('template/css/nivo-lightbox-theme/default/default.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('template/css/owl.carousel.css')}}" rel="stylesheet" media="screen" />
-    <link href="{{asset('template/css/owl.theme.css')}}" rel="stylesheet" media="screen" />
-    <link href="{{asset('template/css/animate.css')}}" rel="stylesheet" />
-    <link href="{{asset('template/css/style.css')}}" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+    <link rel="stylesheet" href="{{asset('template/css/animate.css')}}">
+    
+    <link rel="stylesheet" href="{{asset('template/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('template/css/owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{asset('template/css/magnific-popup.css')}}">
 
-    <link id="bodybg" href="{{asset('template/bodybg/bg1.css')}}" rel="stylesheet" type="text/css" />
-    <link id="t-colors" href="{{asset('template/color/default.css')}}" rel="stylesheet">-->
+    <link rel="stylesheet" href="{{asset('template/css/bootstrap-datepicker.css')}}">
+    <link rel="stylesheet" href="{{asset('template/css/jquery.timepicker.css')}}">
 
-    <link href="{{asset('css/template.css')}}" rel="stylesheet"> 
-
-
-</head>
-
-<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
-
-    <div id="wrapper">
-
-        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-            <div class="top-area">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6 col-md-6">
-                            <p class="bold text-left">Saturday - Friday, 8am to 10pm </p>
-                        </div>
-                        <div class="col-sm-6 col-md-6">
-                            <p class="bold text-right">Call us now +880 9617-171125
-                                <a href="{{url('table')}}">::</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container navigation">
-
-                <div class="navbar-header page-scroll">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target=".navbar-main-collapse">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <a class="navbar-brand" href="index.html">
-                        <img src="{{asset('template/img/darco.png')}}" alt="" height="35" />
-                    </a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#intro">Home</a></li>
-                        <!-- <li><a href="#service">Service</a></li> -->
-                        <li><a href="#doctor">Doctors</a></li>
-                        <!-- <li><a href="#facilities">Facilities</a></li>
-				<li><a href="#pricing">Pricing</a></li> 
-				<li class="dropdown">
-				  <a href="#" class="dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>
-				  <ul class="dropdown-menu">
-					<li><a href="index.html">Home form</a></li>
-					<li><a href="index-video.html">Home video</a></li>
-					<li><a href="index-cta.html">Home CTA</a></li>
-					<li><a href="https://bootstrapmade.com">Download</a></li>
-				  </ul>
-				</li>-->
-                        <li><a href="{{route('login')}}">SignIn</a></li>
-                        <li><a href="{{route('register')}}">SignUp</a></li>
-                        <!-- <li><a href="{{url('registration')}}">Registration</a></li> -->
-                        <!-- <li><a href="{{route('basherReg')}}">Registration R</a></li>
-				<li><a href="{{url('registration')}}">Registration U</a></li> -->
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-            <!-- /.container -->
-        </nav>
-
-
-        <!-- Section: intro -->
-        <section id="intro" class="intro">
-            <div class="intro-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <h1></h1>
-                            <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
-                                <h2 class="h-ultra">Here Medical Name</h2>
-                            </div>
-                            <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.1s">
-                                <h4 class="h-light">Provide <span class="color">best quality healthcare</span> for you
-                                </h4>
-                            </div>
-							<br>
-                            <div class="well well-trans">
-                                <div class="wow fadeInRight" data-wow-delay="0.1s">
-
-                                    <ul class="lead-list">
-                                        <!-- <li><span class="fa fa-check fa-2x icon-success"></span> <span
-                                                class="list"><strong>Affordable monthly premium
-                                                    packages</strong><br />Lorem ipsum dolor sit amet, in verterem
-                                                persecuti vix, sit te meis</span></li> -->
-                                        <li><span class="fa fa-check fa-2x icon-success"></span> <span
-                                                class="list"><strong>Choose your favourite doctor</strong><br />Sit zril
-                                                sanctus scaevola ei, ea usu movet graeco</span></li>
-                                        <li><span class="fa fa-check fa-2x icon-success"></span> <span
-                                                class="list"><strong>Only use friendly environment</strong><br />Wisi
-                                                lobortis eos ex, per at movet delectus, qui no vocent deleniti</span>
-                                        </li>
-                                    </ul>
-
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <!-- <div class="col-lg-6">
-						<div class="form-wrapper">
-						<div class="wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.2s">
-						
-							<div class="panel panel-skin">
-							<div class="panel-heading">
-									<h3 class="panel-title"><span class="fa fa-pencil-square-o"></span> Make an appoinment <small>(It's free!)</small></h3>
-									</div>
-									<div class="panel-body">
-									<form role="form" class="lead">
-										<div class="row">
-											<div class="col-xs-6 col-sm-6 col-md-6">
-												<div class="form-group">
-													<label>First Name</label>
-													<input type="text" name="first_name" id="first_name" class="form-control input-md">
-												</div>
-											</div>
-											<div class="col-xs-6 col-sm-6 col-md-6">
-												<div class="form-group">
-													<label>Last Name</label>
-													<input type="text" name="last_name" id="last_name" class="form-control input-md">
-												</div>
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-xs-6 col-sm-6 col-md-6">
-												<div class="form-group">
-													<label>Email</label>
-													<input type="email" name="email" id="email" class="form-control input-md">
-												</div>
-											</div>
-											<div class="col-xs-6 col-sm-6 col-md-6">
-												<div class="form-group">
-													<label>Phone number</label>
-													<input type="text" name="phone" id="phone" class="form-control input-md">
-												</div>
-											</div>
-										</div>
-										
-										<input type="submit" value="Submit" class="btn btn-skin btn-block btn-lg">
-										
-										<p class="lead-footer">* We'll contact you by phone & email later</p>
-									
-									</form>
+    <link rel="stylesheet" href="{{asset('template/css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{asset('template/css/style.css')}}">
+  </head>
+  <body>
+  	<!-- <div class="top py-1">
+  		<div class="container">
+  			<div class="row">
+	    		<div class="col d-flex align-items-center">
+	    			<p class="mb-0"><a href="#">chiropractic@email.com</a> | <a href="#">Help Desk</a> | </p>
+	    		</div>
+	    		<div class="col-4 d-flex justify-content-end">
+	    			<div class="social-media">
+			    		<p class="mb-0 d-flex">
+			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
+			    		</p>
+		        </div>
+	    		</div>
+	    	</div>
+  		</div>
+  	</div> -->
+		<div class="wrap">
+	    <div class="container">
+				<div class="row justify-content-between">
+					<div class="col-md-3 mb-md-0 mb-4 d-flex align-items-center">
+						<a class="navbar-brand" href="#">Darco <span class="text-success"> Technologies</span></a>
+					</div>
+					<div class="col-md-7">
+						<div class="row">
+							<div class="col-md-8 mb-md-0 mb-3">
+								<div class="top-wrap d-flex">
+									<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-location-arrow"></span></div>
+									<div class="text"><span>Address</span><span>House #1150 Road #9/A Avenue #11 DOHS Mirpur-1216</span></div>
 								</div>
-							</div>				
-						
+							</div>
+							<div class="col">
+								<div class="top-wrap d-flex">
+									<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-phone"></span></div>
+									<div class="text"><span>Call us</span><span>(+880) 9617-171125</span></div>
+								</div>
+							</div>
 						</div>
-						</div>
-					</div>					 -->
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- /Section: intro -->
-
-       
-        <!-- <section id="boxes" class="home-section paddingtop-80">
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-3 col-md-3">
-                        <div class="wow fadeInUp" data-wow-delay="0.2s">
-                            <div class="box text-center">
-
-                                <i class="fa fa-check fa-3x circled bg-skin"></i>
-                                <h4 class="h-bold">Make an appoinment</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet, nec te mollis utroque honestatis, ut utamur molestiae
-                                    vix, graecis eligendi ne.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-md-3">
-                        <div class="wow fadeInUp" data-wow-delay="0.2s">
-                            <div class="box text-center">
-
-                                <i class="fa fa-list-alt fa-3x circled bg-skin"></i>
-                                <h4 class="h-bold">Choose your package</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet, nec te mollis utroque honestatis, ut utamur molestiae
-                                    vix, graecis eligendi ne.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-md-3">
-                        <div class="wow fadeInUp" data-wow-delay="0.2s">
-                            <div class="box text-center">
-                                <i class="fa fa-user-md fa-3x circled bg-skin"></i>
-                                <h4 class="h-bold">Help by specialist</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet, nec te mollis utroque honestatis, ut utamur molestiae
-                                    vix, graecis eligendi ne.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-md-3">
-                        <div class="wow fadeInUp" data-wow-delay="0.2s">
-                            <div class="box text-center">
-
-                                <i class="fa fa-hospital-o fa-3x circled bg-skin"></i>
-                                <h4 class="h-bold">Get diagnostic report</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet, nec te mollis utroque honestatis, ut utamur molestiae
-                                    vix, graecis eligendi ne.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-       
-
-
-        <section id="callaction" class="home-section paddingtop-40">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="callaction bg-gray">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="wow fadeInUp" data-wow-delay="0.1s">
-                                        <div class="cta-text">
-                                            <h3>In an emergency? Need help now?</h3>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit uisque interdum
-                                                ante eget faucibus. </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="wow lightSpeedIn" data-wow-delay="0.1s">
-                                        <div class="cta-btn">
-                                            <a href="#" class="btn btn-skin btn-lg">Book an appoinment</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        
-        <section id="service" class="home-section nopadding paddingtop-60">
-
-            <div class="container">
-
-                <div class="row">
-                    <div class="col-sm-6 col-md-6">
-                        <div class="wow fadeInUp" data-wow-delay="0.2s">
-                            <img src="img/dummy/img-1.jpg" class="img-responsive" alt="" />
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-md-3">
-
-                        <div class="wow fadeInRight" data-wow-delay="0.1s">
-                            <div class="service-box">
-                                <div class="service-icon">
-                                    <span class="fa fa-stethoscope fa-3x"></span>
-                                </div>
-                                <div class="service-desc">
-                                    <h5 class="h-light">Medical checkup</h5>
-                                    <p>Vestibulum tincidunt enim in pharetra malesuada.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="wow fadeInRight" data-wow-delay="0.2s">
-                            <div class="service-box">
-                                <div class="service-icon">
-                                    <span class="fa fa-wheelchair fa-3x"></span>
-                                </div>
-                                <div class="service-desc">
-                                    <h5 class="h-light">Nursing Services</h5>
-                                    <p>Vestibulum tincidunt enim in pharetra malesuada.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="wow fadeInRight" data-wow-delay="0.3s">
-                            <div class="service-box">
-                                <div class="service-icon">
-                                    <span class="fa fa-plus-square fa-3x"></span>
-                                </div>
-                                <div class="service-desc">
-                                    <h5 class="h-light">Pharmacy</h5>
-                                    <p>Vestibulum tincidunt enim in pharetra malesuada.</p>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="col-sm-3 col-md-3">
-
-                        <div class="wow fadeInRight" data-wow-delay="0.1s">
-                            <div class="service-box">
-                                <div class="service-icon">
-                                    <span class="fa fa-h-square fa-3x"></span>
-                                </div>
-                                <div class="service-desc">
-                                    <h5 class="h-light">Gyn Care</h5>
-                                    <p>Vestibulum tincidunt enim in pharetra malesuada.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="wow fadeInRight" data-wow-delay="0.2s">
-                            <div class="service-box">
-                                <div class="service-icon">
-                                    <span class="fa fa-filter fa-3x"></span>
-                                </div>
-                                <div class="service-desc">
-                                    <h5 class="h-light">Neurology</h5>
-                                    <p>Vestibulum tincidunt enim in pharetra malesuada.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="wow fadeInRight" data-wow-delay="0.3s">
-                            <div class="service-box">
-                                <div class="service-icon">
-                                    <span class="fa fa-user-md fa-3x"></span>
-                                </div>
-                                <div class="service-desc">
-                                    <h5 class="h-light">Sleep Center</h5>
-                                    <p>Vestibulum tincidunt enim in pharetra malesuada.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </section> -->
-        
-
-
-        <!-- Section: team -->
-        <section id="doctor" class="home-section bg-gray paddingbot-60">
-            <div class="container marginbot-50">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="wow fadeInDown" data-wow-delay="0.1s">
-                            <div class="section-heading text-center">
-                                <h2 class="h-bold">Doctors</h2>
-                                <p>Ea melius ceteros oportere quo, pri habeo viderer facilisi ei</p>
-                            </div>
-                        </div>
-                        <div class="divider-short"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-
-                        <div id="filters-container" class="cbp-l-filters-alignLeft">
-                            <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">All (<div
-                                    class="cbp-filter-counter"></div>)</div>
-                            <div data-filter=".cardiologist" class="cbp-filter-item">Cardiologist (<div
-                                    class="cbp-filter-counter"></div>)</div>
-                            <div data-filter=".psychiatrist" class="cbp-filter-item">Psychiatrist (<div
-                                    class="cbp-filter-counter"></div>)</div>
-                            <div data-filter=".neurologist" class="cbp-filter-item">Neurologist (<div
-                                    class="cbp-filter-counter"></div>)</div>
-                        </div>
-
-                        <div id="grid-container" class="cbp-l-grid-team">
-                            <ul>
-                                <li class="cbp-item psychiatrist">
-                                    <a href="#" class="cbp-caption">
-                                        <div class="cbp-caption-defaultWrap">
-                                            <img src="{{asset('template/img/team/1.jpg')}}" alt="Test" width="100%">
-                                        </div>
-                                        <div class="cbp-caption-activeWrap">
-                                            <div class="cbp-l-caption-alignCenter">
-                                                <div class="cbp-l-caption-body">
-                                                    <div class="cbp-l-caption-text">VIEW PROFILE</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="cbp-l-grid-team-name">Alice
-                                        Grue</a>
-                                    <div class="cbp-l-grid-team-position">Psychiatrist</div>
-                                </li>
-                                <li class="cbp-item cardiologist">
-                                    <a href="#" class="cbp-caption">
-                                        <div class="cbp-caption-defaultWrap">
-                                            <img src="{{asset('template/img/team/2.jpg')}}" alt="" width="100%">
-                                        </div>
-                                        <div class="cbp-caption-activeWrap">
-                                            <div class="cbp-l-caption-alignCenter">
-                                                <div class="cbp-l-caption-body">
-                                                    <div class="cbp-l-caption-text">VIEW PROFILE</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class=" cbp-l-grid-team-name">Joseph
-                                        Murphy</a>
-                                    <div class="cbp-l-grid-team-position">Cardiologist</div>
-                                </li>
-                                <li class="cbp-item cardiologist">
-                                    <a href="#" class="cbp-caption">
-                                        <div class="cbp-caption-defaultWrap">
-                                            <img src="{{asset('template/img/team/3.jpg')}}" alt="" width="100%">
-                                        </div>
-                                        <div class="cbp-caption-activeWrap">
-                                            <div class="cbp-l-caption-alignCenter">
-                                                <div class="cbp-l-caption-body">
-                                                    <div class="cbp-l-caption-text">VIEW PROFILE</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="cbp-l-grid-team-name">Alison
-                                        Davis</a>
-                                    <div class="cbp-l-grid-team-position">Cardiologist</div>
-                                </li>
-                                <li class="cbp-item neurologist">
-                                    <a href="#" class="cbp-caption">
-                                        <div class="cbp-caption-defaultWrap">
-                                            <img src="{{asset('template/img/team/4.jpg')}}" alt="" width="100%">
-                                        </div>
-                                        <div class="cbp-caption-activeWrap">
-                                            <div class="cbp-l-caption-alignCenter">
-                                                <div class="cbp-l-caption-body">
-                                                    <div class="cbp-l-caption-text">VIEW PROFILE</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="cbp-l-grid-team-name">Adam
-                                        Taylor</a>
-                                    <div class="cbp-l-grid-team-position">Neurologist</div>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-        <!-- /Section: team -->
-
-
-
-        <!-- Section: works -->
-        <!-- <section id="facilities" class="home-section paddingbot-60">
-            <div class="container marginbot-50">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="wow fadeInDown" data-wow-delay="0.1s">
-                            <div class="section-heading text-center">
-                                <h2 class="h-bold">Our facilities</h2>
-                                <p>Ea melius ceteros oportere quo, pri habeo viderer facilisi ei</p>
-                            </div>
-                        </div>
-                        <div class="divider-short"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-12">
-                        <div class="wow bounceInUp" data-wow-delay="0.2s">
-                            <div id="owl-works" class="owl-carousel">
-                                <div class="item"><a href="img/photo/1.jpg" title="This is an image title"
-                                        data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"><img
-                                            src="{{asset('template/img/photo/1.jpg')}}" class="img-responsive"
-                                            alt="img"></a></div>
-                                <div class="item"><a href="img/photo/2.jpg" title="This is an image title"
-                                        data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/2@2x.jpg"><img
-                                            src="{{asset('template/img/photo/2.jpg')}}" class="img-responsive "
-                                            alt="img"></a></div>
-                                <div class="item"><a href="img/photo/3.jpg" title="This is an image title"
-                                        data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/3@2x.jpg"><img
-                                            src="{{asset('template/img/photo/3.jpg')}}" class="img-responsive "
-                                            alt="img"></a></div>
-                                <div class="item"><a href="img/photo/4.jpg" title="This is an image title"
-                                        data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/4@2x.jpg"><img
-                                            src="{{asset('template/img/photo/4.jpg')}}" class="img-responsive "
-                                            alt="img"></a></div>
-                                <div class="item"><a href="img/photo/5.jpg" title="This is an image title"
-                                        data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/5@2x.jpg"><img
-                                            src="{{asset('template/img/photo/5.jpg')}}" class="img-responsive "
-                                            alt="img"></a></div>
-                                <div class="item"><a href="img/photo/6.jpg" title="This is an image title"
-                                        data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/6@2x.jpg"><img
-                                            src="{{asset('template/img/photo/6.jpg')}}" class="img-responsive "
-                                            alt="img"></a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="testimonial" class="home-section paddingbot-60 parallax" data-stellar-background-ratio="0.5">
-
-            <div class="carousel-reviews broun-block">
-                <div class="container">
-                    <div class="row">
-                        <div id="carousel-reviews" class="carousel slide" data-ride="carousel">
-
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="block-text rel zmin">
-                                            <a title="" href="#">Emergency Contraception</a>
-                                            <div class="mark">My rating: <span class="rating-input"><span data-value="0"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="1"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="2"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="3"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="4"
-                                                        class="glyphicon glyphicon-star-empty"></span><span
-                                                        data-value="5" class="glyphicon glyphicon-star-empty"></span>
-                                                </span></div>
-                                            <p>Ne eam errem semper. Laudem detracto phaedrum cu vim, pri cu errem
-                                                fierent fabellas. Quis magna in ius, pro vidit nonumy te, nostrud ...
-                                            </p>
-                                            <ins class="ab zmin sprite sprite-i-triangle block"></ins>
-                                        </div>
-                                        <div class="person-text rel text-light">
-                                            <img src="img/testimonials/1.jpg" alt="" class="person img-circle" />
-                                            <a title="" href="#">Anna</a>
-                                            <span>Chicago, Illinois</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6 hidden-xs">
-                                        <div class="block-text rel zmin">
-                                            <a title="" href="#">Orthopedic Surgery</a>
-                                            <div class="mark">My rating: <span class="rating-input"><span data-value="0"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="1"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="2"
-                                                        class="glyphicon glyphicon-star-empty"></span><span
-                                                        data-value="3"
-                                                        class="glyphicon glyphicon-star-empty"></span><span
-                                                        data-value="4"
-                                                        class="glyphicon glyphicon-star-empty"></span><span
-                                                        data-value="5" class="glyphicon glyphicon-star-empty"></span>
-                                                </span></div>
-                                            <p>Ne eam errem semper. Laudem detracto phaedrum cu vim, pri cu errem
-                                                fierent fabellas. Quis magna in ius, pro vidit nonumy te, nostrud ...
-                                            </p>
-                                            <ins class="ab zmin sprite sprite-i-triangle block"></ins>
-                                        </div>
-                                        <div class="person-text rel text-light">
-                                            <img src="img/testimonials/2.jpg" alt="" class="person img-circle" />
-                                            <a title="" href="#">Matthew G</a>
-                                            <span>San Antonio, Texas</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6 hidden-sm hidden-xs">
-                                        <div class="block-text rel zmin">
-                                            <a title="" href="#">Medical consultation</a>
-                                            <div class="mark">My rating: <span class="rating-input"><span data-value="0"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="1"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="2"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="3"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="4"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="5"
-                                                        class="glyphicon glyphicon-star"></span> </span></div>
-                                            <p>Ne eam errem semper. Laudem detracto phaedrum cu vim, pri cu errem
-                                                fierent fabellas. Quis magna in ius, pro vidit nonumy te, nostrud ...
-                                            </p>
-                                            <ins class="ab zmin sprite sprite-i-triangle block"></ins>
-                                        </div>
-                                        <div class="person-text rel text-light">
-                                            <img src="img/testimonials/3.jpg" alt="" class="person img-circle" />
-                                            <a title="" href="#">Scarlet Smith</a>
-                                            <span>Dallas, Texas</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="block-text rel zmin">
-                                            <a title="" href="#">Birth control pills</a>
-                                            <div class="mark">My rating: <span class="rating-input"><span data-value="0"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="1"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="2"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="3"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="4"
-                                                        class="glyphicon glyphicon-star-empty"></span><span
-                                                        data-value="5" class="glyphicon glyphicon-star-empty"></span>
-                                                </span></div>
-                                            <p>Ne eam errem semper. Laudem detracto phaedrum cu vim, pri cu errem
-                                                fierent fabellas. Quis magna in ius, pro vidit nonumy te, nostrud ...
-                                            </p>
-                                            <ins class="ab zmin sprite sprite-i-triangle block"></ins>
-                                        </div>
-                                        <div class="person-text rel text-light">
-                                            <img src="img/testimonials/4.jpg" alt="" class="person img-circle" />
-                                            <a title="" href="#">Lucas Thompson</a>
-                                            <span>Austin, Texas</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6 hidden-xs">
-                                        <div class="block-text rel zmin">
-                                            <a title="" href="#">Radiology</a>
-                                            <div class="mark">My rating: <span class="rating-input"><span data-value="0"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="1"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="2"
-                                                        class="glyphicon glyphicon-star-empty"></span><span
-                                                        data-value="3"
-                                                        class="glyphicon glyphicon-star-empty"></span><span
-                                                        data-value="4"
-                                                        class="glyphicon glyphicon-star-empty"></span><span
-                                                        data-value="5" class="glyphicon glyphicon-star-empty"></span>
-                                                </span></div>
-                                            <p>Ne eam errem semper. Laudem detracto phaedrum cu vim, pri cu errem
-                                                fierent fabellas. Quis magna in ius, pro vidit nonumy te, nostrud ...
-                                            </p>
-                                            <ins class="ab zmin sprite sprite-i-triangle block"></ins>
-                                        </div>
-                                        <div class="person-text rel text-light">
-                                            <img src="img/testimonials/5.jpg" alt="" class="person img-circle" />
-                                            <a title="" href="#">Ella Mentree</a>
-                                            <span>Fort Worth, Texas</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6 hidden-sm hidden-xs">
-                                        <div class="block-text rel zmin">
-                                            <a title="" href="#">Cervical Lesions</a>
-                                            <div class="mark">My rating: <span class="rating-input"><span data-value="0"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="1"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="2"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="3"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="4"
-                                                        class="glyphicon glyphicon-star"></span><span data-value="5"
-                                                        class="glyphicon glyphicon-star"></span> </span></div>
-                                            <p>Ne eam errem semper. Laudem detracto phaedrum cu vim, pri cu errem
-                                                fierent fabellas. Quis magna in ius, pro vidit nonumy te, nostrud ...
-                                            </p>
-                                            <ins class="ab zmin sprite sprite-i-triangle block"></ins>
-                                        </div>
-                                        <div class="person-text rel text-light">
-                                            <img src="img/testimonials/6.jpg" alt="" class="person img-circle" />
-                                            <a title="" href="#">Suzanne Adam</a>
-                                            <span>Detroit, Michigan</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-                            <a class="left carousel-control" href="#carousel-reviews" role="button" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-reviews" role="button" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> 
-
-        <section id="pricing" class="home-section bg-gray paddingbot-60">
-            <div class="container marginbot-50">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="wow lightSpeedIn" data-wow-delay="0.1s">
-                            <div class="section-heading text-center">
-                                <h2 class="h-bold">Health packages</h2>
-                                <p>Take charge of your health today with our specially designed health packages</p>
-                            </div>
-                        </div>
-                        <div class="divider-short"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container">
-
-                <div class="row">
-
-                    <div class="col-sm-4 pricing-box">
-                        <div class="wow bounceInUp" data-wow-delay="0.1s">
-                            <div class="pricing-content general">
-                                <h2>Basic Fit 1 Package</h2>
-                                <h3>$33<sup>.99</sup> <span>/ one time</span></h3>
-                                <ul>
-                                    <li>Anthropometry (BMI, WH Ratio) <i class="fa fa-check icon-success"></i></li>
-                                    <li>Post Examination Review <i class="fa fa-check icon-success"></i></li>
-                                    <li>General Screening – Basic <i class="fa fa-check icon-success"></i></li>
-                                    <li><del>Health Screening Report</del> <i class="fa fa-times icon-danger"></i></li>
-                                </ul>
-
-                                <div class="price-bottom">
-                                    <a href="#" class="btn btn-skin btn-lg">Purchase</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 pricing-box featured-price">
-                        <div class="wow bounceInUp" data-wow-delay="0.3s">
-                            <div class="pricing-content featured">
-                                <h2>Golden Glow Package</h2>
-                                <h3>$65<sup>.99</sup> <span>/ one time</span></h3>
-                                <ul>
-                                    <li>Anthropometry (BMI, WH Ratio) <i class="fa fa-check icon-success"></i></li>
-                                    <li>Post Examination Review <i class="fa fa-check icon-success"></i></li>
-                                    <li>General Screening – Basic <i class="fa fa-check icon-success"></i></li>
-                                    <li>Body Composition Analysis <i class="fa fa-check icon-success"></i></li>
-                                    <li>GR Assessment & Scoring <i class="fa fa-check icon-success"></i></li>
-                                </ul>
-
-                                <div class="price-bottom">
-                                    <a href="#" class="btn btn-skin btn-lg">Purchase</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4 pricing-box">
-                        <div class="wow bounceInUp" data-wow-delay="0.2s">
-                            <div class="pricing-content general last">
-                                <h2>Basic Fit 2 Package</h2>
-                                <h3>$47<sup>.99</sup> <span>/ one time</span></h3>
-                                <ul>
-                                    <li>Anthropometry (BMI, WH Ratio) <i class="fa fa-check icon-success"></i></li>
-                                    <li>Post Examination Review <i class="fa fa-check icon-success"></i></li>
-                                    <li>General Screening – Regular <i class="fa fa-check icon-success"></i></li>
-                                    <li><del>Health Screening Report</del> <i class="fa fa-times icon-danger"></i></li>
-                                </ul>
-
-                                <div class="price-bottom">
-                                    <a href="#" class="btn btn-skin btn-lg">Purchase</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-       
-
-        <section id="partner" class="home-section paddingbot-60">
-            <div class="container marginbot-50">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="wow lightSpeedIn" data-wow-delay="0.1s">
-                            <div class="section-heading text-center">
-                                <h2 class="h-bold">Our partner</h2>
-                                <p>Take charge of your health today with our specially designed health packages</p>
-                            </div>
-                        </div>
-                        <div class="divider-short"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6 col-md-3">
-                        <div class="partner">
-                            <a href="#"><img src="img/dummy/partner-1.jpg" alt="" /></a>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <div class="partner">
-                            <a href="#"><img src="img/dummy/partner-2.jpg" alt="" /></a>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <div class="partner">
-                            <a href="#"><img src="img/dummy/partner-3.jpg" alt="" /></a>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <div class="partner">
-                            <a href="#"><img src="img/dummy/partner-4.jpg" alt="" /></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>-->
-
-        <footer>
-
-            <!-- <div class="container">
-                <div class="row">
-                    <div class="col-sm-6 col-md-4">
-                        <div class="wow fadeInDown" data-wow-delay="0.1s">
-                            <div class="widget">
-                                <h5>About Medicio</h5>
-                                <p>
-                                    Lorem ipsum dolor sit amet, ne nam purto nihil impetus, an facilisi accommodare sea
-                                </p>
-                            </div>
-                        </div>
-                        <div class="wow fadeInDown" data-wow-delay="0.1s">
-                            <div class="widget">
-                                <h5>Information</h5>
-                                <ul>
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">Laboratory</a></li>
-                                    <li><a href="#">Medical treatment</a></li>
-                                    <li><a href="#">Terms & conditions</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4">
-                        <div class="wow fadeInDown" data-wow-delay="0.1s">
-                            <div class="widget">
-                                <h5>Medicio center</h5>
-                                <p>
-                                    Nam leo lorem, tincidunt id risus ut, ornare tincidunt naqunc sit amet.
-                                </p>
-                                <ul>
-                                    <li>
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-calendar-o fa-stack-1x fa-inverse"></i>
-                                        </span> Monday - Saturday, 8am to 10pm
-                                    </li>
-                                    <li>
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-phone fa-stack-1x fa-inverse"></i>
-                                        </span> +62 0888 904 711
-                                    </li>
-                                    <li>
-                                        <span class="fa-stack fa-lg">
-                                            <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
-                                        </span> hello@medicio.com
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4">
-                        <div class="wow fadeInDown" data-wow-delay="0.1s">
-                            <div class="widget">
-                                <h5>Our location</h5>
-                                <p>The Suithouse V303, Kuningan City, Jakarta Indonesia 12940</p>
-
-                            </div>
-                        </div>
-                        <div class="wow fadeInDown" data-wow-delay="0.1s">
-                            <div class="widget">
-                                <h5>Follow us</h5>
-                                <ul class="company-social">
-                                    <li class="social-facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li class="social-twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li class="social-google"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li class="social-vimeo"><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
-                                    <li class="social-dribble"><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <div class="sub-footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6 col-md-6 col-lg-6">
-                            <div class="wow fadeInLeft" data-wow-delay="0.1s">
-                                <div class="text-left">
-                                    <p>&copy;Copyright 2020 - Medicare. All rights reserved.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-6 col-lg-6">
-                            <div class="wow fadeInRight" data-wow-delay="0.1s">
-                                <div class="text-right">
-                                    <p><a href="https://www.darcoltd.com/">Provided </a> by Darco Technologies</p>
-                                </div>
-                            
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-        <!-- modal Start -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="fa fa-bars"></span> Menu
+	      </button>
+				<div class="order-lg-last">
+          <a href="#" class="btn btn-primary">Make an appointment</a>
         </div>
-        <!-- modal End -->
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav mr-auto">
+	        	<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="team.html" class="nav-link">Doctors</a></li>
+            <li class="nav-item"><a href="department.html" class="nav-link">Departments</a></li>
+	        	<li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+	        	<!-- <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+              <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li> -->
+            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="{{route('login')}}" class="nav-link">SignIn</a></li>
+            <li class="nav-item"><a href="{{route('register')}}" class="nav-link">SignUp</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+    <div class="hero-wrap">
+	    <div class="home-slider owl-carousel">
+	      <div class="slider-item" style="background-image:url(template/images/bg_1.jpg);">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row no-gutters slider-text align-items-center justify-content-end">
+		          <div class="col-md-6 ftco-animate">
+		          	<div class="text w-100">
+			            <h3 class="mb-4  ">Welcome to Darco Technologies</h3>
+			            <p class="text-success">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+			            <p><a href="#" class="btn btn-primary">Make an appointment</a></p>
+		            </div>
+		          </div>
+		        </div>
+	        </div>
+	      </div>
 
-    </div>
-    <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+	      <div class="slider-item" style="background-image:url(template/images/bg_2.jpg);">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row no-gutters slider-text align-items-center justify-content-end">
+		          <div class="col-md-6 ftco-animate">
+		          	<div class="text w-100">
+			            <h3 class="mb-4 text-white">Darco care for the whole family</h3>
+			            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+			            <p><a href="#" class="btn btn-primary">Make an appointment</a></p>
+		            </div>
+		          </div>
+		        </div>
+	        </div>
+         </div>
+         
+         <div class="slider-item" style="background-image:url(template/images/bg_3.jpg);">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row no-gutters slider-text align-items-center justify-content-end">
+		          <div class="col-md-6 ftco-animate">
+		          	<div class="text w-100">
+			            <h3 class="mb-4">We are here for Your care</h3>
+			            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+			            <p><a href="#" class="btn btn-primary">Make an appointment</a></p>
+		            </div>
+		          </div>
+		        </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
 
-    <script src="{{asset('js/template.js')}}"></script>
-    <script src="{{asset('template/js/custom.js')}}"></script>
+	  <section class="ftco-appointment ftco-section ftco-no-pt ftco-no-pb">
+			<div class="overlay"></div>
+    	<div class="container">
+    		<div class="row d-md-flex justify-content-center">
+    			<div class="col-md-12">
+	    			<div class="wrap-appointment d-md-flex">
+		    			<div class="col-md-8 bg-primary p-5 heading-section heading-section-white">
+		    				<span class="subheading">Booking an Appointment</span>
+		    				<h2 class="mb-4">Free Consultation</h2>
+		    				<form action="#" class="appointment">
+		    					<div class="row justify-content-center">
+										<div class="col-md-6">
+											<div class="form-group">
+					              <input type="text" class="form-control" placeholder="Your Name">
+					            </div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+					              <input type="text" class="form-control" placeholder="Phone number">
+					            </div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+					    					<div class="form-field">
+			          					<div class="select-wrap">
+			                      <div class="icon"><span class="fa fa-chevron-down"></span></div>
+			                      <select name="" id="" class="form-control">
+			                      	<option value="">Select Services</option>
+			                        <option value="">Spinal Manupulation</option>
+			                        <option value="">Electrotherapy</option>
+			                        <option value="">Manual Lymphatic</option>
+			                        <option value="">Medical Acupuncture</option>
+			                        <option value="">Therapeutic Exercise</option>
+			                        <option value="">Joint Mobilization</option>
+			                      </select>
+			                    </div>
+					              </div>
+					    				</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+					    					<div class="form-field">
+			          					<div class="select-wrap">
+			                      <div class="icon"><span class="fa fa-chevron-down"></span></div>
+			                      <select name="" id="" class="form-control">
+			                      	<option value="">Select Chiropractor</option>
+			                        <option value="">John Doe</option>
+			                        <option value="">William Smith</option>
+			                        <option value="">Danny Green</option>
+			                        <option value="">Jason Thompson</option>
+			                      </select>
+			                    </div>
+					              </div>
+					    				</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+					    					<div class="input-wrap">
+					            		<div class="icon"><span class="fa fa-calendar"></span></div>
+					            		<input type="text" class="form-control appointment_date" placeholder="Date">
+				            		</div>
+					    				</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+					    					<div class="input-wrap">
+					            		<div class="icon"><span class="fa fa-clock-o"></span></div>
+					            		<input type="text" class="form-control appointment_time" placeholder="Time">
+				            		</div>
+					    				</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+					              <input type="submit" value="Send message" class="btn btn-secondary py-3 px-4">
+					            </div>
+										</div>
+		    					</div>
+			          </form>
+		    			</div>
+		    			<div class="col-md-4 bg-white text-center p-5">
+		    				<div class="desc border-bottom pb-4">
+		    					<h2>Business Hours</h2>
+			              <div class="opening-hours">
+			              	<h4>Opening Days:</h4>
+			              	<p class="pl-3">
+			              		<span><strong>Monday – Friday:</strong> 9am to 20 pm</span>
+			              		<span><strong>Saturday :</strong> 9am to 17 pm</span>
+			              	</p>
+			              	<h4>Vacations:</h4>
+			              	<p class="pl-3">
+			              		<span>All Sunday Days</span>
+			              		<span>All Official Holidays</span>
+			              	</p>
+			              </div>
+		    				</div>
+								<div class="desc pt-4 ">
+									<h3 class="heading">For Emergency Cases</h3>
+									<span class="phone">(+01) 123 456 7890</span>
+								</div>
+		    			</div>
+		    		</div>
+		    	</div>
+    		</div>
+    	</div>
+    </section>
 
-    <!-- Core JavaScript Files -->
-    <!-- <script src="{{asset('template/js/jquery.min.js')}}"></script>
-    <script src="{{asset('template/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('template/js/jquery.easing.min.js')}}"></script>
-    <script src="{{asset('template/js/wow.min.js')}}"></script>
-    <script src="{{asset('template/js/jquery.scrollTo.js')}}"></script>
-    <script src="{{asset('template/js/jquery.appear.js')}}"></script>
-    <script src="{{asset('template/js/stellar.js')}}"></script>
-    <script src="{{asset('template/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js')}}"></script>
-    <script src="{{asset('template/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('template/js/nivo-lightbox.min.js')}}"></script>
-    <script src="{{asset('template/js/custom.js')}}"></script> -->
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row justify-content-center pb-5 mb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading">We offer Services</span>
+            <h2>Our Benefits</h2>
+          </div>
+        </div>
+    		<div class="row">
+          <div class="col-md-4 services ftco-animate">
+            <div class="d-block d-flex">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<span class="flaticon-chiropractic"></span>
+              </div>
+              <div class="media-body pl-3">
+                <h3 class="heading">Spinal Manupulation</h3>
+                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                <p><a href="#" class="btn-custom">Read more</a></p>
+              </div>
+            </div>
+            <div class="d-block d-flex">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<span class="flaticon-acupuncture"></span>
+              </div>
+              <div class="media-body pl-3">
+                <h3 class="heading">Medical Acupuncture</h3>
+                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                <p><a href="#" class="btn-custom">Read more</a></p>
+              </div>
+            </div> 
+
+          </div>
+          <div class="col-md-4 services ftco-animate">
+            <div class="d-block d-flex">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<span class="flaticon-electrotherapy"></span>
+              </div>
+              <div class="media-body pl-3">
+                <h3 class="heading">Electrotherapy</h3>
+                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                <p><a href="#" class="btn-custom">Read more</a></p>
+              </div>
+            </div> 
+            <div class="d-block d-flex">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<span class="flaticon-examination"></span>
+              </div>
+              <div class="media-body pl-3">
+                <h3 class="heading">Therapeutic Exercise</h3>
+                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                <p><a href="#" class="btn-custom">Read more</a></p>
+              </div>
+            </div>    
+          </div>
+
+          <div class="col-md-4 services ftco-animate">
+            <div class="d-block d-flex">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<span class="flaticon-lymph-nodes"></span>
+              </div>
+              <div class="media-body pl-3">
+                <h3 class="heading">Manual Lympahtic</h3>
+                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                <p><a href="#" class="btn-custom">Read more</a></p>
+              </div>
+            </div>
+            <div class="d-block d-flex">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<span class="flaticon-bone"></span>
+              </div>
+              <div class="media-body pl-3">
+                <h3 class="heading">Joint Mobilization</h3>
+                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                <p><a href="#" class="btn-custom">Read more</a></p>
+              </div>
+            </div>       
+          </div>
+        </div>
+    	</div>
+    </section>
+
+    <section class="ftco-section ftco-no-pb ftco-no-pt">
+			<div class="container-fluid px-md-0">
+				<div class="row no-gutters justify-content-center pb-5 mb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading">Team &amp; Staff</span>
+            <h2>Our Experts Chiropractor / Therapist</h2>
+          </div>
+        </div>
+				<div class="row no-gutters">
+					<div class="col-md-4 col-lg ftco-animate d-flex">
+						<div class="staff bg-primary">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url(images/staff-1.jpg);"></div>
+							</div>
+							<div class="text pt-3 px-3 pb-4 text-center">
+								<h3>Lloyd Wilson</h3>
+								<span class="position mb-2">Chief Medical Officer</span>
+								<div class="faded">
+									<!-- <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p> -->
+									<ul class="ftco-social text-center">
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-google"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
+		              </ul>
+	              </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-lg ftco-animate d-flex">
+						<div class="staff bg-primary">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url(images/staff-2.jpg);"></div>
+							</div>
+							<div class="text pt-3 px-3 pb-4 text-center">
+								<h3>Rachel Parker</h3>
+								<span class="position mb-2">Chiropractor</span>
+								<div class="faded">
+									<!-- <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p> -->
+									<ul class="ftco-social text-center">
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-google"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
+		              </ul>
+	              </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-lg ftco-animate d-flex">
+						<div class="staff bg-primary">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url(images/staff-3.jpg);"></div>
+							</div>
+							<div class="text pt-3 px-3 pb-4 text-center">
+								<h3>Ian Smith</h3>
+								<span class="position mb-2">Clinical Chiropractic Assistant</span>
+								<div class="faded">
+									<!-- <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p> -->
+									<ul class="ftco-social text-center">
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-google"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
+		              </ul>
+	              </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-lg ftco-animate d-flex">
+						<div class="staff bg-primary">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url(images/staff-4.jpg);"></div>
+							</div>
+							<div class="text pt-3 px-3 pb-4 text-center">
+								<h3>Alicia Henderson</h3>
+								<span class="position mb-2">Licensed Massage Therapist</span>
+								<div class="faded">
+									<!-- <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p> -->
+									<ul class="ftco-social text-center">
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-google"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
+		              </ul>
+	              </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-lg ftco-animate d-flex">
+						<div class="staff bg-primary">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url(images/staff-5.jpg);"></div>
+							</div>
+							<div class="text pt-3 px-3 pb-4 text-center">
+								<h3>Lloyd Wilson</h3>
+								<span class="position mb-2">Front Desk Coordinator</span>
+								<div class="faded">
+									<!-- <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p> -->
+									<ul class="ftco-social text-center">
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-google"></span></a></li>
+		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
+		              </ul>
+	              </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+   	
+    <section class="ftco-section ftco-no-pt ftco-no-pb">
+    	<div class="container">
+    		<div class="row d-flex no-gutters">
+    			<div class="col-md-6 d-flex order-md-last">
+    				<div class="img img-video d-flex align-self-stretch align-items-center justify-content-center mb-4 mb-sm-0" style="background-image:url(images/about.jpg);">
+    					<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
+    						<span class="fa fa-play"></span>
+    					</a>
+    				</div>
+    			</div>
+    			<div class="col-md-6 pr-md-5 py-md-5">
+    				<div class="row justify-content-start py-5">
+		          <div class="col-md-12 heading-section ftco-animate">
+		          	<span class="subheading">Welcome to Chiropractic</span>
+		            <h2 class="mb-4">About Chiropractic</h2>
+		            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+		          </div>
+		        </div>
+						<div class="row ftco-counter pb-5" id="section-counter">
+		          <div class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18">
+		              <div class="text">
+		                <strong class="number" data-number="45">0</strong>
+		              </div>
+		              <div class="text">
+		              	<span>Years of <br>Experienced</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18">
+		              <div class="text">
+		                <strong class="number" data-number="2342">0</strong>
+		              </div>
+		              <div class="text">
+		              	<span>Happy <br>Customers</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18">
+		              <div class="text">
+		                <strong class="number" data-number="30">0</strong>
+		              </div>
+		              <div class="text">
+		              	<span>Award <br>Winning</span>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+	        </div>
+        </div>
+    	</div>
+    </section>
+
+    <section class="ftco-section testimony-section bg-dark">
+      <div class="container">
+        <div class="row justify-content-center pb-5 mb-3">
+          <div class="col-md-7 heading-section heading-section-white text-center ftco-animate">
+          	<span class="subheading">Testimonies</span>
+            <h2>Happy Clients &amp; Feedbacks</h2>
+          </div>
+        </div>
+        <div class="row ftco-animate">
+          <div class="col-md-12">
+            <div class="carousel-testimony owl-carousel ftco-owl">
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                	<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
+                  <div class="text">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Roger Scott</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                	<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
+                  <div class="text">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Roger Scott</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                	<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
+                  <div class="text">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url(images/person_3.jpg)"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Roger Scott</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                	<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
+                  <div class="text">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Roger Scott</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                	<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
+                  <div class="text">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Roger Scott</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+		
+		<section class="ftco-section ftco-no-pt ftco-no-pb">
+			<div class="container-fluid px-md-0">
+				<div class="row no-gutters">
+          <div class="col-md-3 ftco-animate">
+            <div class="work img d-flex align-items-center" style="background-image: url(images/work-1.jpg);">
+            	<a href="images/work-1.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+	    					<span class="fa fa-expand"></span>
+	    				</a>
+            	<div class="desc w-100 px-4 text-center pt-5 mt-5">
+	              <div class="text w-100 mb-3 mt-4">
+	              	<h2><a href="work-single.html">Foot Pain</a></h2>
+	              </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 ftco-animate">
+            <div class="work img d-flex align-items-center" style="background-image: url(images/work-2.jpg);">
+            	<a href="images/work-2.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+	    					<span class="fa fa-expand"></span>
+	    				</a>
+            	<div class="desc w-100 px-4 text-center pt-5 mt-5">
+	              <div class="text w-100 mb-3 mt-4">
+	              	<h2><a href="work-single.html">Arm Pain</a></h2>
+	              </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 ftco-animate">
+            <div class="work img d-flex align-items-center" style="background-image: url(images/work-3.jpg);">
+            	<a href="images/work-3.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+	    					<span class="fa fa-expand"></span>
+	    				</a>
+            	<div class="desc w-100 px-4 text-center pt-5 mt-5">
+	              <div class="text w-100 mb-3 mt-4">
+	              	<h2><a href="work-single.html">Shoulder Pain</a></h2>
+	              </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 ftco-animate">
+            <div class="work img d-flex align-items-center" style="background-image: url(images/work-4.jpg);">
+            	<a href="images/work-4.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+	    					<span class="fa fa-expand"></span>
+	    				</a>
+            	<div class="desc w-100 px-4 text-center pt-5 mt-5">
+	              <div class="text w-100 mb-3 mt-4">
+	              	<h2><a href="work-single.html">Back Pain</a></h2>
+	              </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 ftco-animate">
+            <div class="work img d-flex align-items-center" style="background-image: url(images/work-5.jpg);">
+            	<a href="images/work-5.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+	    					<span class="fa fa-expand"></span>
+	    				</a>
+            	<div class="desc w-100 px-4 text-center pt-5 mt-5">
+	              <div class="text w-100 mb-3 mt-4">
+	              	<h2><a href="work-single.html">Head &amp; Migraines</a></h2>
+	              </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 ftco-animate">
+            <div class="work img d-flex align-items-center" style="background-image: url(images/work-6.jpg);">
+            	<a href="images/work-6.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+	    					<span class="fa fa-expand"></span>
+	    				</a>
+            	<div class="desc w-100 px-4 text-center pt-5 mt-5">
+	              <div class="text w-100 mb-3 mt-4">
+	              	<h2><a href="work-single.html">Wear &amp; Tear</a></h2>
+	              </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 ftco-animate">
+            <div class="work img d-flex align-items-center" style="background-image: url(images/work-7.jpg);">
+            	<a href="images/work-7.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+	    					<span class="fa fa-expand"></span>
+	    				</a>
+            	<div class="desc w-100 px-4 text-center pt-5 mt-5">
+	              <div class="text w-100 mb-3 mt-4">
+	              	<h2><a href="work-single.html">Arm Pain</a></h2>
+	              </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 ftco-animate">
+            <div class="work img d-flex align-items-center" style="background-image: url(images/work-8.jpg);">
+            	<a href="images/work-8.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+	    					<span class="fa fa-expand"></span>
+	    				</a>
+            	<div class="desc w-100 px-4 text-center pt-5 mt-5">
+	              <div class="text w-100 mb-3 mt-4">
+	              	<h2><a href="work-single.html">Lower Back Pain</a></h2>
+	              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+			</div>
+		</section>	
+		
+		<section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center pb-5 mb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading">News &amp; Blog</span>
+            <h2>Latest news from our blog</h2>
+          </div>
+        </div>
+        <div class="row d-flex">
+          <div class="col-md-4 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_1.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="posted mb-3 d-flex">
+              		<div class="img author" style="background-image: url(images/person_2.jpg);"></div>
+              		<div class="desc pl-3">
+              			<span>Posted by John doe</span>
+              			<span>24 February 2020</span>
+              		</div>
+              	</div>
+                <h3 class="heading"><a href="#">What Every Athlete Needs To Know About Injury Recovery</a></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_2.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="posted mb-3 d-flex">
+              		<div class="img author" style="background-image: url(images/person_3.jpg);"></div>
+              		<div class="desc pl-3">
+              			<span>Posted by John doe</span>
+              			<span>24 February 2020</span>
+              		</div>
+              	</div>
+                <h3 class="heading"><a href="#">What Every Athlete Needs To Know About Injury Recovery</a></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_3.jpg');">
+              </a>
+              <div class="text mt-3">
+              	<div class="posted mb-3 d-flex">
+              		<div class="img author" style="background-image: url(images/person_1.jpg);"></div>
+              		<div class="desc pl-3">
+              			<span>Posted by John doe</span>
+              			<span>24 February 2020</span>
+              		</div>
+              	</div>
+                <h3 class="heading"><a href="#">What Every Athlete Needs To Know About Injury Recovery</a></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
-</body>
+    <footer class="footer ftco-section ftco-no-pt">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-6 col-lg">
+            <div class="ftco-footer-widget py-4 py-md-5">
+              <h2 class="logo"><a href="#">Chiropractic</a></h2>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-4">
+                <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg">
+            <div class="ftco-footer-widget ml-md-5 py-5">
+              <h2 class="ftco-heading-2">Services</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Spinal Manupulation</a></li>
+                <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Electrotherapy</a></li>
+                <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Manual Lympahtic</a></li>
+                <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Medical Acupuncture</a></li>
+                <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Therapeutic Exercise</a></li>
+                <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Joint Mobilization</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg">
+            <div class="ftco-footer-widget py-4 py-md-5">
+            	<h2 class="ftco-heading-2">Contact information</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon fa fa-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+	                <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+	                <li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text">info@yourdomain.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg">
+             <div class="ftco-footer-widget bg-primary p-4 py-5">
+              <h2 class="ftco-heading-2">Business Hours</h2>
+              <div class="opening-hours">
+              	<h4>Opening Days:</h4>
+              	<p class="pl-3">
+              		<span>Monday – Friday : 9am to 20 pm</span>
+              		<span>Saturday : 9am to 17 pm</span>
+              	</p>
+              	<h4>Vacations:</h4>
+              	<p class="pl-3">
+              		<span>All Sunday Days</span>
+              		<span>All Official Holidays</span>
+              	</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
 
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="{{asset('template/js/jquery.min.js')}}"></script>
+  <script src="{{asset('template/js/jquery-migrate-3.0.1.min.js')}}"></script>
+  <script src="{{asset('template/js/popper.min.js')}}"></script>
+  <script src="{{asset('template/js/bootstrap.min.js')}}"></script>
+  <script src="{{asset('template/js/jquery.easing.1.3.js')}}"></script>
+  <script src="{{asset('template/js/jquery.waypoints.min.js')}}"></script>
+  <script src="{{asset('template/js/jquery.stellar.min.js')}}"></script>
+  <script src="{{asset('template/js/jquery.animateNumber.min.js')}}"></script>
+  <script src="{{asset('template/js/bootstrap-datepicker.js')}}"></script>
+  <script src="{{asset('template/js/jquery.timepicker.min.js')}}"></script>
+  <script src="{{asset('template/js/owl.carousel.min.js')}}"></script>
+  <script src="{{asset('template/js/jquery.magnific-popup.min.js')}}"></script>
+  <script src="{{asset('template/js/scrollax.min.js')}}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{{asset('template/js/google-map.js')}}"></script>
+  <script src="{{asset('template/js/main.js')}}"></script>
+    
+  </body>
 </html>

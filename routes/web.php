@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Patient\OpappointmentController;
+use App\Mail\Welcome;
 use App\Model\Patient\Opconsultation;
 use App\Model\Patient\Registration;
 use App\Model\Pharmacy\Pmpresmedicine;
@@ -55,13 +57,23 @@ Route::get('/home', 'Admin\HomeController@index')->name('home');
 //Security
 Route::middleware(['previlage'])->group(function(){
     Route::get('menusView','Security\MenusController@menusView');
+    
 });
+Route::get('menusDelete/{id}','Security\MenusController@menusDelete');
+
 Route::get('menus','Security\MenusController@sideMenus');
-Route::post('saveMenu','Security\MenusController@saveMenu');
 Route::get('submenusPage','Security\MenusController@submenusPage');
 Route::post('saveSubMenu','Security\MenusController@saveSubMenu');
 Route::get('subsubmenusPage','Security\MenusController@subsubmenusPage');
 Route::post('saveSubsubMenu','Security\MenusController@saveSubsubMenu');
+
+Route::get('menusModWise/{parentId?}','Security\MenusController@menusModWise');
+Route::post('saveMenu','Security\MenusController@saveMenu');
+Route::post('updateMenu','Security\MenusController@updateMenu');
+
+
+
+
 
 //Role 
 Route::get('roleView','Security\RoleController@roleView');
@@ -79,10 +91,12 @@ Route::get('registrationviews','Patient\RegistrationController@registrationViews
 Route::get('registrations','Patient\RegistrationController@regPageInfo')->name('basherReg');
 Route::post('SaveRegistration','Patient\RegistrationController@SaveRegistration');
 //Appointment
-Route::post('appointmentInsert','Patient\OpappointmentController@appointmentInsert');
+Route::post('appointmentInsert',[OpappointmentController::class,'appointmentInsert']);
+// Route::post('appointmentInsert','Patient\OpappointmentController@appointmentInsert');
 Route::get('appointments/{regNo?}','Patient\OpappointmentController@appointSavePage');
 Route::get('appointments2/{regNo?}','Patient\OpappointmentController@appointSavePage');
 Route::get('patient/{regno}','Patient\OpappointmentController@getPatient');
+Route::get('multiSms','Patient\OpappointmentController@sendSmsTodayPatient');
 // Route::get('appointments/{regno}','Patient\OpappointmentController@appointEditPage');
 
 //Nurse Station
@@ -174,6 +188,8 @@ Route::get('image-qr-code','Setup\GenerateQrCodeController@imageQrCode');
 
 //setup
 Route::get('serviceSetup','Billing\BillingSetupCOntroller@serviceSetup');
+Route::get('rateCenter/{servType}','Billing\BillingSetupCOntroller@serviceRateCenter');
+
 // order Entry
 Route::get('orderentryView','Billing\OrderentryController@orderentryView');
 Route::get('patientBilling/{regno}','Billing\OrderentryController@getPatientInfo');
@@ -182,6 +198,11 @@ Route::get('testDept/{testNo}','Billing\OrderentryController@testDept');
 Route::get('investigationsearch/{search}','Billing\OrderentryController@investigations');
 Route::get('testsearchGetVal/{testNo}','Billing\OrderentryController@testsearchGetVal');
 Route::post('investigationInvoiceSave','Billing\OrderentryController@investigationInvoiceSave');
+Route::get('sendMail',function(){
+    \Mail::to('abul.basher863@gmail.com')->send(new Welcome());
+    return 'success';
+
+});
 
 
 

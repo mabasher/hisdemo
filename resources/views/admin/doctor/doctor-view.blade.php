@@ -18,41 +18,7 @@
                     Doctor</a>
             </div>
         </div>
-        <!-- <div class="row filter-row">
-        <div class="col-sm-6 col-md-3">
-            <div class="form-group form-focus">
-                <label class="focus-label">Doctor Name</label>
-                <input type="text" class="form-control floating">
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-3">
-            <div class="form-group form-focus select-focus">
-                <label class="focus-label">Specialty</label>
-                <select class="select floating">
-                    <option>Select Specialty</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-3">
-            <div class="form-group form-focus select-focus">
-                <label class="focus-label">Designation</label>
-                <select class="select floating">
-                    <option>Select Designation</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-3">
-            <div class="form-group form-focus select-focus">
-                <label class="focus-label">Gender</label>
-                <select class="select floating">
-                    <option value="">Select Gender</option>
-                    <option value="M">Male</option>
-                    <option value="F">Female</option>
-                    <option value="O">Others</option>
-                </select>
-            </div>
-        </div>
-    </div> -->
+       
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
@@ -84,18 +50,11 @@
                                     <div class="dropdown dropdown-action">
                                         <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            @can('update',$doc)
                                             <a class="dropdown-item editDoctor" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#edit_doctor" href="" data-id="{{ $doc->id }}" data-doctorName="{{$doc->doctor_name}}" data-desig="{{$doc->jobcode_id}}" data-gender="{{$doc->gender}}" data-special="{{$doc->specialization_id}}" data-dept="{{$doc->dept_no}}" data-qualification="{{$doc->qualification}}" data-clinicalInterest="{{$doc->special_interest}}" data-contactNo="{{$doc->contact_no}}" data-officePhone="{{$doc->office_phone}}" data-email="{{$doc->email}}" data-chamber="{{$doc->doc_chember}}" data-docType="{{$doc->doctor_type}}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
 
                                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_doctor"><i class="fa fa-trash-o m-r-5"></i>
                                                 Delete</a>
-                                            @else
-                                            <a class="dropdown-item secondary" data-backdrop="static" data-keyboard="false" data-toggle="modal">
-                                                <i class="fa fa-pencil m-r-5"></i> Edit</a>
-
-                                            <a class="dropdown-item secondary" data-target="#delete_doctor"><i class="fa fa-trash-o m-r-5"></i>
-                                                Delete</a>
-                                            @endcan
+                                            
                                         </div>
                                     </div>
                                 </td>

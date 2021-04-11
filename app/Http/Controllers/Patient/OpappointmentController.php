@@ -59,7 +59,7 @@ class OpappointmentController extends Controller
         $specialty = Department::where('area_type_no', 115)->select('dept_no', 'dept_name')->get();
         $doctors = Doctorinfo::all();
         $chiefComplaint = Ehattribexamval::where('parent_atr_no', 'E02')->get();
-        return view('admin.opd.appointmentAdd', compact(['registrations','salutations', 'religions', 'bloodGroups', 'specialty', 'doctors', 'divisions', 'districts', 'regNo', 'designation','chiefComplaint']));
+        return view('admin.opd.appointmentAdd', compact(['registrations', 'salutations', 'religions', 'bloodGroups', 'specialty', 'doctors', 'divisions', 'districts', 'regNo', 'designation', 'chiefComplaint']));
     }
 
 
@@ -81,8 +81,8 @@ class OpappointmentController extends Controller
     {
         //return $r->all();
         $chiefComplaint = "";
-        foreach($r->chief_complaint as $k=>$q){
-            count($r->chief_complaint) == $k+1? $comma='' : $comma=',';
+        foreach ($r->chief_complaint as $k => $q) {
+            count($r->chief_complaint) == $k + 1 ? $comma = '' : $comma = ',';
             $chiefComplaint .= $q . $comma;
         }
 
@@ -91,7 +91,7 @@ class OpappointmentController extends Controller
         $regno = '';
         if ($r->reg_no == '') {
             $regno = $this->getRegId();
-             Registration::insert([
+            Registration::insert([
                 'reg_no' => $regno,
                 'ful_name' => $r->ful_name,
                 'gender' => $r->gender,
@@ -117,8 +117,9 @@ class OpappointmentController extends Controller
         // $pdf = PDF::loadView('admin.pdf.appointPdf', compact(['appoint']))
         //     ->setPaper($customPaper, 'landscape');
         // return $pdf->download('appointCard.pdf');
-      
-      $consult = DB::table('opconsultations')->insertGetId([
+        $this->sendSms($r->mobile);
+
+        $consult = DB::table('opconsultations')->insertGetId([
             'consult_no' => $cid,
             'reg_no' => $regno,
             'doctorinfo_id' => $r->doctorinfo_id,
@@ -128,23 +129,23 @@ class OpappointmentController extends Controller
             'consult_dt' => Carbon::now(),
             'sl_no' => $r->sl_no,
             'type_code' => $r->app_type,
-            'created_by' =>auth()->user()->id
+            'created_by' => auth()->user()->id
         ]);
-        
+
         DB::table('oppatmovements')->insert([
             'movement_name' => 'Appointment',
             'consult_no' => $cid,
             'opconsultation_id' => $consult,
             'opmovetype_id' => 1,
             'created_at' => Carbon::now(),
-            'created_by' =>auth()->user()->id
+            'created_by' => auth()->user()->id
         ]);
 
         DB::table('ehpatientexams')->insert([
             'reg_no' => $regno,
             'consult_no' => $cid,
             'findings' => $chiefComplaint,
-            'created_by' =>auth()->user()->id
+            'created_by' => auth()->user()->id
         ]);
 
         return redirect('appointments');
@@ -279,5 +280,24 @@ class OpappointmentController extends Controller
         //  $doctor = Doctorinfo::find($id)->load('schedules.day'); 
 
         return view('admin.opd.doctorWeeklySchedule', compact('day', 'dayName'));
+    }
+
+    public function sendSms($mobile)
+    {
+        $uncode = urlencode('Welcome For Appointment');
+        $client = new \GuzzleHttp\Client();
+        $url = 'http://esms.dianahost.com/smsapi?api_key=C2003554606c679e819312.75330124&type=text&contacts='.$mobile.'&senderid=8801847169884&msg='.$uncode;
+        $response = $client->request('POST', $url);
+
+        return $response->getStatusCode(); // 200
+    }
+
+    public function sendSmsTodayPatient()
+    {
+        $toDate = Carbon::parse(Carbon::now())->toDateString();
+        $todayApp = Opappointment::where('app_date',$toDate)->pluck('mobile')->toArray();
+        $mobile = implode(',',$todayApp);
+        $this->sendSms($mobile);
+        return 'Success';
     }
 }

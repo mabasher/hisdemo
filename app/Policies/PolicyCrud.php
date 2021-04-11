@@ -20,9 +20,9 @@ class PolicyCrud
         
     }
 
-    public function update(User $user,Doctorinfo $doctorinfo)
-    {
-        dd($user->id === $doctorinfo->user_id);
+    // public function update(User $user,Doctorinfo $doctorinfo)
+    // {
+    //     dd($user->id === $doctorinfo->user_id);
         
-    }
+    // }
 }

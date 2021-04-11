@@ -15,7 +15,14 @@ class MenusController extends Controller
         $icons = DB::table('icons')->get();
         $menus = Menu::all();
         $pm = Menu::where('menu_type','!=','N')->get();
-        return view('admin.security.menus_view', compact(['menus','icons','pm']));
+        $modWiseMenu = Menu::where('menu_type','M')->get();
+        return view('admin.security.menus_view', compact(['menus','icons','pm','modWiseMenu']));
+    }
+
+    public function menusModWise($parentId)
+    {
+        $modWise = Menu::where('parent_id',$parentId)->get();
+        return view('admin.security.modwise_menus_view', compact(['modWise']));
     }
 
     public function saveMenu(Request $r)    
@@ -30,5 +37,25 @@ class MenusController extends Controller
         
         return redirect('menusView');
     }
+
+    public function updateMenu(Request $r)    
+    {
+      $r->request->add(['updated_at' => \Carbon\Carbon::now()]);
+      $r->request->add(['updated_by' => auth()->user()->id]);
+                  
+       $validated = $r->validate([
+        'name' => 'required'
+    ]);
+
+      Menu::where('id',$r->id)->update($r->except('_token'));        
+      return redirect('menusView');
+    }
+
+    
+    public function menusDelete($id)
+      {
+        Menu::where('id',$id)->delete();
+        return redirect('menusView');
+      }
     
 }
