@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontpage\FrontpageController;
 use App\Http\Controllers\Patient\OpappointmentController;
 use App\Mail\Welcome;
 use App\Model\Patient\Opconsultation;
@@ -44,6 +45,12 @@ Route::get('presPdf/{renNo}', function ($regNo) {
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('docDept',[FrontpageController::class,'doctordept']);
+Route::get('doctorpage',[FrontpageController::class,'doctors']);
+Route::get('services',[FrontpageController::class,'services']);
+Route::get('about',[FrontpageController::class,'about']);
+Route::get('contact',[FrontpageController::class,'contact']);
 
 Route::get('table','TestController@table');
 
