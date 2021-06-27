@@ -19,4 +19,9 @@ class Dctestmst extends Model
         return $this->hasOne(Department::class, 'dept_no','dept_no');
     }
 
+    // public function investigations()
+    // {
+    //     return $this->hasMany(Fninvoicechd::class, 'item_no','test_no');
+    // }
+
 }

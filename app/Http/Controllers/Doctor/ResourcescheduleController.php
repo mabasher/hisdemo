@@ -12,6 +12,7 @@ use App\Model\Doctor\Appdayschedule;
 use App\Model\Doctor\Doctorvisit;
 use App\Model\Patient\Opappointment;
 use Carbon\Carbon;
+use DB;
 
 class ResourcescheduleController extends Controller
 {
@@ -42,7 +43,7 @@ class ResourcescheduleController extends Controller
         // $slot = Resourceschedule::where('doctorinfo_id',$id)->where('sc_date',$schDate)->where('multivisit_no',$multiVisit)->get();
         $appointConfirm = Opappointment::where('doctorinfo_id',$id)->where('app_date',$schDate)->pluck('start_time')->toArray();
         // dd($appointConfirm->count());
-        return view('admin.partialPages.doctor_slot', compact(['slot','appointConfirm','schDate']));
+        return view('admin.partialPages.doctor_slot', compact(['slot','appointConfirm','schDate','day']));
     }
 
 
@@ -59,7 +60,9 @@ class ResourcescheduleController extends Controller
 
     public function scheduleRosterSave(Request $r)
     {
-        //return $r->all();
+         
+        // return $r->start_day[0];
+        // return $r->all();
    
         $week =  Day::all();
         
@@ -68,14 +71,18 @@ class ResourcescheduleController extends Controller
             $end_day = 'end_time'.$w->name;
             $duration = 'avg_duration'.$w->name;
             $docvisit = 'doctorvisit_id'.$w->name;
+            $scheduleName = 'schedule_id'.$w->name;
             if($r->$start_day[0]){
                 foreach($r->$start_day as $key=> $day){ 
                     $startTime = Carbon::parse($day);
                     $endTime = Carbon::parse($r->$end_day[$key]); 
                     $totalDuration = $endTime->diffInMinutes($startTime);
                     $blockLoad = $totalDuration/$r->$duration;  
+                    
 
-                    DB::table('appdayschedules')->insert([
+                    DB::table('appdayschedules')->updateOrInsert(
+                        ['id'=>$r->$scheduleName[$key]],
+                        [
                         'doctorinfo_id'     => $r->doctorinfo_id,
                         'day_id'            => $w->id,
                         'avg_duration'      => $r->$duration,
@@ -90,5 +97,15 @@ class ResourcescheduleController extends Controller
 
         }
         return redirect('scheduleRoster');
+    }
+
+    public function showDoctorSchedule($id)
+    {
+        $max_id = Appdayschedule::max('id') + 1;
+        $visits = Doctorvisit::all();
+        $days = Day::with(['schudules' => function ($q) use ($id) {
+            $q->where('doctorinfo_id', $id);
+        }, 'schudules.doctorvisit'])->get();
+        return view('admin.roster.show_doctor_allschedules', compact('days','visits','max_id'));
     }
 }

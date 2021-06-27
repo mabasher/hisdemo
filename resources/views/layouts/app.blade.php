@@ -92,7 +92,6 @@
                     $this.parent().addClass('active');
                     $this.parent().parent().css('display', 'block');
                     $this.parent().parent().parent().children('a').addClass('subdrop');
-                    // $this.addClass('menusub');
 
                 }
             })

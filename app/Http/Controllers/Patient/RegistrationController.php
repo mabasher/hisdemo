@@ -75,15 +75,7 @@ class RegistrationController extends Controller
             'gender' => 'required'
         ]);
         $reg = Registration::insertGetId($r->except('_token'));
-        // $this->generatePDF($reg);
-        // //For Pdf
-        // $data = [
-        //     'regNo' => $this->getRegId(),
-        //     'name'  =>$r->ful_name
-        // ];
 
-        //   $pdf = PDF::loadView('admin.pdf.patient_pdf', $data);
-        //   return $pdf->download('itsolutionstuff.pdf');
         $customPaper = array(0, 0, 250, 270);
         $pid = Registration::find($reg);
         PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif', 'debugLayoutPaddingBox' => true]);
@@ -94,15 +86,6 @@ class RegistrationController extends Controller
         return redirect('registrations');
     }
 
-    // public function generatePDF($id)
-    // {
-    //     $customPaper = array(0, 0, 250, 270);
-    //     $pid = Registration::find($id);
-    //     PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif', 'debugLayoutPaddingBox' => true]);
-    //     $pdf = PDF::loadView('admin.pdf.regPdf', compact(['pid']))
-    //         ->setPaper($customPaper, 'landscape');
-    //     return $pdf->download('pid.pdf');
-    // }
 
     public function getRegId()
     {
@@ -112,11 +95,11 @@ class RegistrationController extends Controller
         $t = Carbon::now();
         $m = $t->month;
 
-        $y = $t->year;
+        $y = $t->format('y');;
 
         $d = $t->day;
 
-        $id = 'R' . $y;
+        $id = 'PID' . $y;
         if ($m < 10) {
             $id .= '0';
         }

@@ -3,13 +3,18 @@
 use App\Http\Controllers\Frontpage\FrontpageController;
 use App\Http\Controllers\Patient\OpappointmentController;
 use App\Mail\Welcome;
+use App\Model\Patient\Opappointment;
 use App\Model\Patient\Opconsultation;
 use App\Model\Patient\Registration;
+use App\Model\Billing\Fninvoicemst;
 use App\Model\Pharmacy\Pmpresmedicine;
 use App\Model\Prescription\Ehpatientexam;
 use App\Model\Prescription\Ehprescpoe;
+use App\Model\Doctor\Doctorinfo;
+use App\Model\Doctor\Day;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
+use App\Model\Billing\Fnpatledger;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +27,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('pdfTest', function () {
-    $pid = Registration::find(4);
-    return view('admin.pdf.myPdf', compact('pid'));
+
+Route::get('mrtest', function () {
+    // return  $mrNo = explode('M',Fnpatledger::all()->last()->mr_no)[1]+1;
+    // return Doctorinfo::with('schedules.doctorvisit','schedules.day')->where('id',1)->first();
+    $customPaper = array(0, 0, 500, 500);
+        PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif', 'debugLayoutPaddingBox' => true]);
+        $registration = Registration::where('reg_no', 'PID210605000127')->first();
+        return $invoice = Fninvoicemst::with(['invoicedetails.investigations', 'invoicedetails'=>function($q){
+            $q->where('item_no' != 'PM');
+        }])
+         ->where('invoice_no','V210617000029')->first();
+        $pdf = PDF::loadView('admin.billing.invoice_pdf_generate', compact(['registration','invoice']))
+        ->setPaper($customPaper, 'landscape');
+        return $pdf->download('invoice.pdf');
+});
+
+// , 'invoicedetails'=>function($q){
+//     $q->where('item_no' != 'PM');
+// }
+
+Route::get('testAppCard', function () {
+    $appInfo = Opappointment::where('appoint_no', 'A20210502000124')->first();
+        $details = [
+
+            'title' => 'Appointment Confirmtion',
+            'appId'=>'A20210502000124',
+            'name'=>$appInfo
+
+        ];
+        \Mail::to('abul.basher863@gmail.com')->send(new \App\Mail\MyTestMail($details));
 });
 
 Route::get('presPdf/{renNo}', function ($regNo) {
@@ -42,17 +74,54 @@ Route::get('presPdf/{renNo}', function ($regNo) {
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+//email
 
+//welcome Page
+Route::get('/',[FrontpageController::class,'welcomepage']);
 Route::get('docDept',[FrontpageController::class,'doctordept']);
+Route::get('deptWiseDoctor/{deptNo}',[FrontpageController::class,'deptWiseDoctor']);
 Route::get('doctorpage',[FrontpageController::class,'doctors']);
 Route::get('services',[FrontpageController::class,'services']);
 Route::get('about',[FrontpageController::class,'about']);
 Route::get('contact',[FrontpageController::class,'contact']);
 
+Route::get('onLineSpecialtyWiseDoctor/{deptNo}',[FrontpageController::class,'onLineSpecialtyWiseDoctor']);
+Route::get('onlineSpWiseDoctor/{deptNo}',[FrontpageController::class,'onlineSpWiseDoctor']);
+
+
+// Online Appointment
+Route::get('doctorSearch/{keyword}',[FrontpageController::class,'doctorSearch']);
+Route::post('patientAdd',[FrontpageController::class,'patientAdd']);
+Route::get('patientExOnline/{regno}',[FrontpageController::class,'getExPatientOnline']);
+Route::get('patientMultipleSearch/{regno}/{keyword}',[FrontpageController::class,'getMulticoloumnSearch']);
+Route::get('doctorpatientapp/{doctorId}',[FrontpageController::class,'doctorpatientapp']);
+Route::get('doctorpatientajax/{doctorId}',[FrontpageController::class,'doctorpatientajax']);
+Route::get('getDocWeeklySchedule/{id}/{schDate}', [FrontpageController::class,'getDocWeeklySchedule']);
+Route::get('virtualDocslots/{doctorId}/{dayName}',[FrontpageController::class,'getDocDailyTimeSlots']);
+Route::post('appointmentInsertOnline',[FrontpageController::class,'appointmentInsertOnline']);
+Route::get('appointmentCard/{aid}',[FrontpageController::class,'appointmentCardGenerate']); 
+Route::post('appointmentCardduplicate',[FrontpageController::class,'appointmentCardduplicate']);
+Route::get('appointmentCardduplicate',[FrontpageController::class,'CardGenerate']);
+
+//Online Avatar Cheif Complaint
+Route::get('OnlineCheifComplaint/{gender}',[FrontpageController::class,'OnlineCheifComplaint']);
+Route::get('OnlineAvatarAtrributes/{bodyPartNo}/{parentAtrNo}/{gender}',[FrontpageController::class,'avatarAtrributes']);
+Route::get('OnlineAttributeCollection',[FrontpageController::class,'OnlineAttributeCollection']);
+
+//doctor Profile
+Route::get('doctorprofile/{id}',[FrontpageController::class,'doctorprofileview']);
+
+//Appointment Card PDF Generate
+
+Route::get('appointCardPdf/{id}',[FrontpageController::class,'appointCardPdfGenerate']);
+Route::get('pidCardPdf/{id}',[FrontpageController::class,'pidCardPdfGenerate']);
+
+// end Welcome page
 Route::get('table','TestController@table');
+
 
 //Route::get('registration','Patient\RegistrationController@index');
 Route::get('registration','Patient\RegistrationController@index')->name('basherReg');
@@ -98,16 +167,21 @@ Route::get('registrationviews','Patient\RegistrationController@registrationViews
 Route::get('registrations','Patient\RegistrationController@regPageInfo')->name('basherReg');
 Route::post('SaveRegistration','Patient\RegistrationController@SaveRegistration');
 //Appointment
+// Route::middleware(['previlage'])->group(function(){
+//     Route::post('appointmentInsert',[OpappointmentController::class,'appointmentInsert']);
+//     Route::get('appointments/{regNo?}','Patient\OpappointmentController@appointSavePage');
+    
+// });
 Route::post('appointmentInsert',[OpappointmentController::class,'appointmentInsert']);
-// Route::post('appointmentInsert','Patient\OpappointmentController@appointmentInsert');
 Route::get('appointments/{regNo?}','Patient\OpappointmentController@appointSavePage');
 Route::get('appointments2/{regNo?}','Patient\OpappointmentController@appointSavePage');
 Route::get('patient/{regno}','Patient\OpappointmentController@getPatient');
 Route::get('multiSms','Patient\OpappointmentController@sendSmsTodayPatient');
+Route::get('patientSearch/{keyword}','Patient\OpappointmentController@getSearchingPatient');
+
 // Route::get('appointments/{regno}','Patient\OpappointmentController@appointEditPage');
 
 //Nurse Station
-
 Route::get('nurseStation','Patient\NursestController@nursestation');
 Route::get('ns/{consultDt?}','Patient\NursestController@ns');
 Route::get('nsComp/{nsDt?}','Patient\NursestController@nsComp');
@@ -137,6 +211,7 @@ Route::get('doctorEdit/{id}','Doctor\DoctorinfoController@doctorEditPage');
 Route::get('doctors/{deptNo}','Doctor\DoctorinfoController@departmentDoctors');
 Route::get('doctorWeeklySchedule/{id}/{schDate}', 'Patient\OpappointmentController@doctorWeeklySchedule');
 
+
 //doctor Slot
 Route::get('virtualslots/{doctorId}/{dayName}','Doctor\ResourcescheduleController@getDoctorTimeSlot');
 
@@ -148,6 +223,7 @@ Route::get('genericBrand/{genericNo}','Doctor\PrescriptionController@genericWise
 Route::get('dispFrom/{testNo}','Doctor\PrescriptionController@dispatchForm');
 Route::get('frequncy/{id}','Doctor\PrescriptionController@frequencies');
 Route::post('savePresMedicine','Doctor\PrescriptionController@prescripMedicineInsert');
+
 
 //Avatar ehattribexamval
 Route::get('avatar/{avatarType}','Avatar\AvaterController@avatar');
@@ -170,6 +246,7 @@ Route::post('doctorDesignation','Patient\OpappointmentController@doctorDesignati
 Route::get('scheduleRoster','Doctor\ResourcescheduleController@scheduleRoster');
 Route::post('scheduleRoster','Doctor\ResourcescheduleController@scheduleRosterSave');
 Route::get('doctorSchedule/{id}', 'Doctor\DoctorinfoController@doctorSchedule');
+Route::get('showDoctorSchedule/{id}', 'Doctor\ResourcescheduleController@showDoctorSchedule');
 
 
 //setup Form
@@ -188,14 +265,15 @@ Route::get('desigWiseDoctor/{jobId?}','Patient\OpappointmentController@getDesigW
 Route::get('pidtest/{pid}','Setup\GenerateQrCodeController@generatePDF');
 Route::get('pid/{pid}','Setup\GenerateQrCodeController@registratinPdf');
 Route::get('simple-qr-code/{pid}','Setup\GenerateQrCodeController@simpleQrCode');
+Route::get('appointCardOnline/{appointNo}','Setup\GenerateQrCodeController@appointCardOnline');
 Route::get('color-qr-code','Setup\GenerateQrCodeController@colorQrCode');
 Route::get('image-qr-code','Setup\GenerateQrCodeController@imageQrCode');
 
 // Billing
 
 //setup
-Route::get('serviceSetup','Billing\BillingSetupCOntroller@serviceSetup');
-Route::get('rateCenter/{servType}','Billing\BillingSetupCOntroller@serviceRateCenter');
+Route::get('serviceSetup','Billing\BillingSetupController@serviceSetup');
+Route::get('rateCenter/{servType}','Billing\BillingSetupController@serviceRateCenter');
 
 // order Entry
 Route::get('orderentryView','Billing\OrderentryController@orderentryView');
@@ -205,11 +283,24 @@ Route::get('testDept/{testNo}','Billing\OrderentryController@testDept');
 Route::get('investigationsearch/{search}','Billing\OrderentryController@investigations');
 Route::get('testsearchGetVal/{testNo}','Billing\OrderentryController@testsearchGetVal');
 Route::post('investigationInvoiceSave','Billing\OrderentryController@investigationInvoiceSave');
-Route::get('sendMail',function(){
-    \Mail::to('abul.basher863@gmail.com')->send(new Welcome());
-    return 'success';
+// Billing Report Generate V20210609000022
+Route::get('invoiceReport/{pid}/{invoiceNo}','Billing\OrderentryController@invoiceReportGenerate');
 
-});
+//Due Collection
+Route::get('dueCollection','Billing\OrderentryController@dueCollectionViewPage');
+Route::get('duecollectionHistory/{invoiceNo}','Billing\OrderentryController@getDueCollectionData');
+Route::get('dueServices/{invoiceNo}','Billing\OrderentryController@getdueServicesData');
+Route::post('dueCollectionSave','Billing\OrderentryController@dueCollectionSave');
+
+//Order Cencel Refund 
+Route::get('orderCancel','Billing\OrderentryController@orderCancel');
+Route::get('cancelServices/{invoiceNo}','Billing\OrderentryController@cancelServices');
+
+// Route::get('sendMail',function(){
+//     \Mail::to('abul.basher863@gmail.com')->send(new Welcome());
+//     return 'success';
+
+// });
 
 
 

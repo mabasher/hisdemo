@@ -44,7 +44,7 @@ class AvaterController extends Controller
     public function patientHPIsave(Request $r)
     {
         //return $r->all();
-        $atr_no = implode(',', $r->atr_no);
+       $atr_no = implode(',', $r->atr_no);
 
        $validated = $r->validate([
         'atr_no' => 'required',

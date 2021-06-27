@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Model\Setup\Department;
+use App\Model\Doctor\Doctorinfo;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+       $specialty = Department::where('area_type_no', 115)->select('dept_no', 'dept_name')->get();
+       $doctors = Doctorinfo::all();
+       view()->share(['specialty'=> $specialty, 'doctors' => $doctors]);
+
     }
 }

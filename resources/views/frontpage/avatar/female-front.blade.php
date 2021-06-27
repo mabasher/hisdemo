@@ -1,0 +1,32 @@
+<div class="avatars animate__animated animate__zoomIn" id="ff" style="float: left; display: block; padding: 20px 20px; width: 250px; border: 3px solid rgb(255, 255, 255);">
+
+
+    <p>
+        <img src="{{asset('admin/avatar/female-front.png')}}" width="204" height="383" usemap="#female-front" class="map">
+        <map name="female-front" id="female-front" class="tabs">
+            <area href="javascript:void(0)" data-onclick="1,173,F" coords="86,22, 86,17, 87,11, 90,4, 103,0, 114,5, 117,11, 118,22, 120,22, 119,29, 116,34, 113,38, 112,41, 110,43, 106,44, 97,43, 89,37, 87,33, 84,29, 84,24, 85,21" data-title="মাথার লক্ষণসমূহ" data-key="head" data-id="1" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="2,173,F" coords="90,41, 91,45, 91,51, 90,54, 88,57, 83,58, 89,61, 96,64, 102,64, 111,62, 118,60, 120,58, 112,54, 112,50, 112,42, 107,45, 100,45, 92,43" data-title="গলার লক্ষণসমূহ" data-key="neck" data-id="3" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="4,173,F" coords="82,59, 69,69, 73,78, 70,91, 72,101, 74,112, 76,118, 102,121, 126,118, 129,120, 133,97, 130,82, 132,70, 121,59, 104,65" data-title="বুকের লক্ষণসমূহ" data-key="chest" data-id="4" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="3,173,F" coords="123,58, 133,70, 144,81, 143,72, 140,63, 135,60, 130,60" data-title="বাম কাঁধের লক্ষণসমূহ" data-key="left-shoulder" data-id="5" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="16,173,F" coords="80,60, 70,67, 60,76, 62,66, 69,61, 74,60" data-title="ডান কাঁধের লক্ষণসমূহ" data-key="right-shoulder" data-id="5" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="15,173,F" coords="146,87, 150,102, 156,118, 161,130, 165,144, 170,159, 172,161, 163,166, 156,155, 148,141, 147,138, 144,129, 142,122, 138,111, 134,99" data-title="বাম বাহুর লক্ষণসমূহ" data-key="left-arm" data-id="6" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="5,173,F" coords="59,77, 57,87, 55,96, 52,105, 49,117, 45,125, 39,140, 34,158, 30,163, 38,169, 44,159, 53,144, 57,137, 60,126, 62,119, 68,104, 70,98" data-title="ডান বাহুর লক্ষণসমূহ" data-key="right-arm" data-id="6" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="9,173,F" coords="172,165, 179,168, 185,171, 192,174, 194,176, 193,177, 190,177, 187,175, 183,173, 183,176, 185,184, 189,195, 187,198, 184,192, 182,186, 182,189, 185,198, 185,201, 185,203, 183,202, 182,198, 180,191, 179,189, 180,198, 179,202, 176,197, 175,196, 170,189, 167,184, 167,179, 165,171, 164,168" data-title="বাম হাতের লক্ষণসমূহ" data-key="left-hand" data-id="7" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="17,173,F" coords="29,164, 24,168, 18,171, 11,175, 9,177, 12,178, 16,176, 20,174, 20,177, 18,185, 17,189, 15,197, 17,197, 19,192, 21,186, 23,186, 21,192, 20,195, 19,200, 19,201, 23,195, 25,192, 25,189, 27,189, 26,194, 25,197, 24,200, 27,198, 28,196, 29,196, 32,192, 33,189, 36,185, 38,176, 38,172" data-title="ডান হাতের লক্ষণসমূহ" data-key="right-hand" data-id="7" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="6,173,F" coords="76,119, 78,132, 78,138, 77,143, 103,146, 128,142, 125,138, 125,129, 127,119, 101,121" data-title="পেটের লক্ষণসমূহ" data-key="upper-abdomen" data-id="8" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="21,173,F" coords="76,143, 74,150, 71,155, 71,162, 101,164, 133,161, 130,150, 128,140" data-title="তল পেটের লক্ষণসমূহ" data-key="lower-abdomen- female" data-id="10" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="8,173,F" coords="85,165, 93,183, 96,192, 99,192, 102,191, 105,194, 111,181, 120,165" data-title="যৌনাঙ্গের লক্ষণসমূহ" data-key="pelvis, female" data-id="12" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="7,173,F" coords="133,162, 136,174, 139,189, 139,195, 138,200, 124,193, 120,163" data-title="নিতম্মবের লক্ষণসমূহ" data-key="right-hip" data-id="13" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="20,173,F" coords="70,161, 68,169, 67,177, 65,183, 65,186, 64,193, 65,200, 80,196, 82,164" data-title="নিতম্মবের লক্ষণসমূহ" data-key="left-hip" data-id="13" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="10,173,F" coords="106,201, 139,199, 137,211, 136,229, 135,246, 133,258, 133,270, 134,278, 134,289, 134,307, 132,325, 130,339, 130,344, 119,343, 119,333, 118,322, 115,308, 112,293, 113,283, 114,272, 112,265, 110,250, 111,237, 110,222, 108,213" data-title="বাম পায়ের লক্ষণসমূহ" data-key="left-leg" data-id="14" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="18,173,F" coords="65,203, 67,229, 69,250, 71,262, 71,267, 70,277, 69,285, 69,298, 69,308, 73,329, 73,343, 84,343, 84,327, 88,310, 91,297, 90,282, 88,274, 93,250, 94,233, 94,225, 94,219, 97,210, 97,201" data-title="ডান পায়ের লক্ষণসমূহ" data-key="right-leg" data-id="14" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="11,173,F" coords="119,346, 118,350, 120,354, 119,360, 122,364, 123,369, 123,374, 124,377, 127,382, 129,382, 132,382, 136,379, 141,377, 140,370, 137,366, 132,357, 131,354, 130,352, 131,350, 130,347" data-title="বাম পদদেশের লক্ষণসমূহ" data-key="left-foot" data-id="15" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="19,173,F" coords="73,344, 72,351, 73,353, 71,358, 66,366, 64,370, 63,373, 63,377, 69,380, 72,382, 77,381, 79,377, 81,374, 81,367, 81,364, 83,360, 84,356, 84,351, 85,346" data-title="ডান পদদেশ্র লক্ষণসমূহ" data-key="right-foot" data-id="15" shape="poly" class="anatomical-region">
+        </map>
+    </p>
+    <div>
+        <a href="javascript:void(0)"  class="btn btn-sm btn-block btn-primary avaterShow" data-position="fb">
+            <span class="glyphicon glyphicon-retweet"></span>&nbsp; Rotate
+        </a>
+    </div>
+</div>

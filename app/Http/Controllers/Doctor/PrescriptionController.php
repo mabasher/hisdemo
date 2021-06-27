@@ -54,7 +54,7 @@ class PrescriptionController extends Controller
     //with('consultation')->
     public function doctorprescription($regNo)
     {
-        $date =  Carbon::parse(Carbon::now())->toDateString(); 
+        $date =  Carbon::parse(Carbon::now())->toDateString();
         // $patientPrescrip = Opappointment::with('appdoctor')->where('reg_no', $regNo)->where('app_date', $date)->first();
         $patientPrescrip = Opconsultation::where('reg_no', $regNo)->where('consult_dt', $date)->first();
         $lastVisit = Opconsultation::with('consultation:id,doctor_name')->where('reg_no', $regNo)->orderBy('consult_no','desc')->skip(1)->first();
@@ -78,12 +78,16 @@ class PrescriptionController extends Controller
         ->where('parent_atr_no', '173')
         ->whereNotIn('atr_no', Ehbpwlocation::select('location_id')->where('bodypart_no', '<>','10')->where('gender','M')->get())
         ->get();
-        return view('admin.doctor.prescription', compact(['patientPrescrip', 'thrapGrp', 'medicine', 'generic', 'frequency', 'route', 'instruc','avatarAttributes','lastVisit','howTimeVisit','recentVitals','recentCC']));
+
+        $patMedicine =Pmpresmedicine::where('reg_no', $regNo)->where('pres_date','>', $date)->get();
+        //->where('order_dt', $date)
+        $patTest =Ehprescpoe::with('dctestmst')->where('reg_no', $regNo)->where('order_dt','>', $date)->get();
+        return view('admin.doctor.prescription', compact(['patientPrescrip', 'thrapGrp', 'medicine', 'generic', 'frequency', 'route', 'instruc','avatarAttributes','lastVisit','howTimeVisit','recentVitals','recentCC','patMedicine','patTest']));
     }
 
     public function prescriptionReports($regNo)
     {
-         $date =  Carbon::parse(Carbon::now())->toDateString(); 
+        $date =  Carbon::parse(Carbon::now())->toDateString(); 
         $presPrint = Opconsultation::where('reg_no', $regNo)->where('consult_dt', $date)->first();
         //->where('created_at', $date)
         $chiefComplaint = Ehpatientexam::where('reg_no', $regNo)->where('created_at','>', $date)->first();
@@ -223,6 +227,7 @@ class PrescriptionController extends Controller
 
     public function investigationSave(Request $r)
     {
+        // return $r->all();
         // $r->request->add(['dept_no' => $this->getDeptNo()]);
         $r->request->add(['consult_by' => auth()->user()->id]);
         $r->request->add(['created_by' => auth()->user()->id]);
@@ -233,8 +238,7 @@ class PrescriptionController extends Controller
  
      Ehprescpoe::insert($r->except('_token'));
          
-         return redirect('prescriptions/'.$r->reg_no);
-    }
-
-    
+        //  return redirect('prescriptions/'.$r->reg_no);
+      return "success";
+    }    
 }

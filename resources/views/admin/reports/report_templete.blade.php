@@ -55,7 +55,7 @@
                     <div class="row">
                         <div class="col-4 d-flex flex-column justify-content-between mb-5" style="border-right: solid; border-color:black;">
                             <h5>
-                                <b><br>Chief Complain :<br></b>
+                                <b><br>Chief Complaint :<br></b>
                                 @foreach($cc as $cc )
                                 <span class="mb-5">{{$loop->iteration}}.&nbsp;&nbsp; {{$cc}}<br></span>
                                 @endforeach
@@ -112,7 +112,6 @@
             "path": ["{{asset('admin/css/bootstrap.min.css')}}"],
             "title": ""
         });
-        // $("#report").printMe({ "path": ["{{asset('css/printme.css')}}"], "title": "Document title" }); 
     });
 </script>
 @stop

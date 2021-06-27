@@ -2,790 +2,318 @@
 <html lang="en">
 
 <head>
-	<title>DTL</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>DTL</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<link rel="stylesheet" href="{{asset('template/css/animate.css')}}">
+    <link rel="stylesheet" href="{{asset('template/css/animate.css')}}">
 
-	<link rel="stylesheet" href="{{asset('template/css/owl.carousel.min.css')}}">
-	<link rel="stylesheet" href="{{asset('template/css/owl.theme.default.min.css')}}">
-	<link rel="stylesheet" href="{{asset('template/css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{asset('template/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('template/css/owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{asset('template/css/magnific-popup.css')}}">
 
-	<link rel="stylesheet" href="{{asset('template/css/bootstrap-datepicker.css')}}">
-	<link rel="stylesheet" href="{{asset('template/css/jquery.timepicker.css')}}">
+    <link rel="stylesheet" href="{{asset('template/css/bootstrap-datepicker.css')}}">
+    <link rel="stylesheet" href="{{asset('template/css/jquery.timepicker.css')}}">
 
-	<link rel="stylesheet" href="{{asset('template/css/flaticon.css')}}">
-	<link rel="stylesheet" href="{{asset('template/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('template/css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{asset('template/css/style.css')}}">
 </head>
 
 <body>
-	@include('frontpage.navbar')
-	<!-- END nav -->
-	<div class="hero-wrap">
-		<div class="home-slider owl-carousel">
-			<div class="slider-item" style="background-image:url(template/images/bg_1.jpg);">
-				<div class="overlay"></div>
-				<div class="container">
-					<div class="row no-gutters slider-text align-items-center justify-content-end">
-						<div class="col-md-6 ftco-animate">
-							<div class="text w-100">
-								<h3 class="mb-4  ">Welcome to Darco Technologies</h3>
-								<p class="text-success">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								<p><a href="#" class="btn btn-primary">Make an appointment</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+    @include('frontpage.includes.navbar')
+    <!-- END nav -->
+    <div class="hero-wrap">
+        <div class="home-slider owl-carousel">
+            <div class="slider-item" style="background-image:url(template/images/bg_1.jpg);">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row no-gutters slider-text align-items-center justify-content-end">
+                        <div class="col-md-6 ftco-animate">
+                            <div class="text w-100">
+                                <h3 class="mb-4  ">Welcome to Darco Technologies</h3>
+                                <p class="text-success">DARCO TECHNOLOGIES LIMITED has ventured into ICT sector to build
+                                    a strong reputation, as an IT Solution Provider to our patrons, promoters and
+                                    clients through consultation, development and integration of technology. </p>
+                                <p><a href="{{url('appointmentCardduplicate')}}" class="btn btn-primary">Appointment
+                                        Card</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-			<div class="slider-item" style="background-image:url(template/images/bg_2.jpg);">
-				<div class="overlay"></div>
-				<div class="container">
-					<div class="row no-gutters slider-text align-items-center justify-content-end">
-						<div class="col-md-6 ftco-animate">
-							<div class="text w-100">
-								<h3 class="mb-4 text-white">Darco care for the whole family</h3>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								<p><a href="#" class="btn btn-primary">Make an appointment</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+            <div class="slider-item" style="background-image:url(template/images/bg_2.jpg);">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row no-gutters slider-text align-items-center justify-content-end">
+                        <div class="col-md-6 ftco-animate">
+                            <div class="text w-100">
+                                <h3 class="mb-4 text-white">Darco care for the whole family</h3>
+                                <p class="text-warning">DARCO TECHNOLOGIES LIMITED has ventured into ICT sector to build
+                                    a strong reputation, as an IT Solution Provider to our patrons, promoters and
+                                    clients through consultation, development and integration of technology. </p>
+                                <p><a href="{{url('appointmentCardduplicate')}}" class="btn btn-primary">Appointment
+                                        Card</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-			<div class="slider-item" style="background-image:url(template/images/bg_3.jpg);">
-				<div class="overlay"></div>
-				<div class="container">
-					<div class="row no-gutters slider-text align-items-center justify-content-end">
-						<div class="col-md-6 ftco-animate">
-							<div class="text w-100">
-								<h3 class="mb-4">We are here for Your care</h3>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								<p><a href="#" class="btn btn-primary">Make an appointment</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+            <div class="slider-item" style="background-image:url(template/images/bg_3.jpg);">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row no-gutters slider-text align-items-center justify-content-end">
+                        <div class="col-md-6 ftco-animate">
+                            <div class="text w-100">
+                                <h3 class="mb-4">We are here for Your care</h3>
+                                <p class="text-primary">DARCO TECHNOLOGIES LIMITED has ventured into ICT sector to build
+                                    a strong reputation, as an IT Solution Provider to our patrons, promoters and
+                                    clients through consultation, development and integration of technology. </p>
+                                <p><a href="{{url('appointmentCardduplicate')}}" class="btn btn-primary">Appointment
+                                        Card</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<section class="ftco-appointment ftco-section ftco-no-pt ftco-no-pb">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row d-md-flex justify-content-center">
-				<div class="col-md-12">
-					<div class="wrap-appointment d-md-flex">
-						<div class="col-md-8 bg-primary p-5 heading-section heading-section-white">
-							<span class="subheading">Booking an Appointment</span>
-							<h2 class="mb-4">Free Consultation</h2>
-							<form action="#" class="appointment">
-								<div class="row justify-content-center">
-									<div class="col-md-6">
-										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Your Name">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Phone number">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="form-field">
-												<div class="select-wrap">
-													<div class="icon"><span class="fa fa-chevron-down"></span></div>
-													<select name="" id="" class="form-control">
-														<option value="">Select Services</option>
-														<option value="">Spinal Manupulation</option>
-														<option value="">Electrotherapy</option>
-														<option value="">Manual Lymphatic</option>
-														<option value="">Medical Acupuncture</option>
-														<option value="">Therapeutic Exercise</option>
-														<option value="">Joint Mobilization</option>
-													</select>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="form-field">
-												<div class="select-wrap">
-													<div class="icon"><span class="fa fa-chevron-down"></span></div>
-													<select name="" id="" class="form-control">
-														<option value="">Select Chiropractor</option>
-														<option value="">John Doe</option>
-														<option value="">William Smith</option>
-														<option value="">Danny Green</option>
-														<option value="">Jason Thompson</option>
-													</select>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="input-wrap">
-												<div class="icon"><span class="fa fa-calendar"></span></div>
-												<input type="text" class="form-control appointment_date" placeholder="Date">
-											</div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="input-wrap">
-												<div class="icon"><span class="fa fa-clock-o"></span></div>
-												<input type="text" class="form-control appointment_time" placeholder="Time">
-											</div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<input type="submit" value="Send message" class="btn btn-secondary py-3 px-4">
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-						<div class="col-md-4 bg-white text-center p-5">
+    <section class="ftco-appointment ftco-section ftco-no-pt ftco-no-pb">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row d-md-flex justify-content-center">
+                <div class="col-md-7">
+                    <div class="wrap-appointment d-md-flex">
+                        <div class="col-md-12 bg-primary p-5 heading-section heading-section-white">
+                            <!-- <span class="subheading">Booking an Appointment</span> -->
+                            <h2 class="mb-4">Booking an Appointment</h2>
+                            <form action="{{url('patientAdd')}}" method="post" class="appointment">
+                                @csrf
+                                <div class="row justify-content-center">
+                                    <!-- <div class="col-md-3">
+                                        <select class="custom-select" id="salutationId" name="salutation_Id">
+                                            <option value="">Select Title</option>
+                                            @foreach($salutations as $title)
+                                            <option value="{{$title->salutation_name}}">{{$title->salutation_name}}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div> -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="name" class="form-control" placeholder="Your Name"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="mobile" class="form-control"
+                                                placeholder="Mobile No" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-wrap text-dark">
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" checked value="M"
+                                                            name="gender">Male
+                                                    </label>
+                                                </div>
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" value="F"
+                                                            name="gender">Female
+                                                    </label>
+                                                </div>
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" value="O"
+                                                            name="gender">Others
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="input-wrap">
+                                                <input type="text" class="form-control datepicker dtob" name="dob" id="dtob"
+                                                    placeholder="dd/mm/yyyy">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="input-wrap">
+                                                <input type="text" name="age" class="form-control" id="patAge"
+                                                    placeholder="Age">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="form-field">
+                                                <div class="select-wrap">
+                                                    <div class="icon"><span class="fa fa-chevron-down"></span></div>
+                                                    <select id="docSpecialty" class="form-control">
+                                                        <option value="">Select Speciality</option>
+                                                        @foreach($specialty as $sp)
+                                                        <option value="{{$sp->dept_no}}">{{$sp->dept_name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="form-field">
+                                                <div class="select-wrap">
+                                                    <div class="icon"><span class="fa fa-chevron-down"></span></div>
+                                                    <select name="doctor" id="careGiver" class="form-control" required>
+                                                        <option value="">Select Care Giver</option>
+                                                        @foreach($doctors as $doc)
+                                                        <option value="{{$doc->id}}">{{$doc->doctor_name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <!-- <input id="nextStep"  type="button" value="Next Step .." class="btn btn-secondary py-3 px-4"> -->
+                                            <input id="nextStep" type="submit" value="Next Page .."
+                                                class="btn btn-secondary py-3 px-4">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- <div class="col-md-5 bg-white text-center p-5">
 							<div class="desc border-bottom pb-4">
 								<h2>Business Hours</h2>
 								<div class="opening-hours">
 									<h4>Opening Days:</h4>
 									<p class="pl-3">
-										<span><strong>Monday – Friday:</strong> 9am to 20 pm</span>
-										<span><strong>Saturday :</strong> 9am to 17 pm</span>
+										<span><strong>Saturday – Thursday:</strong> 9am to 20 pm</span>
+										<span><strong>Monday :</strong> 9am to 17 pm</span>
 									</p>
 									<h4>Vacations:</h4>
 									<p class="pl-3">
-										<span>All Sunday Days</span>
+										<span>All Friday Days</span>
 										<span>All Official Holidays</span>
 									</p>
 								</div>
 							</div>
 							<div class="desc pt-4 ">
 								<h3 class="heading">For Emergency Cases</h3>
-								<span class="phone">(+01) 123 456 7890</span>
+								<span class="phone">(+880) 9617-171125</span>
 							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+						</div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade" id="appointModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
 
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center pb-5 mb-3">
-				<div class="col-md-7 heading-section text-center ftco-animate">
-					<span class="subheading">We offer Services</span>
-					<h2>Our Benefits</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4 services ftco-animate">
-					<div class="d-block d-flex">
-						<div class="icon d-flex justify-content-center align-items-center">
-							<span class="flaticon-chiropractic"></span>
-						</div>
-						<div class="media-body pl-3">
-							<h3 class="heading">Spinal Manupulation</h3>
-							<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-							<p><a href="#" class="btn-custom">Read more</a></p>
-						</div>
-					</div>
-					<div class="d-block d-flex">
-						<div class="icon d-flex justify-content-center align-items-center">
-							<span class="flaticon-acupuncture"></span>
-						</div>
-						<div class="media-body pl-3">
-							<h3 class="heading">Medical Acupuncture</h3>
-							<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-							<p><a href="#" class="btn-custom">Read more</a></p>
-						</div>
-					</div>
-
-				</div>
-				<div class="col-md-4 services ftco-animate">
-					<div class="d-block d-flex">
-						<div class="icon d-flex justify-content-center align-items-center">
-							<span class="flaticon-electrotherapy"></span>
-						</div>
-						<div class="media-body pl-3">
-							<h3 class="heading">Electrotherapy</h3>
-							<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-							<p><a href="#" class="btn-custom">Read more</a></p>
-						</div>
-					</div>
-					<div class="d-block d-flex">
-						<div class="icon d-flex justify-content-center align-items-center">
-							<span class="flaticon-examination"></span>
-						</div>
-						<div class="media-body pl-3">
-							<h3 class="heading">Therapeutic Exercise</h3>
-							<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-							<p><a href="#" class="btn-custom">Read more</a></p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-4 services ftco-animate">
-					<div class="d-block d-flex">
-						<div class="icon d-flex justify-content-center align-items-center">
-							<span class="flaticon-lymph-nodes"></span>
-						</div>
-						<div class="media-body pl-3">
-							<h3 class="heading">Manual Lympahtic</h3>
-							<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-							<p><a href="#" class="btn-custom">Read more</a></p>
-						</div>
-					</div>
-					<div class="d-block d-flex">
-						<div class="icon d-flex justify-content-center align-items-center">
-							<span class="flaticon-bone"></span>
-						</div>
-						<div class="media-body pl-3">
-							<h3 class="heading">Joint Mobilization</h3>
-							<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-							<p><a href="#" class="btn-custom">Read more</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="ftco-section ftco-no-pb ftco-no-pt">
-		<div class="container-fluid px-md-0">
-			<div class="row no-gutters justify-content-center pb-5 mb-3">
-				<div class="col-md-7 heading-section text-center ftco-animate">
-					<span class="subheading">Team &amp; Staff</span>
-					<h2>Our Experts Chiropractor / Therapist</h2>
-				</div>
-			</div>
-			<div class="row no-gutters">
-				<div class="col-md-4 col-lg ftco-animate d-flex">
-					<div class="staff bg-primary">
-						<div class="img-wrap d-flex align-items-stretch">
-							<div class="img align-self-stretch" style="background-image: url(images/staff-1.jpg);"></div>
-						</div>
-						<div class="text pt-3 px-3 pb-4 text-center">
-							<h3>Lloyd Wilson</h3>
-							<span class="position mb-2">Chief Medical Officer</span>
-							<div class="faded">
-								<!-- <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p> -->
-								<ul class="ftco-social text-center">
-									<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a></li>
-									<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a></li>
-									<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-google"></span></a></li>
-									<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-lg ftco-animate d-flex">
-					<div class="staff bg-primary">
-						<div class="img-wrap d-flex align-items-stretch">
-							<div class="img align-self-stretch" style="background-image: url(images/staff-2.jpg);"></div>
-						</div>
-						<div class="text pt-3 px-3 pb-4 text-center">
-							<h3>Rachel Parker</h3>
-							<span class="position mb-2">Chiropractor</span>
-							<div class="faded">
-								<!-- <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p> -->
-								<ul class="ftco-social text-center">
-									<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a></li>
-									<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a></li>
-									<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-google"></span></a></li>
-									<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-lg ftco-animate d-flex">
-					<div class="staff bg-primary">
-						<div class="img-wrap d-flex align-items-stretch">
-							<div class="img align-self-stretch" style="background-image: url(images/staff-3.jpg);"></div>
-						</div>
-						<div class="text pt-3 px-3 pb-4 text-center">
-							<h3>Ian Smith</h3>
-							<span class="position mb-2">Clinical Chiropractic Assistant</span>
-							<div class="faded">
-								<!-- <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p> -->
-								<ul class="ftco-social text-center">
-									<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a></li>
-									<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a></li>
-									<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-google"></span></a></li>
-									<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-lg ftco-animate d-flex">
-					<div class="staff bg-primary">
-						<div class="img-wrap d-flex align-items-stretch">
-							<div class="img align-self-stretch" style="background-image: url(images/staff-4.jpg);"></div>
-						</div>
-						<div class="text pt-3 px-3 pb-4 text-center">
-							<h3>Alicia Henderson</h3>
-							<span class="position mb-2">Licensed Massage Therapist</span>
-							<div class="faded">
-								<!-- <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p> -->
-								<ul class="ftco-social text-center">
-									<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a></li>
-									<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a></li>
-									<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-google"></span></a></li>
-									<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-lg ftco-animate d-flex">
-					<div class="staff bg-primary">
-						<div class="img-wrap d-flex align-items-stretch">
-							<div class="img align-self-stretch" style="background-image: url(images/staff-5.jpg);"></div>
-						</div>
-						<div class="text pt-3 px-3 pb-4 text-center">
-							<h3>Lloyd Wilson</h3>
-							<span class="position mb-2">Front Desk Coordinator</span>
-							<div class="faded">
-								<!-- <p>I am an ambitious workaholic, but apart from that, pretty simple person.</p> -->
-								<ul class="ftco-social text-center">
-									<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a></li>
-									<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a></li>
-									<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-google"></span></a></li>
-									<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="ftco-section ftco-no-pt ftco-no-pb">
-		<div class="container">
-			<div class="row d-flex no-gutters">
-				<div class="col-md-6 d-flex order-md-last">
-					<div class="img img-video d-flex align-self-stretch align-items-center justify-content-center mb-4 mb-sm-0" style="background-image:url(images/about.jpg);">
-						<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
-							<span class="fa fa-play"></span>
-						</a>
-					</div>
-				</div>
-				<div class="col-md-6 pr-md-5 py-md-5">
-					<div class="row justify-content-start py-5">
-						<div class="col-md-12 heading-section ftco-animate">
-							<span class="subheading">Welcome to Chiropractic</span>
-							<h2 class="mb-4">About Chiropractic</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-						</div>
-					</div>
-					<div class="row ftco-counter pb-5" id="section-counter">
-						<div class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
-							<div class="block-18">
-								<div class="text">
-									<strong class="number" data-number="45">0</strong>
-								</div>
-								<div class="text">
-									<span>Years of <br>Experienced</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
-							<div class="block-18">
-								<div class="text">
-									<strong class="number" data-number="2342">0</strong>
-								</div>
-								<div class="text">
-									<span>Happy <br>Customers</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 col-lg-4 d-flex justify-content-center counter-wrap ftco-animate">
-							<div class="block-18">
-								<div class="text">
-									<strong class="number" data-number="30">0</strong>
-								</div>
-								<div class="text">
-									<span>Award <br>Winning</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="ftco-section testimony-section bg-dark">
-		<div class="container">
-			<div class="row justify-content-center pb-5 mb-3">
-				<div class="col-md-7 heading-section heading-section-white text-center ftco-animate">
-					<span class="subheading">Testimonies</span>
-					<h2>Happy Clients &amp; Feedbacks</h2>
-				</div>
-			</div>
-			<div class="row ftco-animate">
-				<div class="col-md-12">
-					<div class="carousel-testimony owl-carousel ftco-owl">
-						<div class="item">
-							<div class="testimony-wrap py-4">
-								<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
-								<div class="text">
-									<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-									<div class="d-flex align-items-center">
-										<div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
-										<div class="pl-3">
-											<p class="name">Roger Scott</p>
-											<span class="position">Marketing Manager</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimony-wrap py-4">
-								<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
-								<div class="text">
-									<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-									<div class="d-flex align-items-center">
-										<div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
-										<div class="pl-3">
-											<p class="name">Roger Scott</p>
-											<span class="position">Marketing Manager</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimony-wrap py-4">
-								<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
-								<div class="text">
-									<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-									<div class="d-flex align-items-center">
-										<div class="user-img" style="background-image: url(images/person_3.jpg)"></div>
-										<div class="pl-3">
-											<p class="name">Roger Scott</p>
-											<span class="position">Marketing Manager</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimony-wrap py-4">
-								<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
-								<div class="text">
-									<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-									<div class="d-flex align-items-center">
-										<div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
-										<div class="pl-3">
-											<p class="name">Roger Scott</p>
-											<span class="position">Marketing Manager</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimony-wrap py-4">
-								<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
-								<div class="text">
-									<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-									<div class="d-flex align-items-center">
-										<div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
-										<div class="pl-3">
-											<p class="name">Roger Scott</p>
-											<span class="position">Marketing Manager</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="ftco-section ftco-no-pt ftco-no-pb">
-		<div class="container-fluid px-md-0">
-			<div class="row no-gutters">
-				<div class="col-md-3 ftco-animate">
-					<div class="work img d-flex align-items-center" style="background-image: url(images/work-1.jpg);">
-						<a href="images/work-1.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-							<span class="fa fa-expand"></span>
-						</a>
-						<div class="desc w-100 px-4 text-center pt-5 mt-5">
-							<div class="text w-100 mb-3 mt-4">
-								<h2><a href="work-single.html">Foot Pain</a></h2>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 ftco-animate">
-					<div class="work img d-flex align-items-center" style="background-image: url(images/work-2.jpg);">
-						<a href="images/work-2.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-							<span class="fa fa-expand"></span>
-						</a>
-						<div class="desc w-100 px-4 text-center pt-5 mt-5">
-							<div class="text w-100 mb-3 mt-4">
-								<h2><a href="work-single.html">Arm Pain</a></h2>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 ftco-animate">
-					<div class="work img d-flex align-items-center" style="background-image: url(images/work-3.jpg);">
-						<a href="images/work-3.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-							<span class="fa fa-expand"></span>
-						</a>
-						<div class="desc w-100 px-4 text-center pt-5 mt-5">
-							<div class="text w-100 mb-3 mt-4">
-								<h2><a href="work-single.html">Shoulder Pain</a></h2>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 ftco-animate">
-					<div class="work img d-flex align-items-center" style="background-image: url(images/work-4.jpg);">
-						<a href="images/work-4.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-							<span class="fa fa-expand"></span>
-						</a>
-						<div class="desc w-100 px-4 text-center pt-5 mt-5">
-							<div class="text w-100 mb-3 mt-4">
-								<h2><a href="work-single.html">Back Pain</a></h2>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-3 ftco-animate">
-					<div class="work img d-flex align-items-center" style="background-image: url(images/work-5.jpg);">
-						<a href="images/work-5.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-							<span class="fa fa-expand"></span>
-						</a>
-						<div class="desc w-100 px-4 text-center pt-5 mt-5">
-							<div class="text w-100 mb-3 mt-4">
-								<h2><a href="work-single.html">Head &amp; Migraines</a></h2>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 ftco-animate">
-					<div class="work img d-flex align-items-center" style="background-image: url(images/work-6.jpg);">
-						<a href="images/work-6.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-							<span class="fa fa-expand"></span>
-						</a>
-						<div class="desc w-100 px-4 text-center pt-5 mt-5">
-							<div class="text w-100 mb-3 mt-4">
-								<h2><a href="work-single.html">Wear &amp; Tear</a></h2>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 ftco-animate">
-					<div class="work img d-flex align-items-center" style="background-image: url(images/work-7.jpg);">
-						<a href="images/work-7.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-							<span class="fa fa-expand"></span>
-						</a>
-						<div class="desc w-100 px-4 text-center pt-5 mt-5">
-							<div class="text w-100 mb-3 mt-4">
-								<h2><a href="work-single.html">Arm Pain</a></h2>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 ftco-animate">
-					<div class="work img d-flex align-items-center" style="background-image: url(images/work-8.jpg);">
-						<a href="images/work-8.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-							<span class="fa fa-expand"></span>
-						</a>
-						<div class="desc w-100 px-4 text-center pt-5 mt-5">
-							<div class="text w-100 mb-3 mt-4">
-								<h2><a href="work-single.html">Lower Back Pain</a></h2>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center pb-5 mb-3">
-				<div class="col-md-7 heading-section text-center ftco-animate">
-					<span class="subheading">News &amp; Blog</span>
-					<h2>Latest news from our blog</h2>
-				</div>
-			</div>
-			<div class="row d-flex">
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_1.jpg');">
-						</a>
-						<div class="text mt-3">
-							<div class="posted mb-3 d-flex">
-								<div class="img author" style="background-image: url(images/person_2.jpg);"></div>
-								<div class="desc pl-3">
-									<span>Posted by John doe</span>
-									<span>24 February 2020</span>
-								</div>
-							</div>
-							<h3 class="heading"><a href="#">What Every Athlete Needs To Know About Injury Recovery</a></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_2.jpg');">
-						</a>
-						<div class="text mt-3">
-							<div class="posted mb-3 d-flex">
-								<div class="img author" style="background-image: url(images/person_3.jpg);"></div>
-								<div class="desc pl-3">
-									<span>Posted by John doe</span>
-									<span>24 February 2020</span>
-								</div>
-							</div>
-							<h3 class="heading"><a href="#">What Every Athlete Needs To Know About Injury Recovery</a></h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_3.jpg');">
-						</a>
-						<div class="text mt-3">
-							<div class="posted mb-3 d-flex">
-								<div class="img author" style="background-image: url(images/person_1.jpg);"></div>
-								<div class="desc pl-3">
-									<span>Posted by John doe</span>
-									<span>24 February 2020</span>
-								</div>
-							</div>
-							<h3 class="heading"><a href="#">What Every Athlete Needs To Know About Injury Recovery</a></h3>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+    @include('frontpage.includes.footer')
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#F96D00" />
+        </svg></div>
 
 
-	<footer class="footer ftco-section ftco-no-pt">
-		<div class="container">
-			<div class="row mb-5">
-				<div class="col-md-6 col-lg">
-					<div class="ftco-footer-widget py-4 py-md-5">
-						<h2 class="logo"><a href="#">Chiropractic</a></h2>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-4">
-							<li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg">
-					<div class="ftco-footer-widget ml-md-5 py-5">
-						<h2 class="ftco-heading-2">Services</h2>
-						<ul class="list-unstyled">
-							<li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Spinal Manupulation</a></li>
-							<li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Electrotherapy</a></li>
-							<li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Manual Lympahtic</a></li>
-							<li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Medical Acupuncture</a></li>
-							<li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Therapeutic Exercise</a></li>
-							<li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Joint Mobilization</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg">
-					<div class="ftco-footer-widget py-4 py-md-5">
-						<h2 class="ftco-heading-2">Contact information</h2>
-						<div class="block-23 mb-3">
-							<ul>
-								<li><span class="icon fa fa-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-								<li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-								<li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text">info@yourdomain.com</span></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg">
-					<div class="ftco-footer-widget bg-primary p-4 py-5">
-						<h2 class="ftco-heading-2">Business Hours</h2>
-						<div class="opening-hours">
-							<h4>Opening Days:</h4>
-							<p class="pl-3">
-								<span>Monday – Friday : 9am to 20 pm</span>
-								<span>Saturday : 9am to 17 pm</span>
-							</p>
-							<h4>Vacations:</h4>
-							<p class="pl-3">
-								<span>All Sunday Days</span>
-								<span>All Official Holidays</span>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 text-center">
+    <script src="{{asset('template/js/jquery.min.js')}}"></script>
+    <script src="{{asset('template/js/jquery-migrate-3.0.1.min.js')}}"></script>
+    <script src="{{asset('template/js/popper.min.js')}}"></script>
+    <script src="{{asset('template/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('template/js/jquery.easing.1.3.js')}}"></script>
+    <script src="{{asset('template/js/jquery.waypoints.min.js')}}"></script>
+    <script src="{{asset('template/js/jquery.stellar.min.js')}}"></script>
+    <script src="{{asset('template/js/jquery.animateNumber.min.js')}}"></script>
+    <script src="{{asset('template/js/bootstrap-datepicker.js')}}"></script>
+    <script src="{{asset('template/js/jquery.timepicker.min.js')}}"></script>
+    <script src="{{asset('template/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('template/js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{asset('template/js/scrollax.min.js')}}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false">
+    </script>
+    <script src="{{asset('template/js/google-map.js')}}"></script>
+    <script src="{{asset('template/js/main.js')}}"></script>
 
-					<p>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;<script>
-							document.write(new Date().getFullYear());
-						</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					</p>
-				</div>
-			</div>
-		</div>
-	</footer>
+    <script>
+    $('.dtob').on('change', function() {
+        var dob = $(this).val();
+        date = dob.split("/").reverse().join("-");
+        $('#patAge').val(ageCalculator(date));
 
+    })
 
+    var maxBirthdayDate = new Date();
+    $('.dtob').datepicker({
+        format: "dd/mm/yyyy",
+        autoclose: true,
+        todayHighlight: true,
+        changeMonth: true,
+        changeYear: true,
+        endDate: maxBirthdayDate,
+        inline: true
+    })
 
-	<!-- loader -->
-	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+    $('#docSpecialty').on('change', function() {
+        var spDoctor = $(this).val();
+        getDoctorSpeciltyWise(spDoctor);
+    })
 
+    function getDoctorSpeciltyWise(deptNo) {
+        $.ajax({
+            url: "{{url('onlineSpWiseDoctor')}}/" + deptNo,
+            type: 'get',
+            success: function(data) {
+                $('#careGiver').html(data);
+            }
+        })
+    }
 
-	<script src="{{asset('template/js/jquery.min.js')}}"></script>
-	<script src="{{asset('template/js/jquery-migrate-3.0.1.min.js')}}"></script>
-	<script src="{{asset('template/js/popper.min.js')}}"></script>
-	<script src="{{asset('template/js/bootstrap.min.js')}}"></script>
-	<script src="{{asset('template/js/jquery.easing.1.3.js')}}"></script>
-	<script src="{{asset('template/js/jquery.waypoints.min.js')}}"></script>
-	<script src="{{asset('template/js/jquery.stellar.min.js')}}"></script>
-	<script src="{{asset('template/js/jquery.animateNumber.min.js')}}"></script>
-	<script src="{{asset('template/js/bootstrap-datepicker.js')}}"></script>
-	<script src="{{asset('template/js/jquery.timepicker.min.js')}}"></script>
-	<script src="{{asset('template/js/owl.carousel.min.js')}}"></script>
-	<script src="{{asset('template/js/jquery.magnific-popup.min.js')}}"></script>
-	<script src="{{asset('template/js/scrollax.min.js')}}"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="{{asset('template/js/google-map.js')}}"></script>
-	<script src="{{asset('template/js/main.js')}}"></script>
-
-
+    // $('#modalBtn').on('click', function() {
+    // 	$('#appointModal').modal('show');
+    // })
+    </script>
 </body>
 
 </html>

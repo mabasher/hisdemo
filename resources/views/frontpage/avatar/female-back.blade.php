@@ -1,0 +1,29 @@
+<div class="avatars animate__animated animate__zoomIn" id="fb" style="float: left; display: block; padding: 20px 20px; width: 250px; border: 3px solid rgb(255, 255, 255);">
+    <p>
+        <img src="{{asset('admin/avatar/female-back.png')}}" width="204" height="383" class="map" usemap="#female-back" />
+        <map name="female-back" id="female-back" class="tabs">
+            <area href="javascript:void(0)" data-onclick="1,173,F" coords="114,45, 90,44, 89,39, 87,37, 84,32, 83,24, 86,24, 87,12, 92,5, 99,1, 103,1, 112,3, 116,9, 118,23, 118,26, 120,25, 120,34, 119,37, 117,38, 116,41" data-title="মাথার লক্ষণসমূহ" data-key="head" data-id="1" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="2,173,F" coords="91,46, 91,52, 91,56, 115,56, 113,49, 114,46" data-title="গলারা লক্ষণসমূহ" data-key="throat" data-id="2" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="3,173,F" coords="76,61, 69,62, 63,65, 59,71, 57,77, 56,83, 70,76" data-title="বাম কাঁধের লক্ষণসমূহ" data-key="left-shoulder" data-id="5" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="16,173,F" coords="126,61, 133,61, 140,64, 143,69, 146,76, 146,79, 136,75, 128,67" data-title="ডান কাঁধের লক্ষণসমূহ" data-key="right-shoulder" data-id="5" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="5,173,F" coords="57,83, 53,100, 49,110, 47,119, 46,125, 40,138, 38,147, 36,162, 34,170, 32,173, 40,177, 47,164, 54,148, 57,139, 59,128, 63,118, 68,104, 71,96" data-title="বাম বাহুর লক্ষণসমূহ" data-key="left-arm" data-id="6" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="15,173,F" coords="148,82, 150,97, 153,106, 155,113, 160,126, 165,139, 168,154, 171,169, 172,172, 163,175, 156,161, 148,143, 146,131, 140,115, 137,105, 132,94" data-title="ডান বাহুর লক্ষণসমূহ" data-key="right-arm" data-id="6" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="9,173,F" coords="31,174, 22,177, 18,180, 15,182, 19,182, 22,182, 24,180, 24,184, 23,190, 21,199, 22,203, 24,196, 27,192, 25,202, 27,205, 28,198, 30,195, 29,204, 33,201, 35,198, 39,189, 39,184, 40,180, 40,179" data-title="বাম হাতের লক্ষণসমূহ" data-key="left-hand" data-id="7" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="17,173,F" coords="173,173, 179,175, 184,179, 186,182, 182,182, 182,180, 179,180, 181,187, 182,197, 180,202, 179,199, 179,195, 177,193, 178,198, 178,205, 177,204, 175,200, 175,196, 175,193, 173,196, 174,204, 173,204, 171,202, 168,199, 165,192, 165,188, 164,180, 164,177" data-title="ডান হাতের লক্ষণসমূহ" data-key="right-hand" data-id="7" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="12,173,F" coords="90,56, 80,59, 77,61, 71,95, 73,108, 75,121, 101,122, 128,122, 131,106, 131,96, 132,91, 127,62, 114,57" data-title="পীঠের লক্ষণসমূহ" data-key="upper-back" data-id="16" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="13,173,F" coords="76,125, 76,132, 78,138, 77,148, 76,151, 103,153, 129,150, 127,147, 127,142, 127,131, 128,123" data-title="পীঠের নিচের অংশের লক্ষণসমূহ" data-key="lower-back" data-id="16" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="14,173,F" coords="84,153, 83,183, 82,203, 82,208, 95,207, 98,207, 99,202, 102,200, 106,204, 106,208, 125,207, 122,152" data-title="বাটকের লক্ষণসমূহ" data-key="buttock" data-id="18" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="7,173,F" coords="82,153, 76,153, 71,162, 70,170, 68,180, 65,194, 65,206, 65,210, 82,211" data-title="নিতম্মবের লক্ষণসমূহ" data-key="left-hip" data-id="13" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="20,173,F" coords="123,153, 130,154, 133,168, 135,175, 138,184, 140,196, 140,208, 139,210, 124,211" data-title="নিতম্মবের লক্ষণসমূহ" data-key="right-hip" data-id="13" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="10,173,F" coords="65,211, 66,230, 68,245, 69,263, 70,274, 69,291, 68,305, 68,317, 69,328, 72,344, 74,356, 84,357, 84,347, 85,338, 88,323, 90,309, 90,298, 89,285, 91,275, 92,260, 93,246, 94,231, 98,212" data-title="বাম পায়ের লক্ষণসমূহ" data-key="left-leg" data-id="14" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="18,173,F" coords="106,213, 139,212, 138,230, 136,246, 136,256, 134,265, 134,277, 134,284, 136,304, 136,317, 135,329, 132,341, 132,353, 121,354, 119,338, 116,323, 113,310, 115,297, 115,285, 112,276, 111,260, 111,236, 108,222, 106,213" data-title="ডান পায়ের লক্ষণসমূহ" data-key="right-leg" data-id="14" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="11,173,F" coords="132,354, 132,358, 132,363, 139,366, 138,371, 132,380, 126,382, 122,378, 121,372, 120,366, 119,363, 120,358" data-title="ডান পদদেশ্র লক্ষণসমূহ" data-key="right-foot" data-id="15" shape="poly" class="anatomical-region">
+            <area href="javascript:void(0)" data-onclick="19,173,F" coords="73,357, 73,362, 66,367, 64,369, 67,371, 70,377, 74,381, 80,382, 82,379, 83,374, 83,370, 83,367, 85,364, 83,357" data-title="বাম পদদেশের লক্ষণসমূহ" data-key="left-foot" data-id="15" shape="poly" class="anatomical-region">
+        </map>
+    </p>
+    <div>
+        <a href="javascript:void(0)"  class="btn btn-sm btn-block btn-primary avaterShow" data-position="ff">
+            <span class="glyphicon glyphicon-retweet"></span>&nbsp; Rotate
+        </a>
+    </div>
+</div>

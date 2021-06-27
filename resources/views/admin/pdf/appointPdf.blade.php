@@ -80,14 +80,7 @@
 			</div>
         </div>
     </div>
-    <!-- <div class="row">
-	<p>{{$pid->reg_no}}</p>
-    <p>{{$pid->reg_date}}</p>
-    <p>{{$pid->ful_name}}</p>
-	<p>{{$pid->dob}}</p>
-	<p>{{$pid->mobile}}</p>
-	<img class="img-thumbnail" src="{{url('/simple-qr-code/'.$pid->regNo)}}" alt="No QR" height="100px" width="100px">
-	</div> -->
+    
 
 
 

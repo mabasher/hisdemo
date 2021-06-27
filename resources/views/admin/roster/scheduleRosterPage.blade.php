@@ -73,8 +73,8 @@
                                         </div>
                                     </div>
                                 </h3>
-
-                                <table class="table" id="dynamicTable">
+                                <div id="dynamicTable"></div>
+                                <!-- <table class="table" >
                                     <tbody>
                                         @foreach($days as $ds)
                                         <tr id="">
@@ -87,7 +87,7 @@
                                                     placeholder="Visit Duration" class="form-control" />
                                             </td>
                                             <td>
-                                                <select class="custom-select" name="doctorvisit_id{{$ds->name}}[]" >
+                                                <select class="custom-select" name="doctorvisit_id{{$ds->name}}[]">
                                                     <option value="">Visit Time</option>
                                                     @foreach($visits as $v)
                                                     <option value="{{$v->id}}">
@@ -111,7 +111,7 @@
 
                                         @endforeach
                                     </tbody>
-                                </table>
+                                </table> -->
                             </div>
                         </div>
                     </div>
@@ -124,40 +124,68 @@
         </div>
     </div>
 
+    <div class="modal fade" id="showDoctorScheduleModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                   <div id="doctorWeeklySchedule">
+                   </div>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
     @endsection
     @section('js')
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
-<script>
-    function initTimePicker(){
-        $('.timepicker').timepicker({
-            timeFormat: 'h:mm p',
-            interval: 15,
-            minTime: '10',
-            maxTime: '10:00pm',
-            // defaultTime: '11',
-            startTime: '10:00',
-            dynamic: false,
-            dropdown: true,
-            scrollbar: true
-        });
-    }
-    initTimePicker();
+    <script>
+function initTimePicker() {
+    $('.timepicker').timepicker({
+        timeFormat: 'h:mm p',
+        interval: 15,
+        minTime: '10',
+        maxTime: '10:00pm',
+        // defaultTime: '11',
+        startTime: '10:00',
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true
+    });
+}
+initTimePicker();
 
 var i = 0;
-$(".add").click(function() {
+$(document).on('click',".add",function() {
     var id = $(this).data('id');
     var day = $(this).data('day');
 
     ++i;
     var data = `<div class="mx-1">
-                        <select class="custom-select" id="" name="doctorvisit_id${day}[]">
+                        <tr>
+                        <td><input type="text" name="avg_duration${day}[]" placeholder="Visit Duration" class="form-control" /></td>
+                        </tr>
+                        <tr>
+                        <td><select class="custom-select" id="" name="doctorvisit_id${day}[]">
                         @foreach($visits as $v) <option value="{{$v->id}}"> {{$v->visit_name}}</option> @endforeach </select>
                         <input type="text" name="start_time${day}[]" placeholder="Enter Start Time" class="form-control timepicker" />
                         <input type="text" name="end_time${day}[]" placeholder="Enter end Time" class="form-control timepicker" />
-                        <button type="button" class="btn btn-danger btn-sm btn-block remove-tr">Remove</button>
+                        <input type="hidden" name="schedule_id${day}[]" value="">
+                        <button type="button" class="btn btn-danger btn-sm btn-block remove-tr">Remove</button></td></tr>
                     </div>`;
     $('#extraTime' + id).append(data);
+    // <input type="text" name="avg_duration${day}[]" placeholder="Visit Duration" class="form-control" />
     initTimePicker();
     // $("#dynamicTable").append('<tr><td><input type="text" name="addmore['+i+'][start_time]" placeholder="Enter Start Time" class="form-control" /></td><td><input type="text" name="addmore['+i+'][end_time]" placeholder="Enter end Time" class="form-control" /></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>');
 });
@@ -256,5 +284,27 @@ function getDoctorDesigWise(jobId) {
 $("#all").click(function() {
     $('input:checkbox').not(this).prop('checked', this.checked);
 });
+
+
+
+$('#doctor').on('change', function() {
+    var doctorId = $(this).val();
+    getShowDoctorAllSchedule(doctorId);
+
+})
+
+
+function getShowDoctorAllSchedule(id) {
+    $.ajax({
+        url: "{{url('showDoctorSchedule')}}/" + id,
+        type: 'get',
+        success: function(data) {
+            console.log(data);
+            $('#dynamicTable').html(data);
+            //  $('#showDoctorScheduleModal').modal('show');
+            //  $('#doctorWeeklySchedule').html(data);
+        }
+    })
+}
     </script>
     @endsection

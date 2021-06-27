@@ -36,4 +36,11 @@ class Doctorinfo extends Model
     {
         return $this->hasMany('App\Model\Doctor\Roomcheck');
     }
+
+    public function doctorName()
+    {
+        return $this->belongsTo(self::class,'id');
+    }
+
+
 }

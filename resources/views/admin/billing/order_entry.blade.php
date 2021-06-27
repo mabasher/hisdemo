@@ -81,7 +81,7 @@
 <div class="content">
     <div class="row m-auto">
         <div class="col-md-12">
-            <form autocomplete="off" method="POST" action="{{url('investigationInvoiceSave')}}">
+            <form autocomplete="off" method="POST"  id="investigationInvoiceSave" action="{{url('investigationInvoiceSave')}}">
                 @csrf
                 <!-- <p class="text-white red text-center"> হে আদাম সন্তান! প্রত্যেক সললাতের সময় তোমরা সাজসজ্জা গ্রহন কর।</p> -->
                 <div class="row">
@@ -123,7 +123,7 @@
                                 <div class="col">
                                     <label for="">Care Giver</label>
                                     <input type="text" id="doctor" class="form-control" readonly placeholder="Care Giver">
-                                    <input type="hidden" id="doctorNo" class="form-control" name="consult_by" readonly placeholder="Care Giver">
+                                    <input type="hidden" id="doctorNo" class="form-control" name="doctorinfo_id" readonly placeholder="Care Giver">
                                 </div>
                             </div>
                         </div>
@@ -134,9 +134,9 @@
                                 <b>TODAYS SUMMARY</b>
                             </div>
                             <div class="card-body">
-                                <h6 class="">Cashier</h6>
-                                <h6 class="">Total Amount</h6>
-                                <h6 class="">Total Invoice</h6>
+                                <h6 class="">Cashier :<span class="ml-2">{{auth()->user()->name}}</span></h6>
+                                <h6 class="">Total Amount :<span class="ml-2">{{ $totalAmount->sum('dr_amt') }}</span></h6>
+                                <h6 class="">Total Invoice :<span class="ml-2">{{ $totalInvoice->count() }}</span></h6>
                                 <a href="#" class="btn btn-xs btn-success">Show Details</a>
                             </div>
                         </div>
@@ -146,8 +146,9 @@
                     <div class="col-md-5 m-auto">
                         <div class="row">
 
-                            <div class="col">
-                                <h3 class="text-center text-success">
+                            <div class="col text-center">
+                                <h4 class="text-primary">ORDER ENTRY</h4>
+                                <h3 class="text-success">
                                     <select class="form-control" id="testName2" style="height:22px">
                                         <option value="">PRESS CTRL + SPACE BAR or MOUSE CLICK</option>
 
@@ -182,7 +183,7 @@
                             <div class="card">
                                 <div class="card-body border border-info">
                                     <div class="text-center mb-2">
-                                        <button type="submit" class="btn btn-sm btn-success">Invoice</button>
+                                        <button type="submit" id="InvoiceSaveBtn" class="btn btn-sm btn-success">Invoice</button>
                                         <button type="button" id="newBill" class="btn btn-sm btn-success">New Bill</button>
                                         <button type="button" class="btn btn-sm btn-success">Make Quick PID </button>
                                         <button type="button" class="btn btn-sm btn-success">Cancel Order</button>
@@ -204,10 +205,10 @@
                                         <div class="col-md-8">
                                             <div class="form-row">
                                                 <div class="col-md-6">
-                                                    <input type="number" class="form-control" min="0" id="overalldiscount" placeholder="Fixed Discount" />
+                                                    <input type="number" class="form-control" name="overfix_discount" min="0" id="overalldiscount" placeholder="Fixed Discount" />
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="number" class="form-control" min="0" max="100" id="overalldisPercent" placeholder="Discount %" />
+                                                    <input type="number" class="form-control" name="overPercent_discount" min="0" max="100" id="overalldisPercent" placeholder="Discount %" />
                                                 </div>
                                             </div>
                                         </div>
@@ -219,9 +220,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="receiveAmt" class="col-sm-4 col-form-label col-form-label-sm">Received Amount</label>
+                                        <label for="receiveAmt" class="col-sm-4 col-form-label col-form-label-sm">Receive Amount</label>
                                         <div class="col-md-8">
-                                            <input type="number" class="form-control" min="0" id="receiveAmt" placeholder="Received Amount" />
+                                            <input type="number" class="form-control" name="receive_amt" min="0" id="receiveAmt" placeholder="Received Amount" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -254,6 +255,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
 <script>
+    $(function() {
+        $('#InvoiceSaveBtn').on('click', function(e){
+            e.preventDefault();
+            // $('#investigationInvoiceSave').submit();
+            location.reload(true);
+            $('#investigationInvoiceSave').submit();
+        });
+    });
+
     $('#newBill').on('click', function() {
         $('#pid').val('');
         $('#cid').val('');
@@ -309,7 +319,6 @@
             event.preventDefault();
             return false;
         }
-        console.log(pid);
     })
 
 
@@ -321,7 +330,7 @@
                 var gender = data.Billing.pat_appinfo.gender == 'M' ? 'Male' : (data.Billing.pat_appinfo.gender == 'F' ? 'Female' : 'Others');
                 $('#pid').val(data.Billing.reg_no);
                 $('#cid').val(data.Billing.consult_no);
-                $('#fulName').val(data.Billing.pat_appinfo.salutation_id + ' ' + data.Billing.pat_appinfo.ful_name);
+                $('#fulName').val(data.Billing.pat_appinfo.salutation_id?data.Billing.pat_appinfo.salutation_id+ ' ' + data.Billing.pat_appinfo.ful_name:'' + ' ' + data.Billing.pat_appinfo.ful_name);
                 $('#mobile').val(data.Billing.pat_appinfo.mobile);
                 $('#doctor').val(data.Billing.consultation.designation + ' ' + data.Billing.consultation.doctor_name);
                 $('#doctorNo').val(data.Billing.consultation.id);
@@ -354,7 +363,6 @@
                 $('#testName2').val(null).trigger('change');
                 $('#testName2').select2('open');
                 invoiceSum();
-                getDuplicateRemove();
             }
         })
     }

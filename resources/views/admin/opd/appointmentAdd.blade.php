@@ -1,38 +1,37 @@
     @extends('layouts.app')
     @section('css')
     <style>
-        .bg-secondary span {
-            color: #fff;
-        }
+.bg-secondary span {
+    color: #fff;
+}
 
-        .time-slot {
-            border: 1px solid #55ce63;
-            border-radius: 3px;
-            text-align: center;
-            cursor: pointer;
-        }
+.time-slot {
+    border: 1px solid #55ce63;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+}
 
-        .noofDay {
-            cursor: pointer;
-        }
+.noofDay {
+    cursor: pointer;
+}
 
-        .slotScroll {
-            height: 160px;
-            overflow-y: auto;
-        }
+.slotScroll {
+    height: 160px;
+    overflow-y: auto;
+}
 
-        thead input {
-            width: 100%;
-        }
+thead input {
+    width: 100%;
+}
 
-        .form-control {
-            min-height: 20px !important;
-        }
+.form-control {
+    min-height: 20px !important;
+}
     </style>
     <link rel="stylesheet" href="{{asset('css/imgcss.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css" />
-    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.1.7/css/fixedHeader.dataTables.min.css"/> -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css" />
     <link rel="stylesheet" type="text/css" href="{{asset('admin/css/dataTables.bootstrap4.min.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('css/select2ud.css')}}">
@@ -46,7 +45,6 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title text-info text-center">Patient Appointment</h4>
-                        <!-- <a href="patients.html" class="btn btn-primary float-right">View all</a> -->
                         <p class="card-text"><a href="javascript:void(0)" target="_blank"></a></p>
                     </div>
                     <div class="card-body">
@@ -62,15 +60,19 @@
                                 </div>
                                 @endif
 
-                                <form class="needs-validation" autocomplete="off" method="POST" action="{{url('appointmentInsert')}}" enctype="multipart/form-data">
+                                <form class="needs-validation" autocomplete="off" method="POST" target="_blank" id="appointmentInsert"
+                                    action="{{url('appointmentInsert')}}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="card col-xl-11 m-auto">
                                         <h5 class="card-header text-success">Doctor Information</h5>
                                         <div class="card-body">
                                             <div class="form-row">
                                                 <div class="col-md-2 mb-3">
-                                                    <label for="">Schedule Date<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control datepicker text-center" name="app_date" id="schDate" placeholder="Schedule Date" value="{{old('app_date')}}" required>
+                                                    <label for="">Schedule Date<span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control datepicker text-center"
+                                                        name="app_date" id="schDate" placeholder="Schedule Date"
+                                                        value="{{old('app_date')}}" required>
                                                 </div>
                                                 <div class="col-md-2 mb-3">
                                                     <label for="">Doctor Specilty</label>
@@ -94,22 +96,17 @@
                                                 </div>
                                                 <div class="col-md-5 ">
                                                     <label for="">Care Giver<span class="text-danger">*</span></label>
-                                                    <select class="custom-select" id="doctor" name="doctorinfo_id" required>
+                                                    <select class="custom-select" id="doctor" name="doctorinfo_id"
+                                                        required>
                                                         <option value="">Select Care Giver</option>
                                                         @foreach($doctors as $doc)
-                                                        <option data-doctorNo="{{$doc->doctor_no}}" data-room="{{$doc->doc_chember}}" value="{{$doc->id}}">
+                                                        <option data-doctorNo="{{$doc->doctor_no}}"
+                                                            data-room="{{$doc->doc_chember}}" value="{{$doc->id}}">
                                                             {{$doc->designation.' '.$doc->doctor_name.' '.$doc->qualification}}
                                                         </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                                <!-- <div class="col-md-3 ">
-                                                    <label for="">Time</label>
-                                                    <select class="custom-select" id="multiVisit" name="doctor_no">
-                                                        <option value="">Select Time</option>
-
-                                                    </select>
-                                                </div> -->
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-3 slotScroll" id="weekId" style="display:none;">
@@ -120,9 +117,10 @@
                                                 </div>
                                                 <div class="col-md-9">
                                                     <div class="text-center" id="loading" style="display:none;">
-                                                        <img width="50" height="50" src="{{asset('admin/img/loading.gif')}}" class="rounded-circle" alt="">
+                                                        <img width="50" height="50"
+                                                            src="{{asset('admin/img/loading.gif')}}"
+                                                            class="rounded-circle" alt="">
                                                     </div>
-
                                                     <!-- <p id="loading" class="text-center" style="display:none;">Loading</p> -->
                                                     <div class="row" id="loadSlot">
                                                     </div>
@@ -137,64 +135,87 @@
                                             <div class="form-row">
                                                 <div class="col-md-3 mb-3">
                                                     <div class="input-group mb-3">
-                                                        <input type="text" class="form-control" id="pid" placeholder="Search PID" name="reg_no" value="{{$regNo}}" aria-label="Search Patient Id" aria-describedby="basic-addon2">
+                                                        <input type="text" class="form-control" id="pid"
+                                                            placeholder="Search PID" name="reg_no" value="{{$regNo}}"
+                                                            aria-label="Search Patient Id"
+                                                            aria-describedby="basic-addon2">
                                                         <div class="input-group-append">
-                                                            <a href="" id="clearId" class="btn btn-outline-secondary" type="button"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                                                            <a href="" id="clearId" class="btn btn-outline-secondary"
+                                                                type="button"><i class="fa fa-refresh"
+                                                                    aria-hidden="true"></i></a>
 
-                                                            <a href="" id="srcId" class="btn btn-outline-secondary" type="button" data-backdrop="static" data-keyboard="false" data-toggle="modal"><i class="fa fa-search-plus" aria-hidden="true"></i></a>
+                                                            <a href="" id="srcId" class="btn btn-outline-secondary"
+                                                                type="button" data-backdrop="static"
+                                                                data-keyboard="false" data-toggle="modal"><i
+                                                                    class="fa fa-search-plus"
+                                                                    aria-hidden="true"></i></a>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1">
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input gender" type="radio" name="gender" id="gender_male" value="M" checked>
+                                                        <input class="form-check-input gender" type="radio"
+                                                            name="gender" id="gender_male" value="M" checked>
                                                         <label class="form-check-label" for="gender_male">Male</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1">
                                                     <div class="form-check form-check-inline gender">
-                                                        <input class="form-check-input" type="radio" name="gender" id="gender_female" value="F">
-                                                        <label class="form-check-label" for="gender_female">Female</label>
+                                                        <input class="form-check-input" type="radio" name="gender"
+                                                            id="gender_female" value="F">
+                                                        <label class="form-check-label"
+                                                            for="gender_female">Female</label>
                                                     </div>
 
                                                 </div>
                                                 <div class="col-md-1">
                                                     <div class="form-check form-check-inline gender">
-                                                        <input class="form-check-input" type="radio" name="gender" id="gender_others" value="O">
-                                                        <label class="form-check-label" for="gender_female">Others</label>
+                                                        <input class="form-check-input" type="radio" name="gender"
+                                                            id="gender_others" value="O">
+                                                        <label class="form-check-label"
+                                                            for="gender_female">Others</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 mb-3">
-                                                    <input type="text" class="form-control datepicker" name="dob" id="dob" placeholder="DOB" value="{{old('dob')}}" required>
+                                                    <input type="text" class="form-control datepicker" name="dob"
+                                                        id="dob" placeholder="DOB" value="{{old('dob')}}" required>
                                                 </div>
                                                 <div class="col-md-2 mb-3">
-                                                    <input type="text" class="form-control" id="age" placeholder="Age" disabled="">
+                                                    <input type="text" class="form-control" id="age" placeholder="Age"
+                                                        disabled="">
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-md-2 mb-3">
                                                     <label for="">Title</label>
-                                                    <select class="custom-select" id="salutationId" name="salutation_Id">
+                                                    <select class="custom-select" id="salutationId"
+                                                        name="salutation_Id">
                                                         <option value="">Select Title</option>
                                                         @foreach($salutations as $title)
-                                                        <option value="{{$title->salutation_name}}">{{$title->salutation_name}}
+                                                        <option value="{{$title->salutation_name}}">
+                                                            {{$title->salutation_name}}
                                                         </option>
                                                         @endforeach
 
                                                     </select>
                                                 </div>
                                                 <div class="col-md-4 mb-3">
-                                                    <label for="validationCustom04">Patient Name<span class="text-danger">*</span></label>
-                                                    <input type="text" name="ful_name" value="{{old('ful_name')}}" class="form-control" id="fulName" placeholder="Enter Patient Name" required>
+                                                    <label for="validationCustom04">Patient Name<span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" name="ful_name" value="{{old('ful_name')}}"
+                                                        class="form-control" id="fulName"
+                                                        placeholder="Enter Patient Name" required>
                                                 </div>
                                                 <div class="col-md-2 mb-3">
                                                     <label for="">Mobile No<span class="text-danger">*</span></label>
-                                                    <input type="text" id="mobile" name="mobile" class="form-control" placeholder="Mobile No" value="" required>
+                                                    <input type="text" id="mobile" name="mobile" class="form-control"
+                                                        placeholder="Mobile No" value="" required>
                                                 </div>
                                                 <div class="col-md-2 mb-3">
                                                     <label for="">Email</label>
                                                     <div class="input-group">
-                                                        <input type="text" name="email" class="form-control" id="email" placeholder="Email" aria-describedby="inputGroupPrepend2">
+                                                        <input type="text" name="email" class="form-control" id="email"
+                                                            placeholder="Email" aria-describedby="inputGroupPrepend2">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 mb-3">
@@ -219,7 +240,10 @@
                                             <div class="form-row">
                                                 <div class="col-md-6 mb-3">
                                                     <label>Chief Complaint<span class="text-danger">*</span></label>
-                                                    <select class="form-control select2 select2-hidden-accessible" name="chief_complaint[]" multiple="" data-placeholder="Select Chief Complaint" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                                    <select class="form-control select2 select2-hidden-accessible"
+                                                        name="chief_complaint[]" multiple=""
+                                                        data-placeholder="Select Chief Complaint" style="width: 100%;"
+                                                        tabindex="-1" aria-hidden="true">
                                                         @foreach($chiefComplaint as $cc)
                                                         <option>{{$cc->atr_name}}</option>
                                                         @endforeach
@@ -229,7 +253,8 @@
                                                 </div>
                                                 <div class="col-md-3 mb-3">
                                                     <label for="">Arrival Mode</label>
-                                                    <select class="custom-select" id="maritalStatus" name="arrival_mode">
+                                                    <select class="custom-select" id="maritalStatus"
+                                                        name="arrival_mode">
                                                         <option value="">Select Arrival Mode</option>
                                                         <option value="W">Walkin </option>
                                                         <option value="A">Appointed </option>
@@ -253,32 +278,40 @@
                                             <div class="form-row">
                                                 <div class="col-md-3 mb-3">
                                                     <label for="">Appoint Date</label>
-                                                    <input type="text" name="mobile" class="form-control" id="validationDefault02" placeholder="Appoint Date" value="" disabled="">
+                                                    <input type="text" name="mobile" class="form-control"
+                                                        id="validationDefault02" placeholder="Appoint Date" value=""
+                                                        disabled="">
                                                 </div>
 
                                                 <div class="col-md-3 mb-3">
                                                     <div class="form-group">
                                                         <label>Appoint Time</label>
-                                                        <input type="text" id="appointTime" name="start_time" readonly class="form-control" placeholder="Appoint Time">
+                                                        <input type="text" id="appointTime" name="start_time" readonly
+                                                            class="form-control" placeholder="Appoint Time">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 mb-3">
                                                     <label for="">Serial No</label>
                                                     <div class="input-group">
-                                                        <input type="text" id="sl" name="sl_no" class="form-control" id="" placeholder="Serial No" aria-describedby="inputGroupPrepend2" readonly>
+                                                        <input type="text" id="sl" name="sl_no" class="form-control"
+                                                            id="" placeholder="Serial No"
+                                                            aria-describedby="inputGroupPrepend2" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 mb-3">
                                                     <label for="">Room No</label>
                                                     <div class="input-group">
-                                                        <input type="text" name="doc_chember" class="form-control" id="docRoom" placeholder="Room No" aria-describedby="inputGroupPrepend2" readonly>
+                                                        <input type="text" name="doc_chember" class="form-control"
+                                                            id="docRoom" placeholder="Room No"
+                                                            aria-describedby="inputGroupPrepend2" readonly>
                                                     </div>
-                                                    <input type="hidden" name="doctor_no" class="form-control" id="doctorNo">
+                                                    <input type="hidden" name="doctor_no" class="form-control"
+                                                        id="doctorNo">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col text-center mb-2">
-                                            <button class="btn btn-primary" type="submit">Submit form</button>
+                                            <button class="btn btn-primary" id="appointmentInsertBtn"  type="submit">Submit</button>
                                         </div>
                                 </form>
                             </div>
@@ -290,11 +323,28 @@
         </div>
     </div>
 
-    <div class="modal fade" id="patient" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="patient" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title text-success" id="exampleModalCenterTitle">Patient Information</h3>
+                    <h3 class="modal-title text-success m-auto" id="exampleModalCenterTitle">
+                        <div class="row">
+                            <div class="col-sm">
+                                <input type="text" id="findpid" class="form-control border border-success patientsearch"
+                                    placeholder="Search PID">
+                            </div>
+                            <div class="col-md-5">
+                                Patient Information
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" id="findpatient" class="form-control border-success patientsearch"
+                                    placeholder="Search Patient Name">
+                            </div>
+                        </div>
+
+
+                    </h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -302,52 +352,8 @@
                 <div class="modal-body ">
                     <div class="col-lg-12 m-auto">
                         <div class="table-responsive">
-                            <div class="panel panel-primary filterable">
-                                <table class="table table-striped table-bordered dataTable">
-                                    <thead>
-                                        <tr class="filters">
-                                            <th style="width: 100px;"><input type="text" class="form-control" placeholder="PID"></th>
-                                            <th style="width: 100px;"><input type="text" class="form-control" placeholder="Patient Name"></th>
-                                            <th>DOB</th>
-                                            <th>Age</th>
-                                            <!-- <th>Date of Birth</th> -->
-                                            <th>Mobile</th>
-                                            <th>Email</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    @foreach($registrations as $reg)
-                                    @php
-                                    $dob = $reg->dob;
-                                    $d =\Carbon\Carbon::parse($reg->dob)->diff(\Carbon\Carbon::now())->format('%d');
-                                    $m =\Carbon\Carbon::parse($reg->dob)->diff(\Carbon\Carbon::now())->format('%m');
-                                    $y =\Carbon\Carbon::parse($reg->dob)->diff(\Carbon\Carbon::now())->format('%y');
-                                    @endphp
-                                    <tr>
-                                        <td>
-                                            <img width="28" height="28" src="{{asset($reg->img_url)}}" class="rounded-circle" alt="">
-                                            <a href="" class="patientFind" data-regNo="{{$reg->reg_no}}">
-                                                {{$reg->reg_no}}</a>
-                                        </td>
-                                        <td>{{$reg->salutation_id.' '.$reg->ful_name}}</td>
-                                        <td class="dob">{{$reg->dob}}</td>
-                                        <!-- <td>{{Carbon\Carbon::parse($reg->dob)->age}}</td> -->
-                                        <td>{{$y?$y.'Y ':''}}{{$m?$m.'M ':''}}{{$d?$d.'D':''}}</td>
-                                        <td>{{$reg->mobile}}</td>
-                                        <td>{{$reg->email}}</td>
-                                        <td class="text-right">
-                                            <div class="dropdown dropdown-action">
-                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="edit-employee.html"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i>
-                                                        Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </table>
+                            <div class="panel panel-primary">
+                                <div id="udSearchPatient" class="m-auto"></div>
                             </div>
                         </div>
                     </div>
@@ -363,13 +369,40 @@
     <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.1.7/js/dataTables.fixedHeader.min.js"></script> -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script type="text/javascript">
         $('.dataTable').DataTable();
-    </script>
-    <script>
+        
         $(function() {
+
+            $('#appointmentInsertBtn').on('click', function(e){
+                e.preventDefault();
+                $('#appointmentInsert').submit();
+                location.reload();
+            });
+            
+            $('body').on('click', '.pagination a', function(e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    beforeSend: function() {
+
+                    },
+                    success: function(data) {
+                        $('#udSearchPatient').html(data);
+                        console.log(data);
+                    },
+                    complete: function() {
+
+                    }
+                })
+            });
+
+
             $('.select2').select2({
                 closeOnSelect: false
             });
@@ -382,50 +415,7 @@
             if (pid != '') {
                 getPatient(pid);
             }
-            // data table filter
-            $('.filterable .btn-filter').click(function() {
-                var $panel = $(this).parents('.filterable'),
-                    $filters = $panel.find('.filters input'),
-                    $tbody = $panel.find('.table tbody');
-                if ($filters.prop('disabled') == true) {
-                    $filters.prop('disabled', false);
-                    $filters.first().focus();
-                } else {
-                    $filters.val('').prop('disabled', true);
-                    $tbody.find('.no-result').remove();
-                    $tbody.find('tr').show();
-                }
-            });
-
-            $('.filterable .filters input').keyup(function(e) {
-                /* Ignore tab key */
-                var code = e.keyCode || e.which;
-                if (code == '9') return;
-                /* Useful DOM data and selectors */
-                var $input = $(this),
-                    inputContent = $input.val().toLowerCase(),
-                    $panel = $input.parents('.filterable'),
-                    column = $panel.find('.filters th').index($input.parents('th')),
-                    $table = $panel.find('.table'),
-                    $rows = $table.find('tbody tr');
-                /* Dirtiest filter function ever ;) */
-                var $filteredRows = $rows.filter(function() {
-                    var value = $(this).find('td').eq(column).text().toLowerCase();
-                    return value.indexOf(inputContent) === -1;
-                });
-                /* Clean previous no-result if exist */
-                $table.find('tbody .no-result').remove();
-                /* Show all rows, hide filtered ones (never do that outside of a demo ! xD) */
-                $rows.show();
-                $filteredRows.hide();
-                /* Prepend no-result row if all rows are filtered */
-                if ($filteredRows.length === $rows.length) {
-                    $table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="' + $table
-                        .find('.filters th').length + '">No result found</td></tr>'));
-                }
-            });
-
-            // end filter
+            
 
 
             var date = new Date();
@@ -443,11 +433,6 @@
             $('#schDate').datepicker('setDate', today);
 
             var maxBirthdayDate = new Date();
-            // maxBirthdayDate.setFullYear( maxBirthdayDate.getFullYear() - 10 );
-            console.log(maxBirthdayDate);
-            /* $('#dob').datepicker().on('changeDate', function (ev) {
-                alert('dob');
-            }); */
             $('#dob').datepicker({
                 format: "yyyy-mm-dd",
                 autoclose: true,
@@ -469,7 +454,6 @@
                 $('#patient').modal('hide');
             })
         });
-
         $('#specialty').on('change', function() {
             var spDoctor = $(this).val();
             getDoctorSpeciltyWise(spDoctor);
@@ -535,6 +519,7 @@
             e.preventDefault();
             var pid = $('#pid').val();
             if (pid == '') {
+                getFindingPatient('all');
                 $('#patient').modal('show');
             } else {
                 getPatient(pid);
@@ -551,7 +536,7 @@
         function clear(id) {
             $('#' + id).val('');
         }
-        
+
         function getPatient(regno) {
             $.ajax({
                 url: "{{url('patient')}}/" + regno,
@@ -619,8 +604,6 @@
                     $('#loading').show();
                 },
                 success: function(data) {
-                    //$('#doctorTimeSlot').show();
-                    // getVistDays(doctorId);
                     $('#loadSlot').html(data).show();
                     $('#schDate').val($('#dT').text())
 
@@ -659,8 +642,13 @@
         $('#schDate').on('change', function() {
             var schDate = $(this).val();
             var docNo = $('#doctor').val();
-            getDoctorSlotLoad(docNo, schDate);
-            getVistDays(docNo, schDate);
+            // alert(typeof docNo);
+            if (docNo == '') {
+
+            } else {
+                getDoctorSlotLoad(docNo, schDate);
+                getVistDays(docNo, schDate);
+            }
 
         })
 
@@ -688,6 +676,28 @@
                 success: function(data) {
                     // console.log(data);
                     // $('#doctor').html(data);
+                }
+            })
+        }
+
+        $('.patientsearch').on('keyup', function() {
+            var pid = $(this).val();
+            // var name = $('#findpatient').val();
+            getFindingPatient(pid);
+            if (pid == null || pid == '') {
+                // patientsearch = 'No-Doctor';
+                getFindingPatient('all');
+            }
+
+        })
+
+        function getFindingPatient(keyword) {
+            $.ajax({
+                url: "{{url('patientSearch')}}/" + keyword,
+                type: 'get',
+                success: function(data) {
+                    console.log(data);
+                    $('#udSearchPatient').html(data);
                 }
             })
         }

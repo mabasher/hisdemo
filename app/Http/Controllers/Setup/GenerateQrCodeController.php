@@ -11,11 +11,8 @@ class GenerateQrCodeController extends Controller
 {
     public function simpleQrCode($pid) 
     {
-
       return \QrCode::size(300)->generate($pid);
-       
     }    
-
 
     public function registratinPdf($id)
     {
@@ -32,7 +29,7 @@ class GenerateQrCodeController extends Controller
         return $pdf->download('pid.pdf');
     }
 
-
+ 
     // public function generatePDF()
 
     // {

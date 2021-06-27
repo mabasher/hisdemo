@@ -10,6 +10,10 @@
     <td>
         <input type="text" class="form-control" readonly value="{{$investigation->departments? $investigation->departments->dept_name:''}}" id="deptName_d_0" placeholder="Department" />
         <input type="hidden" class="form-control" name="dept_no[]" readonly id="deptNo_d_0" placeholder="dept No" />
+        <input type="hidden" class="form-control" name="service_type[]" readonly value="{{$investigation->service_type}}" />
+        <input type="hidden" class="form-control" name="sample_no[]" readonly value="{{$investigation->req_sample}}" />
+        <input type="hidden" class="form-control" name="trx_code_no[]" readonly value="GS" />
+        
     </td>
     <td class="d-none">
         <input type="text" class="form-control text-center" readonly id="qty" placeholder="Quantity" />

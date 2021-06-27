@@ -22,9 +22,15 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use PDF;
+use Session;
+use Auth;
 
 class OpappointmentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function getSpecialWiseDoctor($deptNo)
     {
         if ($deptNo == 'All') {
@@ -45,11 +51,11 @@ class OpappointmentController extends Controller
         return view('admin.partialPages.desigWiseDoctor', compact('desigWidoctors'));
     }
 
-    public function appointSavePage($regNo = '')
+    public function appointSavePage($regNo = '', $patName = '')
     {
         // return $d = Carbon::now()->next('Monday')->format('Y-m-d');
         // return $regNo;
-        $registrations = Registration::orderBy('id', 'DESC')->get();
+        $registrations = Registration::orderBy('id', 'DESC')->paginate(10);
         $salutations = Salutation::all();
         $religions = Religion::all();
         $bloodGroups = Bloodgroup::all();
@@ -79,7 +85,7 @@ class OpappointmentController extends Controller
 
     public function appointmentInsert(Request $r)
     {
-        //return $r->all();
+        // return $r->all();
         $chiefComplaint = "";
         foreach ($r->chief_complaint as $k => $q) {
             count($r->chief_complaint) == $k + 1 ? $comma = '' : $comma = ',';
@@ -89,6 +95,7 @@ class OpappointmentController extends Controller
         $appid = $this->getAppointId();
         $cid = $this->getConsultation();
         $regno = '';
+        if($r->start_time){
         if ($r->reg_no == '') {
             $regno = $this->getRegId();
             Registration::insert([
@@ -109,6 +116,7 @@ class OpappointmentController extends Controller
         $r->request->add(['start_time' => date("H:i:s", strtotime(request('start_time')))]);
         $r->request->add(['chief_complaint' => $chiefComplaint]);
         $r->request->add(['confirm_flag' => 'Y']);
+        $r->request->add(['appoint_from' => 'Offline']);
         $app = Opappointment::insert($r->except('_token'));
 
         // $customPaper = array(0, 0, 250, 270);
@@ -148,7 +156,15 @@ class OpappointmentController extends Controller
             'created_by' => auth()->user()->id
         ]);
 
-        return redirect('appointments');
+        // return redirect('appointments');
+        // $url = url('appointmentCard').'/'.$appid;
+        // Session::flash('url', $url);
+        return redirect('appointmentCard/' . $appid);
+        // return redirect()->back();
+    }else{
+        Session::flash('startTime', 'Please Choose Appointment Time.');
+        return redirect()->back();
+    }
     }
 
     public function getAppointId()
@@ -159,11 +175,11 @@ class OpappointmentController extends Controller
         $t = Carbon::now();
         $m = $t->month;
 
-        $y = $t->year;
+        $y = $t->format('y');
 
         $d = $t->day;
 
-        $id = 'A' . $y;
+        $id = '' . $y;
         if ($m < 10) {
             $id .= '0';
         }
@@ -197,11 +213,11 @@ class OpappointmentController extends Controller
         $t = Carbon::now();
         $m = $t->month;
 
-        $y = $t->year;
+        $y = $t->format('y');;
 
         $d = $t->day;
 
-        $id = 'R' . $y;
+        $id = 'PID' . $y;
         if ($m < 10) {
             $id .= '0';
         }
@@ -299,5 +315,18 @@ class OpappointmentController extends Controller
         $mobile = implode(',',$todayApp);
         $this->sendSms($mobile);
         return 'Success';
+    }
+
+    public function getSearchingPatient($keyword)
+    {
+        if($keyword ==='all'){
+        $registrations = Registration::orderBy('id', 'DESC')->paginate(10);
+           
+        }else{
+
+            $registrations = Registration::where('reg_no', 'LIKE', "%{$keyword}")->orWhere('ful_name','LIKE', "{$keyword}%")->orderBy('id', 'DESC')->paginate(10);
+        }
+        return view('admin.opd.find_patient', compact(['registrations']));
+
     }
 }
